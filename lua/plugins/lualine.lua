@@ -27,14 +27,13 @@ return {
         },
       },
       sections = {
-        lualine_a = {},
-        lualine_b = {
+        lualine_a = {
           "fancy_branch",
         },
-        lualine_c = {
+        lualine_b = {
           {
             "filename",
-            path = 1, -- 2 for full path
+            path = 0, -- 2 for full path
             symbols = {
               modified = "  ",
               readonly = "  ",
@@ -44,9 +43,8 @@ return {
           { "fancy_diagnostics", sources = { "nvim_lsp" }, symbols = { error = " ", warn = " ", info = " " } },
           { "fancy_searchcount" },
         },
-        lualine_x = {
-          "fancy_diff",
-        },
+        lualine_c = {},
+        lualine_x = { "fancy_diff" },
         lualine_y = { "filetype" },
         lualine_z = { "progress" },
       },
