@@ -130,15 +130,7 @@ local colors = {
       cond = conditions.buffer_not_empty,
     })
 
-    ins_left({
-      "filename",
-      cond = conditions.buffer_not_empty,
-      color = { fg = colors.magenta, gui = "bold" },
-    })
-
-    ins_left({ "location" })
-
-    ins_left({ "progress", color = { fg = colors.fg, gui = "bold" } })
+    ins_left({ "datetime", color = { fg = colors.fg, gui = "bold" } })
 
     ins_left({
       "diagnostics",
@@ -160,24 +152,13 @@ local colors = {
     })
 
     ins_left({
-      -- Lsp server name .
-      function()
-        local msg = "No Active Lsp"
-        local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
-        local clients = vim.lsp.get_active_clients()
-        if next(clients) == nil then
-          return msg
-        end
-        for _, client in ipairs(clients) do
-          local filetypes = client.config.filetypes
-          if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-            return client.name
-          end
-        end
-        return msg
-      end,
-      icon = " LSP:",
-      color = { fg = "#ffffff", gui = "bold" },
+      "filename",
+      file_status = true, -- Displays file status (readonly status, modified status)
+      newfile_status = false, -- Display new file status (new file means no write after created)
+      path = 4, -- 0: Just the filename
+      shorting_target = 40, -- Shortens path to leave 40 spaces in the window
+      cond = conditions.buffer_not_empty,
+      color = { fg = colors.magenta, gui = "bold" },
     })
 
     -- Add components to right sections
