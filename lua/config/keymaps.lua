@@ -1,3 +1,6 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
+-- diffview
+vim.api.nvim_set_keymap("n", "<leader>go", ":DiffviewOpen<CR>", { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap("n", "<leader>gx", ":DiffviewClose<CR>", { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap("n", "<leader>gm", ":DiffviewFileHistory %<CR>", { noremap = true, silent = true })
