@@ -2,18 +2,16 @@
 
 Neovim config with Help of Lazyvim
 
-Required Installation: (Arch Linux btw)
+Required Installation:
 
 ## lazygit
 
-`sudo pacman -S lazygit`
-
 ## riqgrep
-
-`sudo pacman -S riqgrep`
 
 ## fd
 
-`sudo pacman -S fd`
+## install mongo-nvim
+
+visit : https://github.com/thibthib18/mongo-nvim
 
 **NOTE:** Node and C compiler needs to work properly.
