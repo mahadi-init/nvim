@@ -7,5 +7,5 @@ return {
       sorting_strategy = "ascending",
       winblend = 0,
     },
-  },
+  }
 }

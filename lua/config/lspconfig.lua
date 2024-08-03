@@ -21,18 +21,12 @@ local on_attach = function(_, _)
 end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local config = require("lspconfig")
+local servers = { "lua_ls", "tsserver", "eslint" }
 
-require("lspconfig").lua_ls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities
-}
-
-require("lspconfig").tsserver.setup {
-  on_attach = on_attach,
-  capabilities = capabilities
-}
-
-require("lspconfig").eslint.setup {
-  on_attach = on_attach,
-  capabilities = capabilities
-}
+for _, lsp in ipairs(servers) do
+  config[lsp].setup {
+    on_attach = on_attach,
+    capabilities = capabilities
+  }
+end

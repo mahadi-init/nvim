@@ -1,6 +1,14 @@
 return {
   {
     "williamboman/mason.nvim",
+    -- opts = {
+    --   ensure_installed = {
+    --     "eslint-lsp",
+    --     "prettierd",
+    --     "tailwindcss-language-server",
+    --     "typescript-language-server",
+    --   }
+    -- },
     config = function()
       require("mason").setup({
         ui = {
@@ -9,7 +17,7 @@ return {
             package_pending = "➜",
             package_uninstalled = "✗"
           }
-        }
+        },
       })
     end
   },

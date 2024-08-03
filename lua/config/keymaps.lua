@@ -11,6 +11,3 @@ vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 -- basic
 vim.keymap.set("n", "<C-s>", ":w<CR>", {})
 vim.keymap.set("n", "<leader>q", ":q<CR>", {})
-
--- -- terminal
-vim.keymap.set("n", "<C-k>", "<CMD>ToggleTerm<CR>", {})
