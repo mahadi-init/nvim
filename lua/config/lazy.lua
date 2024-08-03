@@ -25,8 +25,9 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
--- setup options
-require("config.options")
+-- useful mapping
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
 -- Setup lazy.nvim
 require("lazy").setup({
@@ -42,4 +43,4 @@ require("lazy").setup({
 })
 
 
-vim.cmd("colorscheme kanagawa")
+vim.cmd("colorscheme gruvbox")

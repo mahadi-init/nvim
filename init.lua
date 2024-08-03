@@ -1,2 +1,7 @@
 require("config.lazy")
 require("config.options")
+require("config.keymaps")
+require("config.cmpconfig")
+require("config.lspconfig")
+
+require("toggleterm").setup{}
