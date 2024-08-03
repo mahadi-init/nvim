@@ -1,5 +1,7 @@
 # Neovim config
 
+neovim config with lua & lazy.nvim
+
 ### Install plugins
 
 **Lazygit**
