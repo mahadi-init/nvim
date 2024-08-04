@@ -10,9 +10,9 @@ require("mason-lspconfig").setup({
 local on_attach = function(_, _)
   local buf = vim.lsp.buf
 
-  vim.keymap.set('n', '<leader>rn', buf.rename, {})
-  vim.keymap.set('n', '<leader>ra', buf.code_action, {})
-  vim.keymap.set('n', '<leader>rf', buf.format, {})
+  vim.keymap.set('n', '<leader>ln', buf.rename, {})
+  vim.keymap.set('n', '<leader>la', buf.code_action, {})
+  vim.keymap.set('n', '<leader>lf', buf.format, {})
 
   vim.keymap.set('n', 'gd', buf.definition, {})
   vim.keymap.set('n', 'gi', buf.implementation, {})
