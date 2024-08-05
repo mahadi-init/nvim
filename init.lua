@@ -1,3 +1,4 @@
+require("config.remove-padding")
 require("config.lazy")
 require("config.options")
 require("config.keymaps")
