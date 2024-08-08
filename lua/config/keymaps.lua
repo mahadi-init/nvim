@@ -28,5 +28,5 @@ vim.keymap.set("n", "]d", diagnostic.goto_next)          -- next diagnostic
 vim.keymap.set("n", "<leader>ld", diagnostic.open_float) -- open float diagnostic
 vim.keymap.set("n", "<leader>lq", diagnostic.setloclist) -- open float diagnostic
 
--- mini files (open file system)
-vim.keymap.set('n', '<leader>e', "<CMD>lua MiniFiles.open()<CR>") -- open telescope
+-- telescope file browser
+vim.keymap.set("n", "<leader>e", ":Telescope file_browser path=%:p:h select_buffer=true<CR>")
