@@ -15,11 +15,11 @@ vim.keymap.set("n", "<leader>q", "<CMD>q<CR>")      -- quit neovim
 vim.keymap.set("n", "<ESC>", "<CMD>nohlsearch<CR>") -- escape and remove search query
 vim.keymap.set("n", "<C-n>", "<CMD>bnext<CR>")      -- next buffer
 vim.keymap.set("n", "<C-p>", "<CMD>bprevious<CR>")  -- previous buffer
-vim.keymap.set("n", "<C-r>", "<CMD>bd<CR>")         -- delete buffer
+vim.keymap.set("n", "<C-x>", "<CMD>bd<CR>")         -- delete buffer
 
 -- split
 vim.keymap.set("n", "<C-v>", "<CMD>vsplit<CR>") -- split vertical
-vim.keymap.set("n", "<C-x>", "<CMD>close<CR>")  -- close split
+vim.keymap.set("n", "<C-r>", "<CMD>close<CR>")  -- close split
 
 -- diagnostic
 local diagnostic = vim.diagnostic
