@@ -20,7 +20,6 @@ vim.keymap.set("n", "<C-r>", "<CMD>bd<CR>")         -- delete buffer
 -- split
 vim.keymap.set("n", "<C-v>", "<CMD>vsplit<CR>") -- split vertical
 vim.keymap.set("n", "<C-x>", "<CMD>close<CR>")  -- close split
-vim.keymap.set("n", "<C-X>", "<CMD>only<CR>")   -- close all splits
 
 -- diagnostic
 local diagnostic = vim.diagnostic
