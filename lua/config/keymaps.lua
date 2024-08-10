@@ -9,9 +9,9 @@ end
 
 -- telescope
 -- vim.keymap.set('n', '<leader><leader>', builtin.find_files, {})
-vim.keymap.set('n', '<leader><leader>', "<CMD>Telescope frecency workspace=CWD<CR>") -- open telescope
-vim.keymap.set('n', '<leader>fg', builtin.live_grep)                                 -- live grep
-vim.keymap.set('n', '<leader>fb', builtin.buffers)                                   -- view buffers
+vim.keymap.set('n', '<leader><leader>', "<CMD>Telescope frecency workspace=CWD path_display=shorten<CR>") -- open telescope
+vim.keymap.set('n', '<leader>fg', builtin.live_grep)                                                      -- live grep
+vim.keymap.set('n', '<leader>fb', builtin.buffers)                                                        -- view buffers
 
 -- oil
 vim.keymap.set("n", "-", "<CMD>Oil<CR>") -- oil open parent dir
