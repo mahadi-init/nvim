@@ -1,16 +1,10 @@
 require("mason").setup()
-require("mason-lspconfig").setup({
-  ensure_installed = {
-    "lua_ls",
-    "tsserver",
-    "eslint"
-  }
-})
+require("mason-lspconfig").setup()
 
 local on_attach = function(_, _)
   local buf = vim.lsp.buf
 
-  vim.keymap.set('n', '<leader>ln', buf.rename, {})
+  vim.keymap.set('n', '<leader>lr', buf.rename, {})
   vim.keymap.set('n', '<leader>la', buf.code_action, {})
   vim.keymap.set('n', '<leader>lf', buf.format, {})
 
@@ -22,7 +16,7 @@ end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local config = require("lspconfig")
-local servers = { "lua_ls", "tsserver", "eslint" }
+local servers = { "lua_ls", "tsserver", "eslint", "tailwindcss", "html" }
 
 for _, lsp in ipairs(servers) do
   config[lsp].setup {

@@ -1,5 +1,12 @@
 local builtin = require('telescope.builtin')
 
+-- save and format at the same time
+local function save_format()
+  local buf = vim.lsp.buf
+  buf.format()
+  vim.api.nvim_command("w")
+end
+
 -- telescope
 -- vim.keymap.set('n', '<leader><leader>', builtin.find_files, {})
 vim.keymap.set('n', '<leader><leader>', "<CMD>Telescope frecency workspace=CWD<CR>") -- open telescope
@@ -10,7 +17,7 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers)                              
 vim.keymap.set("n", "-", "<CMD>Oil<CR>") -- oil open parent dir
 
 -- basic
-vim.keymap.set("n", "<C-s>", "<CMD>w<CR>")          -- save file
+vim.keymap.set("n", "<C-s>", save_format)           -- save file
 vim.keymap.set("n", "<leader>q", "<CMD>q<CR>")      -- quit neovim
 vim.keymap.set("n", "<ESC>", "<CMD>nohlsearch<CR>") -- escape and remove search query
 vim.keymap.set("n", "<C-n>", "<CMD>bnext<CR>")      -- next buffer
@@ -27,6 +34,3 @@ vim.keymap.set("n", "[d", diagnostic.goto_prev)          -- previous diagnostic
 vim.keymap.set("n", "]d", diagnostic.goto_next)          -- next diagnostic
 vim.keymap.set("n", "<leader>ld", diagnostic.open_float) -- open float diagnostic
 vim.keymap.set("n", "<leader>lq", diagnostic.setloclist) -- open float diagnostic
-
--- telescope file browser
-vim.keymap.set("n", "<leader>e", ":Telescope file_browser path=%:p:h select_buffer=true<CR>")
