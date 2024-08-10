@@ -4,13 +4,13 @@ return {
     require("conform").setup({
       formatters_by_ft = {
         lua = { "stylua" },
-        javascript = { "prettier", stop_after_first = true },
-        typescript = { "prettier", stop_after_first = true },
-        typescriptreact = { "prettier", stop_after_first = true },
-        html = { "prettier", stop_after_first = true },
-        css = { "prettier", stop_after_first = true },
+        javascript = { "prettierd" },
+        typescript = { "prettierd" },
+        typescriptreact = { "prettierd" },
+        html = { "prettierd" },
+        css = { "prettierd" },
       },
     })
-    require("conform").format { async = true, lsp_fallback = true }
+    -- require("conform").format { async = true, lsp_fallback = true }
   end
 }

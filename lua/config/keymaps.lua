@@ -18,6 +18,7 @@ vim.keymap.set("n", "-", "<CMD>Oil<CR>") -- oil open parent dir
 
 -- basic
 vim.keymap.set("n", "<C-s>", save_format)           -- save file
+vim.keymap.set("i", "<C-s>", save_format)           -- save file
 vim.keymap.set("n", "<leader>q", "<CMD>q<CR>")      -- quit neovim
 vim.keymap.set("n", "<ESC>", "<CMD>nohlsearch<CR>") -- escape and remove search query
 vim.keymap.set("n", "<C-n>", "<CMD>bnext<CR>")      -- next buffer

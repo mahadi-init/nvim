@@ -6,6 +6,6 @@ return {
     require('mini.tabline').setup()
     require('mini.pairs').setup()
     -- require('mini.files').setup()
-    require('mini.animate').setup()
+    -- require('mini.animate').setup()
   end
 }
