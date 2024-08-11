@@ -23,8 +23,7 @@ return {
       },
       sections = {
         lualine_a = { 'branch' },
-        lualine_b = { "filename" },
-        lualine_c = {
+        lualine_b = {
           {
             'filename',
             file_status = true,
@@ -33,7 +32,8 @@ return {
             shorting_target = 40,
           }
         },
-        lualine_x = { "searchcount", 'diagnostics' },
+        lualine_c = { "filesize" },
+        lualine_x = { 'diagnostics' },
         lualine_y = { 'filetype' },
         lualine_z = { 'progress' }
       },
