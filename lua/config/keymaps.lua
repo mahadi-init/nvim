@@ -1,24 +1,16 @@
-local builtin = require('telescope.builtin')
-
--- save and format at the same time
-local function save_format()
-  local buf = vim.lsp.buf
-  buf.format()
-  vim.api.nvim_command("w")
-end
+local builtin = require("telescope.builtin")
 
 -- telescope
--- vim.keymap.set('n', '<leader><leader>', builtin.find_files, {})
-vim.keymap.set('n', '<leader><leader>', "<CMD>Telescope frecency workspace=CWD path_display=shorten<CR>") -- open telescope
-vim.keymap.set('n', '<leader>fg', builtin.live_grep)                                                      -- live grep
-vim.keymap.set('n', '<leader>fb', builtin.buffers)                                                        -- view buffers
+vim.keymap.set("n", "<leader><leader>", builtin.find_files)
+vim.keymap.set("n", "<leader>fg", builtin.live_grep) -- live grep
+vim.keymap.set("n", "<leader>fb", builtin.buffers)   -- view buffers
 
 -- oil
 vim.keymap.set("n", "-", "<CMD>Oil<CR>") -- oil open parent dir
 
 -- basic
-vim.keymap.set("n", "<C-s>", save_format)           -- save file
-vim.keymap.set("i", "<C-s>", save_format)           -- save file
+vim.keymap.set("n", "<C-s>", "<CMD>w<CR>")          -- save file
+-- vim.keymap.set("i", "<C-s>", save_format)           -- save file
 vim.keymap.set("n", "<leader>q", "<CMD>q<CR>")      -- quit neovim
 vim.keymap.set("n", "<ESC>", "<CMD>nohlsearch<CR>") -- escape and remove search query
 vim.keymap.set("n", "<C-n>", "<CMD>bnext<CR>")      -- next buffer
