@@ -10,7 +10,7 @@ vim.keymap.set("n", "-", "<CMD>Oil<CR>") -- oil open parent dir
 
 -- basic
 vim.keymap.set("n", "<C-s>", "<CMD>w<CR>")          -- save file
--- vim.keymap.set("i", "<C-s>", save_format)           -- save file
+vim.keymap.set("i", "<C-s>", "<CMD>w<CR>")          -- save file
 vim.keymap.set("n", "<leader>q", "<CMD>q<CR>")      -- quit neovim
 vim.keymap.set("n", "<ESC>", "<CMD>nohlsearch<CR>") -- escape and remove search query
 vim.keymap.set("n", "<C-n>", "<CMD>bnext<CR>")      -- next buffer
@@ -27,3 +27,8 @@ vim.keymap.set("n", "[d", diagnostic.goto_prev)          -- previous diagnostic
 vim.keymap.set("n", "]d", diagnostic.goto_next)          -- next diagnostic
 vim.keymap.set("n", "<leader>ld", diagnostic.open_float) -- open float diagnostic
 vim.keymap.set("n", "<leader>lq", diagnostic.setloclist) -- open float diagnostic
+
+-- todo comments
+vim.keymap.set("n", "<leader>tq", "<CMD>TodoQuickFix<CR>")  -- todo quickfix
+vim.keymap.set("n", "<leader>tl", "<CMD>TodoLocList<CR>")   -- todo locallist
+vim.keymap.set("n", "<leader>tt", "<CMD>TodoTelescope<CR>") -- todo telescope
