@@ -4,6 +4,13 @@
 <a href="https://dotfyle.com/mahadi-init/nvim"><img src="https://dotfyle.com/mahadi-init/nvim/badges/leaderkey?style=flat" /></a>
 <a href="https://dotfyle.com/mahadi-init/nvim"><img src="https://dotfyle.com/mahadi-init/nvim/badges/plugin-manager?style=flat" /></a>
 
+## Required Packages
+[Lazygit](https://github.com/jesseduffield/lazygit?tab=readme-ov-file#ubuntu)
+[Ripgrep](https://github.com/BurntSushi/ripgrep)
+[Fd](https://github.com/sharkdp/fd)
+[Nerd font](https://www.nerdfonts.com/font-downloads)
+[Xclip](https://linuxconfig.org/how-to-use-xclip-on-linux)
+
 
 ## Install Instructions
 
