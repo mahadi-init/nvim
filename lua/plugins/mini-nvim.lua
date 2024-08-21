@@ -6,6 +6,11 @@ return {
     require('mini.tabline').setup()
     require('mini.pairs').setup()
     require('mini.indentscope').setup()
+    require('mini.animate').setup({
+      scroll = {
+        enable = false
+      }
+    })
     require('mini.files').setup({
       content = {
         filter = nil,
