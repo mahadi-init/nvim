@@ -30,9 +30,9 @@ vim.keymap.set("n", "<leader>ld", diagnostic.open_float) -- open float diagnosti
 vim.keymap.set("n", "<leader>lq", diagnostic.setloclist) -- open float diagnostic
 
 -- todo comments
-vim.keymap.set("n", "<leader>tq", "<CMD>TodoQuickFix<CR>")  -- todo quickfix
-vim.keymap.set("n", "<leader>tl", "<CMD>TodoLocList<CR>")   -- todo locallist
-vim.keymap.set("n", "<leader>tt", "<CMD>TodoTelescope<CR>") -- todo telescope
+vim.keymap.set("n", "<leader>ff", "<CMD>TodoQuickFix<CR>")  -- todo quickfix
+vim.keymap.set("n", "<leader>fl", "<CMD>TodoLocList<CR>")   -- todo locallist
+vim.keymap.set("n", "<leader>ft", "<CMD>TodoTelescope<CR>") -- todo telescope
 
 -- kulala
 vim.api.nvim_set_keymap("n", "<leader>kp", ":lua require('kulala').jump_prev()<CR>", { noremap = true, silent = true })
