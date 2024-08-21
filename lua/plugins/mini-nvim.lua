@@ -15,10 +15,10 @@ return {
 
       mappings = {
         close       = '<ESC>',
-        go_in       = 'l',
+        go_in       = '',
         go_in_plus  = '<CR>',
-        go_out      = 'h',
-        go_out_plus = 'H',
+        go_out      = '<BS>',
+        go_out_plus = '',
         reset       = ';',
         reveal_cwd  = '',
         show_help   = 'g?',
