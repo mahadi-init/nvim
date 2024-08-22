@@ -11,39 +11,5 @@ return {
         enable = false
       }
     })
-    require('mini.files').setup({
-      content = {
-        filter = nil,
-        prefix = nil,
-        sort = nil,
-      },
-
-      mappings = {
-        close       = '<ESC>',
-        go_in       = '',
-        go_in_plus  = '<CR>',
-        go_out      = '<BS>',
-        go_out_plus = '',
-        reset       = ';',
-        reveal_cwd  = '',
-        show_help   = 'g?',
-        synchronize = 's',
-        trim_left   = '<',
-        trim_right  = '>',
-      },
-
-      options = {
-        permanent_delete = true,
-        use_as_default_explorer = false,
-      },
-
-      windows = {
-        max_number = math.huge,
-        preview = false,
-        width_focus = 50,
-        width_nofocus = 15,
-        width_preview = 25,
-      },
-    })
   end
 }

@@ -41,6 +41,3 @@ vim.api.nvim_set_keymap("n", "<leader>kr", ":lua require('kulala').run()<CR>", {
 vim.api.nvim_set_keymap("n", "<leader>kt", ":lua require('kulala').scratchpad()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>kx", ":lua require('kulala').close()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>ks", ":lua require('kulala').search()<CR>", { noremap = true, silent = true })
-
--- mini files
-vim.api.nvim_set_keymap("n", "<leader>e", ":lua MiniFiles.open()<CR>", { noremap = true, silent = true })
