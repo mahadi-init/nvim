@@ -11,10 +11,11 @@ cmp.setup({
     ['<CR>'] = map.confirm({ select = true })
   }),
   sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
     { name = 'buffer' },
     { name = "treesitter" },
+    { name = 'nvim_lsp' },
     { name = "path" },
+    { name = "codeium" },
   }),
   formatting = {
     format = lspkind.cmp_format({
@@ -22,6 +23,7 @@ cmp.setup({
       maxwidth = 50,
       ellipsis_char = '...',
       show_labelDetails = true,
+      symbol_map = { Codeium = "" },
       before = function(_, vim_item)
         return vim_item
       end

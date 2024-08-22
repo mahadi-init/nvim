@@ -11,7 +11,8 @@ return {
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
         disabled_filetypes = {
-          statusline = { "oil", "TelescoptPrompt" },
+          -- statusline = { "oil", "TelescoptPrompt" },
+          statusline = {},
           winbar = {},
         },
         ignore_focus = {},
