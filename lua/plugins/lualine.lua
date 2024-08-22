@@ -2,6 +2,8 @@ return {
   "nvim-lualine/lualine.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
+    local statusline = require('arrow.statusline')
+
     require('lualine').setup {
       options = {
         icons_enabled = true,
@@ -9,7 +11,7 @@ return {
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
         disabled_filetypes = {
-          statusline = {},
+          statusline = { "oil", "TelescoptPrompt" },
           winbar = {},
         },
         ignore_focus = {},
@@ -22,17 +24,20 @@ return {
         }
       },
       sections = {
-        lualine_a = { 'branch' },
-        lualine_b = {
+        lualine_a = { 'mode' },
+        lualine_b = { 'branch' },
+        lualine_c = {
           {
             'filename',
             file_status = true,
             newfile_status = true,
             path = 1,
             shorting_target = 40,
-          }
+          },
+          function()
+            return statusline.text_for_statusline_with_icons()
+          end
         },
-        lualine_c = { "filesize" },
         lualine_x = { 'diagnostics' },
         lualine_y = { 'filetype' },
         lualine_z = { 'progress' }

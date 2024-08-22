@@ -9,3 +9,4 @@ opt.showmode = true
 opt.smartindent = true
 opt.relativenumber = true
 opt.wrap = false
+opt.cmdheight = 0
