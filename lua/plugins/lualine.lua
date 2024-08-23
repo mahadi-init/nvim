@@ -37,17 +37,31 @@ return {
           },
           function()
             return statusline.text_for_statusline_with_icons()
-          end
+          end,
+          "diagnostics"
         },
-        lualine_x = { 'diagnostics' },
+        lualine_x = { function()
+          local status = vim.trim(vim.api.nvim_call_function("codeium#GetStatusString", {}))
+
+          if status == "ON" then
+            return "Codeium:   "
+          elseif status == "OFF" then
+            return "Codeium:   "
+          elseif status == "*" then
+            return "Searching..  "
+          else
+            return status
+          end
+        end
+        },
         lualine_y = { 'filetype' },
         lualine_z = { 'progress' }
       },
       inactive_sections = {
         lualine_a = {},
         lualine_b = {},
-        lualine_c = { "filename" },
-        lualine_x = { "location" },
+        lualine_c = {},
+        lualine_x = {},
         lualine_y = {},
         lualine_z = {}
       },

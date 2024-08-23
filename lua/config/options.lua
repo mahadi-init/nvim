@@ -1,5 +1,6 @@
 local opt = vim.opt
 
+opt.termguicolors = true
 opt.laststatus = 0
 opt.clipboard = "unnamedplus"
 opt.expandtab = true

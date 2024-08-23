@@ -43,4 +43,4 @@ vim.api.nvim_set_keymap("n", "<leader>kx", ":lua require('kulala').close()<CR>",
 vim.api.nvim_set_keymap("n", "<leader>ks", ":lua require('kulala').search()<CR>", { noremap = true, silent = true })
 
 -- codeium
-vim.api.nvim_set_keymap("n", "<leader>cc", ":Codeium Chat<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>cc", ":call codeium#Chat()<CR>", { noremap = true, silent = true })
