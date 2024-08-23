@@ -34,13 +34,5 @@ vim.keymap.set("n", "<leader>ff", "<CMD>TodoQuickFix<CR>")  -- todo quickfix
 vim.keymap.set("n", "<leader>fl", "<CMD>TodoLocList<CR>")   -- todo locallist
 vim.keymap.set("n", "<leader>ft", "<CMD>TodoTelescope<CR>") -- todo telescope
 
--- kulala
-vim.api.nvim_set_keymap("n", "<leader>kp", ":lua require('kulala').jump_prev()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>kn", ":lua require('kulala').jump_next()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>kr", ":lua require('kulala').run()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>kt", ":lua require('kulala').scratchpad()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>kx", ":lua require('kulala').close()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>ks", ":lua require('kulala').search()<CR>", { noremap = true, silent = true })
-
 -- codeium
 vim.api.nvim_set_keymap("n", "<leader>cc", ":call codeium#Chat()<CR>", { noremap = true, silent = true })

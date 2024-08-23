@@ -11,3 +11,8 @@ opt.smartindent = true
 opt.relativenumber = true
 opt.wrap = false
 opt.cmdheight = 0
+
+-- diagnostic sidebar hide
+vim.diagnostic.config({
+  signs = false,
+})
