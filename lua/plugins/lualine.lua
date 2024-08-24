@@ -49,7 +49,12 @@ return {
           end
         end
         },
-        lualine_y = { 'filetype' },
+        lualine_y = {
+          function()
+            return require('auto-session.lib').current_session_name(true)
+          end,
+          'filetype',
+        },
         lualine_z = { 'progress' }
       },
       inactive_sections = {

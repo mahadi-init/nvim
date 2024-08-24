@@ -1,5 +1,6 @@
 return {
   'stevearc/oil.nvim',
+  enabled = true,
   opts = {},
   -- Optional dependencies
   dependencies = { { "echasnovski/mini.icons", opts = {} } },
@@ -48,7 +49,7 @@ return {
         timeout_ms = 1000,
         -- Set to true to autosave buffers that are updated with LSP willRenameFiles
         -- Set to "unmodified" to only save unmodified buffers
-        autosave_changes = false,
+        autosave_changes = true,
       },
       -- Constrain the cursor to the editable parts of the oil buffer
       -- Set to `false` to disable, or "name" to keep it on the file names
@@ -62,22 +63,12 @@ return {
       -- Set to `false` to remove a keymap
       -- See :help oil-actions for a list of all available actions
       keymaps = {
-        ["g?"] = "actions.show_help",
         ["<CR>"] = "actions.select",
-        ["<C-s>"] = { "actions.select", opts = { vertical = true }, desc = "Open the entry in a vertical split" },
-        ["<C-h>"] = { "actions.select", opts = { horizontal = true }, desc = "Open the entry in a horizontal split" },
-        ["<C-t>"] = { "actions.select", opts = { tab = true }, desc = "Open the entry in new tab" },
         ["<C-p>"] = "actions.preview",
         ["<C-c>"] = "actions.close",
         ["<C-l>"] = "actions.refresh",
-        ["-"] = "actions.parent",
-        ["_"] = "actions.open_cwd",
-        ["`"] = "actions.cd",
-        ["~"] = { "actions.cd", opts = { scope = "tab" }, desc = ":tcd to the current oil directory" },
-        ["gs"] = "actions.change_sort",
-        ["gx"] = "actions.open_external",
         ["g."] = "actions.toggle_hidden",
-        ["g\\"] = "actions.toggle_trash",
+        ["r"] = { ":SessionRestore<CR>", desc = "Restore the last session" }
       },
       -- Set to false to disable all of the above keymaps
       use_default_keymaps = true,
@@ -89,7 +80,7 @@ return {
           return vim.startswith(name, ".")
         end,
         -- This function defines what will never be shown, even when `show_hidden` is set
-        is_always_hidden = function(_, __)
+        is_always_hidden = function()
           return false
         end,
         -- Sort file names in a more intuitive order for humans. Is less performant,
