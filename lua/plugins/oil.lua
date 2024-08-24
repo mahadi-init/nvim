@@ -68,7 +68,6 @@ return {
         ["<C-c>"] = "actions.close",
         ["<C-l>"] = "actions.refresh",
         ["g."] = "actions.toggle_hidden",
-        ["r"] = { ":SessionRestore<CR>", desc = "Restore the last session" }
       },
       -- Set to false to disable all of the above keymaps
       use_default_keymaps = true,
