@@ -1,9 +1,18 @@
 local builtin = require("telescope.builtin")
 
--- telescope
+-- lsp telescope
 vim.keymap.set("n", "<leader><leader>", builtin.find_files)
 vim.keymap.set("n", "<leader>fg", builtin.live_grep) -- live grep
 vim.keymap.set("n", "<leader>fb", builtin.buffers)   -- view buffers
+
+-- todo telescope
+vim.keymap.set("n", "<leader>ft", "<CMD>TodoTelescope<CR>") -- todo telescope
+
+-- git telescope
+vim.keymap.set("n", "<leader>gc", builtin.git_commits)  -- git commits
+vim.keymap.set("n", "<leader>gb", builtin.git_branches) -- git branches
+vim.keymap.set("n", "<leader>gs", builtin.git_status)   -- git status
+vim.keymap.set("n", "<leader>gt", builtin.git_stash)    -- git stash
 
 -- oil
 vim.keymap.set("n", "-", "<CMD>Oil<CR>") -- oil open parent dir
@@ -21,18 +30,6 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")             -- downward
 
 -- split
 vim.keymap.set("n", "<C-v>", "<CMD>vsplit<CR>") -- split vertical
-
--- diagnostic
-local diagnostic = vim.diagnostic
-vim.keymap.set("n", "[d", diagnostic.goto_prev)          -- previous diagnostic
-vim.keymap.set("n", "]d", diagnostic.goto_next)          -- next diagnostic
-vim.keymap.set("n", "<leader>ld", diagnostic.open_float) -- open float diagnostic
-vim.keymap.set("n", "<leader>lq", diagnostic.setloclist) -- open float diagnostic
-
--- todo comments
-vim.keymap.set("n", "<leader>ff", "<CMD>TodoQuickFix<CR>")  -- todo quickfix
-vim.keymap.set("n", "<leader>fl", "<CMD>TodoLocList<CR>")   -- todo locallist
-vim.keymap.set("n", "<leader>ft", "<CMD>TodoTelescope<CR>") -- todo telescope
 
 -- codeium
 vim.api.nvim_set_keymap("n", "<leader>cc", ":call codeium#Chat()<CR>", { noremap = true, silent = true })
