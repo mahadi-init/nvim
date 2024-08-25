@@ -36,7 +36,3 @@ vim.keymap.set("n", "<leader>ft", "<CMD>TodoTelescope<CR>") -- todo telescope
 
 -- codeium
 vim.api.nvim_set_keymap("n", "<leader>cc", ":call codeium#Chat()<CR>", { noremap = true, silent = true })
-
--- session
-vim.api.nvim_set_keymap("n", "<leader>ss", ":SessionSave<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>sr", ":SessionRestore<CR>", { noremap = true, silent = true })
