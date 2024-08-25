@@ -12,6 +12,10 @@ opt.relativenumber = true
 opt.wrap = false
 opt.cmdheight = 0
 
+require("notify").setup({
+  background_colour = "#000000",
+})
+
 -- diagnostic sidebar hide
 vim.diagnostic.config({
   signs = false,
