@@ -1,6 +1,6 @@
 return {
-  "nvim-lualine/lualine.nvim",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
+  'nvim-lualine/lualine.nvim',
+  dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
     require('lualine').setup {
       options = {
@@ -9,7 +9,6 @@ return {
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
         disabled_filetypes = {
-          -- statusline = { "oil", "TelescoptPrompt" },
           statusline = {},
           winbar = {},
         },
@@ -20,7 +19,7 @@ return {
           statusline = 1000,
           tabline = 1000,
           winbar = 1000,
-        }
+        },
       },
       sections = {
         lualine_a = { 'mode' },
@@ -33,29 +32,25 @@ return {
             path = 1,
             shorting_target = 40,
           },
-          "diagnostics"
+          'diagnostics',
         },
-        lualine_x = { function()
-          local status = vim.trim(vim.api.nvim_call_function("codeium#GetStatusString", {}))
-
-          if status == "ON" then
-            return "Codeium:   "
-          elseif status == "OFF" then
-            return "Codeium:   "
-          elseif status == "*" then
-            return "Searching..  "
-          else
-            return status
-          end
-        end
-        },
-        lualine_y = {
+        lualine_x = {
           function()
-            return require('auto-session.lib').current_session_name(true)
+            local status = vim.trim(vim.api.nvim_call_function('codeium#GetStatusString', {}))
+
+            if status == 'ON' then
+              return 'Codeium:   '
+            elseif status == 'OFF' then
+              return 'Codeium:   '
+            elseif status == '*' then
+              return 'Searching..  '
+            else
+              return status
+            end
           end,
-          'filetype',
         },
-        lualine_z = { 'progress' }
+        lualine_y = { 'filetype' },
+        lualine_z = { 'progress' },
       },
       inactive_sections = {
         lualine_a = {},
@@ -63,12 +58,12 @@ return {
         lualine_c = {},
         lualine_x = {},
         lualine_y = {},
-        lualine_z = {}
+        lualine_z = {},
       },
       tabline = {},
       winbar = {},
       inactive_winbar = {},
-      extensions = {}
+      extensions = {},
     }
-  end
+  end,
 }

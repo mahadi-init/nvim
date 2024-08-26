@@ -3,24 +3,24 @@ return {
   enabled = true,
   opts = {},
   config = function()
-    require("oil").setup({
+    require('oil').setup {
       default_file_explorer = true,
       columns = {
-        "icon",
+        'icon',
       },
       buf_options = {
         buflisted = false,
-        bufhidden = "hide",
+        bufhidden = 'hide',
       },
       win_options = {
         wrap = false,
-        signcolumn = "no",
+        signcolumn = 'no',
         cursorcolumn = false,
-        foldcolumn = "0",
+        foldcolumn = '0',
         spell = false,
         list = false,
         conceallevel = 3,
-        concealcursor = "nvic",
+        concealcursor = 'nvic',
       },
       delete_to_trash = false,
       skip_confirm_for_simple_edits = true,
@@ -30,20 +30,20 @@ return {
         timeout_ms = 1000,
         autosave_changes = true,
       },
-      constrain_cursor = "editable",
+      constrain_cursor = 'editable',
       watch_for_changes = true,
       keymaps = {
-        ["<CR>"] = "actions.select",
-        ["<C-p>"] = "actions.preview",
-        ["<C-c>"] = "actions.close",
-        ["<C-l>"] = "actions.refresh",
-        ["g."] = "actions.toggle_hidden",
+        ['<CR>'] = 'actions.select',
+        ['<C-p>'] = 'actions.preview',
+        ['<C-c>'] = 'actions.close',
+        ['<C-l>'] = 'actions.refresh',
+        ['g.'] = 'actions.toggle_hidden',
       },
       use_default_keymaps = true,
       view_options = {
         show_hidden = false,
         is_hidden_file = function(name, _)
-          return vim.startswith(name, ".")
+          return vim.startswith(name, '.')
         end,
         is_always_hidden = function()
           return false
@@ -51,8 +51,8 @@ return {
         natural_order = true,
         case_insensitive = false,
         sort = {
-          { "type", "asc" },
-          { "name", "asc" },
+          { 'type', 'asc' },
+          { 'name', 'asc' },
         },
       },
       extra_scp_args = {},
@@ -71,11 +71,11 @@ return {
         padding = 2,
         max_width = 0,
         max_height = 0,
-        border = "rounded",
+        border = 'rounded',
         win_options = {
           winblend = 0,
         },
-        preview_split = "auto",
+        preview_split = 'auto',
         override = function(conf)
           return conf
         end,
@@ -87,7 +87,7 @@ return {
         max_height = 0.9,
         min_height = { 5, 0.1 },
         height = nil,
-        border = "rounded",
+        border = 'rounded',
         win_options = {
           winblend = 0,
         },
@@ -100,18 +100,18 @@ return {
         max_height = { 10, 0.9 },
         min_height = { 5, 0.1 },
         height = nil,
-        border = "rounded",
-        minimized_border = "none",
+        border = 'rounded',
+        minimized_border = 'none',
         win_options = {
           winblend = 0,
         },
       },
       ssh = {
-        border = "rounded",
+        border = 'rounded',
       },
       keymaps_help = {
-        border = "rounded",
+        border = 'rounded',
       },
-    })
-  end
+    }
+  end,
 }

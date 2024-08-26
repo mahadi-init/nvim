@@ -1,9 +1,9 @@
 return {
-  "f-person/git-blame.nvim",
+  'f-person/git-blame.nvim',
   config = function()
-    require("gitblame").setup({
+    require('gitblame').setup {
       enabled = true,
-      date_format = "%I:%M %p %a, %d %b %Y",
-    })
+      date_format = '%I:%M %p %a, %d %b %Y',
+    }
   end,
 }

@@ -1,8 +1,8 @@
 return {
   'akinsho/toggleterm.nvim',
-  version = "*",
+  version = '*',
   config = function()
-    require("toggleterm").setup {
+    require('toggleterm').setup {
       direction = 'float',
       open_mapping = [[<c-k>]],
       start_in_insert = true,
@@ -13,8 +13,8 @@ return {
       float_opts = {
         border = 'curved',
         winblend = 0,
-        title_pos = 'center'
+        title_pos = 'center',
       },
     }
-  end
+  end,
 }
