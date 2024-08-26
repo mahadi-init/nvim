@@ -2,6 +2,8 @@ return {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
+    local git_blame = require 'gitblame'
+
     require('lualine').setup {
       options = {
         icons_enabled = true,
@@ -33,6 +35,7 @@ return {
             shorting_target = 40,
           },
           'diagnostics',
+          { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available },
         },
         lualine_x = {
           function()
