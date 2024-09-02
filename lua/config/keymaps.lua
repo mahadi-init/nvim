@@ -24,7 +24,7 @@ vim.keymap.set('n', '<leader>q', '<CMD>q<CR>') -- quit neovim
 vim.keymap.set('n', '<ESC>', '<CMD>nohlsearch<CR>') -- escape and remove search query
 vim.keymap.set('n', '<C-Right>', '<CMD>bnext<CR>') -- next buffer
 vim.keymap.set('n', '<C-Left>', '<CMD>bprevious<CR>') -- previous buffer
-vim.keymap.set('n', '<C-x>', '<CMD>only<CR>') -- delete buffer
+vim.keymap.set('n', '<C-x>', '<CMD>bd<CR>') -- delete buffer
 vim.keymap.set('n', '<C-d>', '<C-d>zz') -- upward
 vim.keymap.set('n', '<C-u>', '<C-u>zz') -- downward
 
