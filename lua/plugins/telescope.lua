@@ -9,6 +9,10 @@ return {
       preview = {
         -- hide_on_startup = true,
       },
+      file_ignore_patterns = {
+        'node_modules',
+        '.next',
+      },
     },
   },
 }
