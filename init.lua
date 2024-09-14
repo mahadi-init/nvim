@@ -1,7 +1,2 @@
-require 'config.remove-padding'
-require 'config.lazy'
-require 'config.options'
-require 'config.cmpconfig'
-require 'config.lspconfig'
-require 'config.autocmds'
-require 'config.keymaps'
+vim.opt.clipboard = 'unnamedplus'
+vim.keymap.set('n', '<ESC>', '<CMD>nohlsearch<CR>') -- escape and remove search query
