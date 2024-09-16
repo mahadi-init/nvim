@@ -8,7 +8,7 @@ return {
         'prettierd',
         'prettier',
         'tailwindcss-language-server',
-        'typescript-language-server',
+        'ts_ls',
         'html-lsp',
       },
     }
