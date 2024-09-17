@@ -36,21 +36,7 @@ return {
           },
           'diagnostics',
         },
-        lualine_x = {
-          function()
-            local status = vim.trim(vim.api.nvim_call_function('codeium#GetStatusString', {}))
-
-            if status == 'ON' then
-              return 'Codeium:   '
-            elseif status == 'OFF' then
-              return 'Codeium:   '
-            elseif status == '*' then
-              return 'Searching..  '
-            else
-              return status
-            end
-          end,
-        },
+        lualine_x = {},
         lualine_y = { 'filetype' },
         lualine_z = { 'progress' },
       },
