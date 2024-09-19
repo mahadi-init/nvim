@@ -10,6 +10,7 @@ return {
         'tailwindcss-language-server',
         'ts_ls',
         'html-lsp',
+        'astro-language-server',
       },
     }
   end,

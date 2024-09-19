@@ -25,7 +25,7 @@ end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local config = require 'lspconfig'
-local servers = { 'lua_ls', 'ts_ls', 'eslint', 'tailwindcss', 'html' }
+local servers = { 'lua_ls', 'ts_ls', 'eslint', 'tailwindcss', 'html', 'astro' }
 
 for _, lsp in ipairs(servers) do
   config[lsp].setup {
