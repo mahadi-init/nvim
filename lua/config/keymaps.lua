@@ -31,5 +31,5 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz') -- downward
 -- split
 vim.keymap.set('n', '<C-v>', '<CMD>vsplit<CR>') -- split vertical
 
--- codeium
-vim.api.nvim_set_keymap('n', '<leader>cc', ':call codeium#Chat()<CR>', { noremap = true, silent = true })
+-- neotree
+vim.keymap.set('n', '<leader>e', '<CMD>Neotree filesystem toggle<CR>') -- file tree
