@@ -34,7 +34,7 @@ return {
     vim.fn.sign_define('DiagnosticSignHint', { text = '󰌵', texthl = 'DiagnosticSignHint' })
 
     require('neo-tree').setup {
-      close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
+      close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
       popup_border_style = 'rounded',
       enable_git_status = true,
       enable_diagnostics = true,
@@ -100,13 +100,13 @@ return {
             -- Change type
             added = '', -- or "✚", but this is redundant info if you use git_status_colors on the name
             modified = '', -- or "", but this is redundant info if you use git_status_colors on the name
-            deleted = '✖', -- this can only be used in the git_status source
-            renamed = '󰁕', -- this can only be used in the git_status source
+            deleted = '󰆴', -- this can only be used in the git_status source
+            renamed = '', -- this can only be used in the git_status source
             -- Status type
-            untracked = '',
-            ignored = '',
-            unstaged = '󰄱',
-            staged = '',
+            untracked = '󱁙',
+            ignored = '',
+            unstaged = '',
+            staged = '󰑪',
             conflict = '',
           },
         },
@@ -151,7 +151,7 @@ return {
           hide_gitignored = true,
           hide_hidden = true, -- only works on Windows for hidden files/directories
           hide_by_name = {
-            --"node_modules"
+            'node_modules',
           },
           hide_by_pattern = { -- uses glob style patterns
             '*.meta',
@@ -177,7 +177,7 @@ return {
           leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
         },
         group_empty_dirs = false, -- when true, empty folders will be grouped together
-        hijack_netrw_behavior = 'open_default', -- netrw disabled, opening a directory opens neo-tree
+        hijack_netrw_behavior = 'disabled', -- netrw disabled, opening a directory opens neo-tree
         -- in whatever position is specified in window.position
         -- "open_current",  -- netrw disabled, opening a directory opens within the
         -- window like netrw would, regardless of window.position
