@@ -4,5 +4,6 @@ return {
   config = function()
     require('mini.tabline').setup()
     require('mini.pairs').setup()
+    require('mini.icons').setup()
   end,
 }
