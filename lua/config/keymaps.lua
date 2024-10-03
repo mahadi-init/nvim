@@ -9,9 +9,7 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers) -- view buffers
 vim.keymap.set('n', '<leader>ft', '<CMD>TodoTelescope<CR>') -- todo telescope
 
 -- git telescope
-vim.keymap.set('n', '<leader>gc', builtin.git_commits) -- git commits
 vim.keymap.set('n', '<leader>gb', builtin.git_branches) -- git branches
-vim.keymap.set('n', '<leader>gs', builtin.git_status) -- git status
 vim.keymap.set('n', '<leader>gt', builtin.git_stash) -- git stash
 
 -- oil
@@ -27,6 +25,11 @@ vim.keymap.set('n', '<C-Left>', '<CMD>bprevious<CR>') -- previous buffer
 vim.keymap.set('n', '<C-x>', '<CMD>bd<CR>') -- delete buffer
 vim.keymap.set('n', '<C-d>', '<C-d>zz') -- upward
 vim.keymap.set('n', '<C-u>', '<C-u>zz') -- downward
+
+-- diffview
+vim.keymap.set('n', '<leader>dd', '<CMD>DiffviewOpen<CR>') -- diff view files
+vim.keymap.set('n', '<leader>df', '<CMD>DiffviewFileHistory %<CR>') -- diff view current file
+vim.keymap.set('n', '<leader>dc', '<CMD>DiffviewClose<CR>') -- diff view close
 
 -- split
 vim.keymap.set('n', '<C-v>', '<CMD>vsplit<CR>') -- split vertical
