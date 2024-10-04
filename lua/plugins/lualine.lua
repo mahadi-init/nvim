@@ -2,8 +2,6 @@ return {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
-    local git_blame = require 'gitblame'
-
     require('lualine').setup {
       options = {
         icons_enabled = true,
@@ -36,7 +34,7 @@ return {
           },
           'diagnostics',
         },
-        lualine_x = {},
+        lualine_x = { 'lsp_progress' },
         lualine_y = { 'filetype' },
         lualine_z = { 'progress' },
       },
