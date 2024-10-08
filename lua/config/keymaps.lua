@@ -12,9 +12,6 @@ vim.keymap.set('n', '<leader>ft', '<CMD>TodoTelescope<CR>') -- todo telescope
 vim.keymap.set('n', '<leader>gb', builtin.git_branches) -- git branches
 vim.keymap.set('n', '<leader>gt', builtin.git_stash) -- git stash
 
--- oil
-vim.keymap.set('n', '-', '<CMD>Oil<CR>') -- oil open parent dir
-
 -- basic
 vim.keymap.set('n', '<C-s>', '<CMD>w<CR>') -- save file
 vim.keymap.set('i', '<C-s>', '<CMD>w<CR>') -- save file
