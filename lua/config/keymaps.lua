@@ -20,11 +20,12 @@ vim.keymap.set('n', '<C-s>', '<CMD>w<CR>') -- save file
 vim.keymap.set('i', '<C-s>', '<CMD>w<CR>') -- save file
 vim.keymap.set('n', '<leader>q', '<CMD>q<CR>') -- quit neovim
 vim.keymap.set('n', '<ESC>', '<CMD>nohlsearch<CR>') -- escape and remove search query
-vim.keymap.set('n', '<C-Right>', '<CMD>bnext<CR>') -- next buffer
-vim.keymap.set('n', '<C-Left>', '<CMD>bprevious<CR>') -- previous buffer
-vim.keymap.set('n', '<C-x>', '<CMD>bd<CR>') -- delete buffer
+vim.keymap.set('n', '<C-Right>', '<CMD>BufferNext<CR>') -- next buffer
+vim.keymap.set('n', '<C-Left>', '<CMD>BufferPrevious<CR>') -- previous buffer
+vim.keymap.set('n', '<C-x>', '<CMD>BufferClose<CR>') -- delete buffer
 vim.keymap.set('n', '<C-d>', '<C-d>zz') -- upward
 vim.keymap.set('n', '<C-u>', '<C-u>zz') -- downward
+vim.keymap.set('n', '<C-p>', '<Cmd>BufferPick<CR>') -- downward
 
 -- diffview
 vim.keymap.set('n', '<leader>dd', '<CMD>DiffviewOpen<CR>') -- diff view files
