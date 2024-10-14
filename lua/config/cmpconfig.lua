@@ -1,13 +1,23 @@
+-- Import necessary modules
 local cmp = require 'cmp'
-local map = cmp.mapping
 local lspkind = require 'lspkind'
 local cmp_buffer = require 'cmp_buffer'
 
+-- Load LuaSnip snippets
 require('luasnip.loaders.from_vscode').lazy_load()
 
+-- nvim-cmp setup
 cmp.setup {
   mapping = cmp.mapping.preset.insert {
-    ['<CR>'] = map.confirm { select = true },
+    ['<CR>'] = cmp.mapping.confirm { select = true },
+    ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+    ['<C-y>'] = cmp.config.disable, -- Disable default <C-y> mapping
+    ['<C-e>'] = cmp.mapping {
+      i = cmp.mapping.abort(),
+      c = cmp.mapping.close(),
+    },
   },
   sources = cmp.config.sources {
     { name = 'nvim_lsp' },
@@ -20,12 +30,12 @@ cmp.setup {
         end,
       },
     },
-    sorting = {
-      comparators = {
-        function(...)
-          return cmp_buffer:compare_locality(...)
-        end,
-      },
+  },
+  sorting = {
+    comparators = {
+      function(...)
+        return cmp_buffer:compare_locality(...)
+      end,
     },
   },
   formatting = {
