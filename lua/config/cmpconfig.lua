@@ -1,16 +1,31 @@
 local cmp = require 'cmp'
 local map = cmp.mapping
 local lspkind = require 'lspkind'
+local cmp_buffer = require 'cmp_buffer'
 
 cmp.setup {
   mapping = cmp.mapping.preset.insert {
     ['<CR>'] = map.confirm { select = true },
   },
   sources = cmp.config.sources {
-    { name = 'buffer' },
+    {
+      name = 'buffer',
+      option = {
+        get_bufnrs = function()
+          return vim.api.nvim_list_bufs()
+        end,
+      },
+    },
     { name = 'treesitter' },
     { name = 'nvim_lsp' },
     { name = 'path' },
+    sorting = {
+      comparators = {
+        function(...)
+          return cmp_buffer:compare_locality(...)
+        end,
+      },
+    },
   },
   formatting = {
     format = lspkind.cmp_format {
