@@ -3,11 +3,15 @@ local map = cmp.mapping
 local lspkind = require 'lspkind'
 local cmp_buffer = require 'cmp_buffer'
 
+require('luasnip.loaders.from_vscode').lazy_load()
+
 cmp.setup {
   mapping = cmp.mapping.preset.insert {
     ['<CR>'] = map.confirm { select = true },
   },
   sources = cmp.config.sources {
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
     {
       name = 'buffer',
       option = {
@@ -16,9 +20,6 @@ cmp.setup {
         end,
       },
     },
-    { name = 'treesitter' },
-    { name = 'nvim_lsp' },
-    { name = 'path' },
     sorting = {
       comparators = {
         function(...)
