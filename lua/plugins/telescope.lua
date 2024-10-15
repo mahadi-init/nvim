@@ -7,6 +7,7 @@ return {
           reverse_directories = true,
         },
       },
+      initial_mode = 'normal',
       layout_strategy = 'horizontal',
       layout_config = { prompt_position = 'top' },
       sorting_strategy = 'ascending',
@@ -18,6 +19,13 @@ return {
         'node_modules',
         '.next',
         'package-lock.json',
+      },
+    },
+    extensions = {
+      frecency = {
+        auto_validate = true,
+        path_display = { 'filename_first' },
+        hide_current_buffer = true,
       },
     },
     pickers = {

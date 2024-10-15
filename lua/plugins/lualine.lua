@@ -14,7 +14,7 @@ return {
         },
         ignore_focus = {},
         always_divide_middle = true,
-        globalstatus = false,
+        globalstatus = true,
         refresh = {
           statusline = 1000,
           tabline = 1000,
@@ -23,7 +23,7 @@ return {
       },
       sections = {
         lualine_a = { 'mode' },
-        lualine_b = { 'branch' },
+        lualine_b = { 'branch' }, -- Added git diff
         lualine_c = {
           {
             'filename',
@@ -34,15 +34,15 @@ return {
           },
           'diagnostics',
         },
-        lualine_x = { 'lsp_progress' },
-        lualine_y = { 'filetype' },
-        lualine_z = { 'progress' },
+        lualine_x = { 'diff', 'filetype' }, -- Added encoding and fileformat
+        lualine_y = { 'lsp_progress' },
+        lualine_z = { 'location', 'progress' }, -- Added location
       },
       inactive_sections = {
         lualine_a = {},
         lualine_b = {},
-        lualine_c = {},
-        lualine_x = {},
+        lualine_c = { 'filename' },
+        lualine_x = { 'location' },
         lualine_y = {},
         lualine_z = {},
       },

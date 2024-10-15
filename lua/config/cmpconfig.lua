@@ -1,6 +1,7 @@
 -- Import necessary modules
 local cmp = require 'cmp'
 local lspkind = require 'lspkind'
+local cmp_buffer = require 'cmp_buffer'
 
 -- Load LuaSnip snippets
 require('luasnip.loaders.from_vscode').lazy_load()
@@ -9,22 +10,29 @@ require('luasnip.loaders.from_vscode').lazy_load()
 cmp.setup {
   mapping = cmp.mapping.preset.insert {
     ['<CR>'] = cmp.mapping.confirm { select = true },
-    ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
     ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-    ['<C-y>'] = cmp.config.disable, -- Disable default <C-y> mapping
-    ['<C-e>'] = cmp.mapping {
-      i = cmp.mapping.abort(),
-      c = cmp.mapping.close(),
-    },
+    ['<Tab>'] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },
   },
   sources = cmp.config.sources {
-    { name = 'nvim_lsp' },
+    { name = 'nvim_lsp' }, -- Higher priority for LSP
     { name = 'luasnip' },
     {
       name = 'buffer',
       option = {
-        keyword_pattern = [[\k\+]],
+        get_bufnrs = function()
+          local bufs = {}
+          for _, win in ipairs(vim.api.nvim_list_wins()) do
+            bufs[vim.api.nvim_win_get_buf(win)] = true
+          end
+          return vim.tbl_keys(bufs)
+        end,
+      },
+    },
+    sorting = {
+      comparators = {
+        function(...)
+          return cmp_buffer:compare_locality(...)
+        end,
       },
     },
   },
