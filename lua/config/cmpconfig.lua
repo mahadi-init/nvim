@@ -31,13 +31,6 @@ cmp.setup {
       },
     },
   },
-  sorting = {
-    comparators = {
-      function(...)
-        return cmp_buffer:compare_locality(...)
-      end,
-    },
-  },
   formatting = {
     format = lspkind.cmp_format {
       mode = 'symbol_text',
