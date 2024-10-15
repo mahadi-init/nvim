@@ -1,7 +1,6 @@
 -- Import necessary modules
 local cmp = require 'cmp'
 local lspkind = require 'lspkind'
-local cmp_buffer = require 'cmp_buffer'
 
 -- Load LuaSnip snippets
 require('luasnip.loaders.from_vscode').lazy_load()
@@ -25,9 +24,7 @@ cmp.setup {
     {
       name = 'buffer',
       option = {
-        get_bufnrs = function()
-          return vim.api.nvim_list_bufs()
-        end,
+        keyword_pattern = [[\k\+]],
       },
     },
   },
