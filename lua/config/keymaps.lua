@@ -18,6 +18,8 @@ vim.keymap.set('n', '<C-s>', '<CMD>w<CR>') -- save file
 vim.keymap.set('i', '<C-s>', '<CMD>w<CR>') -- save file
 vim.keymap.set('n', '<leader>q', '<CMD>q<CR>') -- quit neovim
 vim.keymap.set('n', '<ESC>', '<CMD>nohlsearch<CR>') -- escape and remove search query
+vim.keymap.set('n', '<C-Right>', '<CMD>bnext<CR>') -- next buffer
+vim.keymap.set('n', '<C-Left>', '<CMD>bprevious<CR>') -- previous buffer
 vim.keymap.set('n', '<C-d>', '<C-d>zz') -- scroll down
 vim.keymap.set('n', '<C-u>', '<C-u>zz') -- scroll up
 
