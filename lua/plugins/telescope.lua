@@ -23,7 +23,7 @@ return {
     },
     extensions = {
       frecency = {
-        auto_validate = true,
+        auto_validate = false,
         path_display = { 'filename_first' },
         hide_current_buffer = true,
       },
