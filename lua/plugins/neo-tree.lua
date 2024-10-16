@@ -69,7 +69,7 @@ return {
         icon = {
           folder_closed = '',
           folder_open = '',
-          folder_empty = '󰜌',
+          folder_empty = '',
           provider = function(icon, node, state) -- default icon provider utilizes nvim-web-devicons if available
             if node.type == 'file' or node.type == 'terminal' then
               local success, web_devicons = pcall(require, 'nvim-web-devicons')
@@ -87,7 +87,7 @@ return {
           highlight = 'NeoTreeFileIcon',
         },
         modified = {
-          symbol = '[+]',
+          symbol = '',
           highlight = 'NeoTreeModified',
         },
         name = {
@@ -100,14 +100,14 @@ return {
             -- Change type
             added = '', -- or "✚", but this is redundant info if you use git_status_colors on the name
             modified = '', -- or "", but this is redundant info if you use git_status_colors on the name
-            deleted = '󰆴', -- this can only be used in the git_status source
-            renamed = '', -- this can only be used in the git_status source
+            deleted = '', -- this can only be used in the git_status source
+            renamed = '', -- this can only be used in the git_status source
             -- Status type
-            untracked = '󱁙',
-            ignored = '',
-            unstaged = '',
-            staged = '󰑪',
-            conflict = '',
+            untracked = '󱑍',
+            ignored = '󰜺',
+            unstaged = '󱑓',
+            staged = '',
+            conflict = '',
           },
         },
         -- If you don't want to use these columns, you can set `enabled = false` for each of them individually
