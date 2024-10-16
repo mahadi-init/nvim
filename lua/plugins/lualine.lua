@@ -23,8 +23,8 @@ return {
       },
       sections = {
         lualine_a = { 'mode' },
-        lualine_b = { 'branch' }, -- Added git diff
-        lualine_c = {
+        lualine_b = {
+          'branch',
           {
             'filename',
             file_status = true,
@@ -32,10 +32,10 @@ return {
             path = 1,
             shorting_target = 40,
           },
-          'diagnostics',
-        },
-        lualine_x = { 'diff', 'filetype' }, -- Added encoding and fileformat
-        lualine_y = { 'lsp_progress' },
+        }, -- Added git diff
+        lualine_c = { 'diagnostics' },
+        lualine_x = { 'lsp_progress', 'diff' }, -- Added encoding and fileformat
+        lualine_y = { 'filetype' },
         lualine_z = { 'location', 'progress' }, -- Added location
       },
       inactive_sections = {
