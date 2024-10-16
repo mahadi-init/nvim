@@ -1,10 +1,9 @@
 local builtin = require 'telescope.builtin'
 
 -- LSP Telescope
-vim.keymap.set('n', '<leader><leader>', '<CMD>Telescope frecency workspace=CWD<CR>')
+vim.keymap.set('n', '<leader><leader>', builtin.find_files)
 vim.keymap.set('n', '<leader>fg', builtin.live_grep) -- live grep
 vim.keymap.set('n', '<leader>fb', builtin.buffers) -- view buffers
-vim.keymap.set('n', '<leader>fd', '<CMD>FrecencyValidate!<CR>') -- remove entry
 
 -- Telescope
 vim.keymap.set('n', '<leader>ft', '<CMD>TodoTelescope<CR>') -- todo telescope
