@@ -22,6 +22,7 @@ vim.keymap.set('n', '<C-Right>', '<CMD>bnext<CR>') -- next buffer
 vim.keymap.set('n', '<C-Left>', '<CMD>bprevious<CR>') -- previous buffer
 vim.keymap.set('n', '<C-d>', '<C-d>zz') -- scroll down
 vim.keymap.set('n', '<C-u>', '<C-u>zz') -- scroll up
+vim.keymap.set('n', '<C-x>', '<CMD>bd<CR>') -- scroll up
 
 -- Diffview
 vim.keymap.set('n', '<leader>dd', '<CMD>DiffviewOpen<CR>') -- diff view files
