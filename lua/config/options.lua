@@ -29,5 +29,7 @@ opt.cmdheight = 0
 
 -- Disable diagnostic signs in the sidebar
 vim.diagnostic.config {
-  signs = false,
+  virtual_text = false,
+  signs = true,
+  underline = true,
 }
