@@ -1,9 +1,9 @@
 return {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
-  enabled = false,
+  enabled = true,
   config = function()
-    require('ignores.lualine').setup {
+    require('lualine').setup {
       options = {
         icons_enabled = true,
         theme = 'bamboo',
@@ -26,13 +26,6 @@ return {
         lualine_a = { 'mode' },
         lualine_b = {
           'branch',
-          {
-            'filename',
-            file_status = true,
-            newfile_status = true,
-            path = 1,
-            shorting_target = 40,
-          },
         }, -- Added git diff
         lualine_c = { 'diagnostics' },
         lualine_x = { 'lsp_progress', 'diff' }, -- Added encoding and fileformat

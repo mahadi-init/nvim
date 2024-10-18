@@ -1,4 +1,4 @@
 return {
   'arkav/lualine-lsp-progress',
-  enabled = false,
+  enabled = true,
 }
