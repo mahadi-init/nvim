@@ -28,9 +28,9 @@ return {
           'branch',
         }, -- Added git diff
         lualine_c = { 'diagnostics' },
-        lualine_x = { 'lsp_progress', 'diff' }, -- Added encoding and fileformat
+        lualine_x = { 'lsp_progress', 'diff' },
         lualine_y = { 'filetype' },
-        lualine_z = { 'location', 'progress' }, -- Added location
+        lualine_z = { 'location', 'progress' },
       },
       inactive_sections = {
         lualine_a = {},
