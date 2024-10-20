@@ -35,6 +35,7 @@ return {
         'toggleterm',
         'qf',
         'neo-tree',
+        'lazygit',
       },
     }
   end,
