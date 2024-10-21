@@ -34,7 +34,7 @@ return {
         t '(',
         i(2, 'params'),
         t { ') {', '\t' },
-        i(3, 'body'),
+        i(3, ''),
         t { '', '}' },
       }),
     })
@@ -45,9 +45,9 @@ return {
         t 'export async function ',
         i(1, 'name'),
         t '(',
-        i(2, 'params'),
+        i(2, ''),
         t { ') {', '\t' },
-        i(3, 'body'),
+        i(3, ''),
         t { '', '}' },
       }),
     })
@@ -58,7 +58,6 @@ return {
         t 'export function ',
         i(1, 'functionName'),
         t { '() {', '\t' },
-        i(2, '// your code here'),
         t { '', '}' },
       }),
     })
@@ -69,9 +68,9 @@ return {
         t 'const ',
         i(1, 'name'),
         t ' = (',
-        i(2, 'params'),
+        i(2, ''),
         t { ') => {', '\t' },
-        i(3, 'body'),
+        i(3, ''),
         t { '', '};' },
       }),
     })
