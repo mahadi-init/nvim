@@ -9,7 +9,7 @@ return {
 
       colors = {
         path = '#FA8072', -- You can customize colors like #c946fd
-        file_name = '#5F9EA0',
+        file_name = '#2bb0b2',
         symbols = '',
       },
 
