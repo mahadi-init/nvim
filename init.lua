@@ -97,6 +97,8 @@ vim.keymap.set('n', '<leader>fw', require("fzf-lua").live_grep, {desc="find word
 vim.keymap.set('n', '<leader>fb', require("fzf-lua").buffers, {desc="find buffer"}) -- find buffers
 vim.keymap.set('n', '<leader>fq', require("fzf-lua").quickfix, {desc="quickfix locallist"}) -- quickfix
 vim.keymap.set('n', '<leader>fg', require("fzf-lua").git_files, {desc="git files"}) -- git files
--- vim.keymap.set('n', '<leader>fc', require("fzf-lua").git_commits, {desc="git commits"}) -- git commits
 vim.keymap.set('n', '<leader>fs', require("fzf-lua").git_status, {desc="git status"}) -- git status
+
+--fern file tree
+vim.keymap.set('n', '<leader>e', ":Fern . -reveal=% -drawer -toggle<CR>", {desc="file tree"}) -- file tree
 --> KEYMAPS ENDS HERE

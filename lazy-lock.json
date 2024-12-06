@@ -1,7 +1,9 @@
 {
   "delimitMate": { "branch": "master", "commit": "becbd2d353a2366171852387288ebb4b33a02487" },
-  "fzf-lua": { "branch": "main", "commit": "ed6539e018a522f176ad1f1ee6cb2e0172e8379a" },
+  "fzf-lua": { "branch": "main", "commit": "14e8ac0173009035e975f8582cfae817b455a700" },
+  "gruvbox.nvim": { "branch": "main", "commit": "68c3460a5d1d1a362318960035c9f3466d5011f5" },
   "lazy.nvim": { "branch": "main", "commit": "3388a26417c48b15d5266d954f62a4d47fe99490" },
-  "nvim-treesitter": { "branch": "master", "commit": "acada1a685f5decd0f10e1672963bf3425eafa45" },
-  "nvim-web-devicons": { "branch": "master", "commit": "203da76ecfbb4b192cf830665b03eb651b635c94" }
+  "nvim-treesitter": { "branch": "master", "commit": "c56507f6a16d6a9bd73ab8827a49fa5533aa8fc3" },
+  "nvim-web-devicons": { "branch": "master", "commit": "203da76ecfbb4b192cf830665b03eb651b635c94" },
+  "vim-fern": { "branch": "main", "commit": "95218a9eeb5bf25ff30196b8700eeb64b8f3aeba" }
 }
