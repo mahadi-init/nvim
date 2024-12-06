@@ -1,11 +1,11 @@
 return {
   {
-    'Raimondi/delimitMate', -- Auto close brackes and parenthesis
+    'Raimondi/delimitMate',
     event = 'VeryLazy',
   },
-  'nvim-treesitter/nvim-treesitter', -- syntax highlighting
+  'nvim-treesitter/nvim-treesitter',
   {
-    'lambdalisue/vim-fern', -- file tree
+    'lambdalisue/vim-fern',
     event = 'VeryLazy',
   },
   {
@@ -13,9 +13,8 @@ return {
     priority = 1000,
     config = true,
     config = function()
-      -- Default options:
       require('gruvbox').setup {
-        terminal_colors = true, -- add neovim terminal colors
+        terminal_colors = true,
         undercurl = true,
         underline = true,
         bold = true,
@@ -31,8 +30,8 @@ return {
         invert_signs = false,
         invert_tabline = false,
         invert_intend_guides = false,
-        inverse = true, -- invert background for search, diffs, statuslines and errors
-        contrast = '', -- can be "hard", "soft" or empty string
+        inverse = true,
+        contrast = '',
         palette_overrides = {},
         overrides = {},
         dim_inactive = false,
@@ -42,7 +41,7 @@ return {
     end,
   },
   {
-    'ibhagwan/fzf-lua', -- fzf searching
+    'ibhagwan/fzf-lua',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
       require('fzf-lua').setup {
@@ -55,7 +54,7 @@ return {
     end,
   },
   {
-    'williamboman/mason.nvim', --MASON
+    'williamboman/mason.nvim',
     event = 'VeryLazy',
     dependencies = {
       'neovim/nvim-lspconfig',
@@ -117,13 +116,13 @@ return {
   },
   {
     'folke/persistence.nvim',
-    event = 'BufReadPre', -- this will only start session saving when an actual file was opened,
+    event = 'BufReadPre',
     opts = {},
   },
   {
     'rachartier/tiny-inline-diagnostic.nvim',
-    event = 'VeryLazy', -- Or `LspAttach`
-    priority = 1000, -- needs to be loaded in first
+    event = 'VeryLazy',
+    priority = 1000,
     config = function()
       require('tiny-inline-diagnostic').setup {
         present = 'classic',
@@ -156,94 +155,37 @@ return {
     end,
   },
   {
-    'fgheng/winbar.nvim',
+    'kdheepak/lazygit.nvim',
     event = 'VeryLazy',
-    config = function()
-      require('winbar').setup {
-        enabled = true,
-        show_file_path = true,
-        show_symbols = true,
-
-        colors = {
-          path = '#FA8072', -- You can customize colors like #c946fd
-          file_name = '#2bb0b2',
-          symbols = '',
-        },
-
-        icons = {
-          file_icon_default = '',
-          seperator = '',
-          editor_state = '●',
-          lock_icon = '',
-        },
-
-        exclude_filetype = {
-          'help',
-          'startify',
-          'dashboard',
-          'packer',
-          'neogitstatus',
-          'NvimTree',
-          'Trouble',
-          'alpha',
-          'lir',
-          'Outline',
-          'spectre_panel',
-          'toggleterm',
-          'qf',
-          'neo-tree',
-          'lazygit',
-        },
-      }
-    end,
+    cmd = {
+      'LazyGit',
+      'LazyGitConfig',
+      'LazyGitCurrentFile',
+      'LazyGitFilter',
+      'LazyGitFilterCurrentFile',
+    },
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
   },
   {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    enabled = true,
+    'akinsho/toggleterm.nvim',
     event = 'VeryLazy',
+    version = '*',
     config = function()
-      require('lualine').setup {
-        options = {
-          icons_enabled = true,
-          theme = 'gruvbox',
-          component_separators = { left = '', right = '' },
-          section_separators = { left = '', right = '' },
-          disabled_filetypes = {
-            -- statusline = { 'startify', 'netrw' },
-            winbar = {},
-          },
-          ignore_focus = {},
-          always_divide_middle = true,
-          globalstatus = true,
-          refresh = {
-            statusline = 1000,
-            tabline = 1000,
-            winbar = 1000,
-          },
+      require('toggleterm').setup {
+        direction = 'float',
+        open_mapping = [[<c-k>]],
+        start_in_insert = true,
+        persist_size = true,
+        close_on_exit = true,
+        shell = vim.o.shell,
+        hide_numbers = true,
+        float_opts = {
+          border = 'curved',
+          winblend = 0,
+          title_pos = 'center',
         },
-        sections = {
-          lualine_a = { 'mode' },
-          lualine_b = {
-            'branch',
-          }, -- Added git diff
-          lualine_c = { 'diagnostics' },
-          lualine_x = { 'lsp_progress', 'diff' },
-          lualine_y = { 'filetype' },
-          lualine_z = { 'location', 'progress' },
-        },
-        inactive_sections = {
-          lualine_a = {},
-          lualine_b = {},
-          lualine_c = { 'filename' },
-          lualine_x = { 'location' },
-          lualine_y = {},
-          lualine_z = {},
-        },
-        tabline = {},
-        winbar = {},
-        inactive_winbar = {},
-        extensions = {},
       }
     end,
   },

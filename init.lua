@@ -114,4 +114,7 @@ vim.keymap.set('n', '<leader>e', ':Fern . -reveal=% -drawer -toggle<CR>', { desc
 vim.keymap.set('n', '<leader>ls', function()
   require('persistence').load()
 end)
+
+-- lazygit
+vim.keymap.set('n', '<leader>gg', ':LazyGit<CR>', { desc = 'LazyGit' }) -- file tree
 --> KEYMAPS ENDS HERE
