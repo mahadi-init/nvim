@@ -11,18 +11,20 @@ cmp.setup {
     ['<Tab>'] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },
   },
   sources = cmp.config.sources {
-    { name = 'nvim_lsp' }, -- Higher priority for LSP
+    { name = 'nvim_lsp', priority = 1000 }, -- Higher priority for LSP
     {
       name = 'buffer',
       option = {
         get_bufnrs = function()
-          local bufs = {}
-          for _, win in ipairs(vim.api.nvim_list_wins()) do
-            bufs[vim.api.nvim_win_get_buf(win)] = true
+          local buf = vim.api.nvim_get_current_buf()
+          local byte_size = vim.api.nvim_buf_get_offset(buf, vim.api.nvim_buf_line_count(buf))
+          if byte_size > 1024 * 1024 then -- 1 Megabyte max
+            return {}
           end
-          return vim.tbl_keys(bufs)
+          return { buf }
         end,
       },
+      priority = 500,
     },
     sorting = {
       comparators = {
