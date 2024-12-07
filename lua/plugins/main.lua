@@ -625,4 +625,8 @@ return {
       quickfile = {},
     },
   },
+  {
+    'nvim-pack/nvim-spectre',
+    event = 'VeryLazy',
+  },
 }
