@@ -29,6 +29,7 @@ return {
   },
   {
     'williamboman/mason-lspconfig.nvim',
+    event = 'VeryLazy',
     config = function()
       require('mason').setup {
         ensure_installed = {
@@ -611,6 +612,17 @@ return {
         end,
         desc = 'Flash Treesitter',
       },
+    },
+  },
+  {
+    'folke/snacks.nvim',
+    opts = {
+      dashboard = {},
+      bufDelete = {},
+      git = {},
+      lazygit = {},
+      notifier = {},
+      quickfile = {},
     },
   },
 }
