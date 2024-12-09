@@ -155,18 +155,18 @@ return {
     event = 'BufReadPre',
     opts = {},
   },
-  {
-    'f-person/git-blame.nvim',
-    event = 'VeryLazy',
-    config = function()
-      require('gitblame').setup {
-        enabled = true,
-        message_template = ' <summary> • <author> •  <date> ',
-        date_format = '%I:%M %p %a, %d %b %Y',
-        virtual_text_column = 1,
-      }
-    end,
-  },
+  -- {
+  --   'f-person/git-blame.nvim',
+  --   event = 'VeryLazy',
+  --   config = function()
+  --     require('gitblame').setup {
+  --       enabled = true,
+  --       message_template = ' <summary> • <author> •  <date> ',
+  --       date_format = '%I:%M %p %a, %d %b %Y',
+  --       virtual_text_column = 1,
+  --     }
+  --   end,
+  -- },
   {
     'windwp/nvim-ts-autotag',
     event = 'VeryLazy',
