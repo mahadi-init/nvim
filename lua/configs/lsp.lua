@@ -2,8 +2,7 @@
 require('mason').setup()
 require('mason-lspconfig').setup()
 
--- fzf setup
-local fzf = require 'fzf-lua'
+local telescope = require 'telescope.builtin'
 
 -- LSP config
 local lspconfig = require 'lspconfig'
@@ -20,10 +19,10 @@ local on_attach = function(_, _)
   vim.keymap.set('n', '<leader>ld', diagnostic.open_float)
 
   -- Definition & Implementation
-  vim.keymap.set('n', 'gd', fzf.lsp_definitions, {})
-  vim.keymap.set('n', 'gi', fzf.lsp_implementations, {})
-  vim.keymap.set('n', 'gr', fzf.lsp_references, {})
+  vim.keymap.set('n', 'gd', buf.definition, {})
   vim.keymap.set('n', 'K', buf.hover, {})
+  vim.keymap.set('n', 'gi', telescope.lsp_implementations, {})
+  vim.keymap.set('n', 'gr', telescope.lsp_references, {})
 
   -- Diagnostic navigation
   vim.keymap.set('n', '[d', diagnostic.goto_prev)
