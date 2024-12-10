@@ -1,4 +1,4 @@
-vim.keymap.set({ 'n', 'i' }, '<C-s>', ':w<CR>') -- save file
+vim.keymap.set({ 'n', 'i', 'v' }, '<C-s>', ':w<CR>') -- save file
 vim.keymap.set('n', '<leader>q', ':q<CR>') -- quit neovim
 vim.keymap.set('n', '<ESC>', ':nohlsearch<CR>') -- escape and remove search query
 vim.keymap.set('n', '<C-j>', '<C-d>zz') -- scroll down
