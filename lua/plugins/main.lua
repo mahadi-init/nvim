@@ -82,9 +82,9 @@ return {
     config = function()
       require('fzf-lua').setup {
         defaults = {
-          git_icons = false,
-          file_icons = false,
-          color_icons = false,
+          git_icons = true,
+          file_icons = true,
+          color_icons = true,
         },
       }
     end,
@@ -201,7 +201,7 @@ return {
     config = function()
       require('toggleterm').setup {
         direction = 'float',
-        open_mapping = [[<c-o>]],
+        open_mapping = [[<c-l>]],
         start_in_insert = true,
         persist_size = true,
         close_on_exit = true,
@@ -628,5 +628,13 @@ return {
   {
     'nvim-pack/nvim-spectre',
     event = 'VeryLazy',
+  },
+  {
+    'echasnovski/mini.tabline',
+    event = 'VeryLazy',
+    version = false,
+    config = function()
+      require('mini.tabline').setup()
+    end,
   },
 }
