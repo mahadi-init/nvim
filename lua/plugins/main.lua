@@ -677,4 +677,5 @@ return {
       vim.keymap.set('n', '<space>ff', ':Telescope file_browser path=%:p:h select_buffer=true<CR>')
     end,
   },
+  { 'sindrets/diffview.nvim' },
 }
