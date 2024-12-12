@@ -49,3 +49,6 @@ vim.keymap.set('n', '<leader>dc', '<CMD>DiffviewClose<CR>')         -- diff view
 
 -- oil
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+
+-- quickfix
+vim.keymap.set("n", "<C-c>", "<CMD>copen<CR>", { desc = "Open or navigate quickfix" })

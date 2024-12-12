@@ -245,7 +245,7 @@ return {
               ['<CR>'] = 'Confirm',
             },
             i = {
-              ['<C-c>'] = 'Close',
+              -- ['<C-c>'] = 'Close',
               ['<CR>'] = 'Confirm',
               ['<Up>'] = 'HistoryPrev',
               ['<Down>'] = 'HistoryNext',
@@ -341,7 +341,7 @@ return {
             -- Set to `false` to disable
             mappings = {
               ['<Esc>'] = 'Close',
-              ['<C-c>'] = 'Close',
+              -- ['<C-c>'] = 'Close',
               ['<CR>'] = 'Confirm',
             },
 
