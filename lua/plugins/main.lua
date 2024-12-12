@@ -32,15 +32,7 @@ return {
     event = 'VeryLazy',
     config = function()
       require('mason').setup {
-        ensure_installed = {
-          'lua_ls',
-          'eslint-lsp',
-          'prettierd',
-          'prettier',
-          'tailwindcss-language-server',
-          'ts_ls',
-          'html-lsp',
-        },
+        ensure_installed = { 'lua_ls', 'ts_ls', 'eslint', 'tailwindcss', 'html', 'prismals' },
       }
     end,
   },
