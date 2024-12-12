@@ -685,5 +685,26 @@ return {
     config = function()
       require("oil").setup()
     end
+  },
+  {
+    "Goose97/timber.nvim",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+      require("timber").setup({
+        keymaps = {
+          insert_log_below = "<leader>lb",
+          -- insert_log_above = "<leader>lp",
+          insert_plain_log_below = "<leader>lp",
+          -- insert_plain_log_above = "<leader>lpa",
+          -- insert_batch_log = "glb",
+          -- add_log_targets_to_batch = "gla",
+          -- insert_log_below_operator = "g<S-l>j",
+          -- insert_log_above_operator = "g<S-l>k",
+          -- insert_batch_log_operator = "g<S-l>b",
+          -- add_log_targets_to_batch_operator = "g<S-l>a",
+        },
+      })
+    end
   }
 }
