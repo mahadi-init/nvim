@@ -1,21 +1,21 @@
 local telescope = require 'telescope.builtin'
 
 vim.keymap.set({ 'n', 'i', 'v' }, '<C-s>', '<CMD>w<CR>') -- save file
-vim.keymap.set('n', '<leader>q', '<CMD>q<CR>') -- quit neovim
-vim.keymap.set('n', '<ESC>', '<CMD>nohlsearch<CR>') -- escape and remove search query
-vim.keymap.set('n', '<C-j>', '<C-d>zz') -- scroll down
-vim.keymap.set('n', '<C-k>', '<C-u>zz') -- scroll up
-vim.keymap.set('n', '<C-v>', '<CMD>vsplit<CR>') -- vertical split
-vim.keymap.set('n', '<C-Right>', '<CMD>bnext<CR>') -- next buffer
-vim.keymap.set('n', '<C-Left>', '<CMD>bprevious<CR>') -- previous buffer
+vim.keymap.set('n', '<leader>q', '<CMD>q<CR>')           -- quit neovim
+vim.keymap.set('n', '<ESC>', '<CMD>nohlsearch<CR>')      -- escape and remove search query
+vim.keymap.set('n', '<C-j>', '<C-d>zz')                  -- scroll down
+vim.keymap.set('n', '<C-k>', '<C-u>zz')                  -- scroll up
+vim.keymap.set('n', '<C-v>', '<CMD>vsplit<CR>')          -- vertical split
+vim.keymap.set('n', '<C-Right>', '<CMD>bnext<CR>')       -- next buffer
+vim.keymap.set('n', '<C-Left>', '<CMD>bprevious<CR>')    -- previous buffer
 
 -- telescope
 vim.keymap.set('n', '<leader><leader>', telescope.find_files, { desc = 'find files' }) -- find files
-vim.keymap.set('n', '<leader>fw', telescope.live_grep, { desc = 'find words' }) -- live grep
-vim.keymap.set('n', '<leader>b', telescope.buffers, { desc = 'find buffer' }) -- find buffers
+vim.keymap.set('n', '<leader>fw', telescope.live_grep, { desc = 'find words' })        -- live grep
+vim.keymap.set('n', '<leader>b', telescope.buffers, { desc = 'find buffer' })          -- find buffers
 -- vim.keymap.set('n', '<leader>fq', telescope.quickfix, { desc = 'quickfix locallist' }) -- quickfix
-vim.keymap.set('n', '<leader>fg', telescope.git_files, { desc = 'git files' }) -- git files
-vim.keymap.set('n', '<leader>fs', telescope.git_status, { desc = 'git status' }) -- git status
+vim.keymap.set('n', '<leader>fg', telescope.git_files, { desc = 'git files' })         -- git files
+vim.keymap.set('n', '<leader>fs', telescope.git_status, { desc = 'git status' })       -- git status
 
 -- file tree
 vim.keymap.set('n', '<leader>e', '<CMD>Neotree filesystem toggle<CR>', { desc = 'neo tree open' }) -- file tree
@@ -43,6 +43,9 @@ vim.keymap.set({ 'n', 'v' }, '<C-f>', '<CMD>lua require("spectre").open_file_sea
 })
 
 -- Diffview
-vim.keymap.set('n', '<leader>do', '<CMD>DiffviewOpen<CR>') -- diff view files
+vim.keymap.set('n', '<leader>do', '<CMD>DiffviewOpen<CR>')          -- diff view files
 vim.keymap.set('n', '<leader>df', '<CMD>DiffviewFileHistory %<CR>') -- diff view current file
-vim.keymap.set('n', '<leader>dc', '<CMD>DiffviewClose<CR>') -- diff view close
+vim.keymap.set('n', '<leader>dc', '<CMD>DiffviewClose<CR>')         -- diff view close
+
+-- oil
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })

@@ -670,19 +670,19 @@ return {
     end,
   },
   {
-    'nvim-telescope/telescope-file-browser.nvim',
-    event = 'VeryLazy',
-    dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' },
-    config = function()
-      vim.keymap.set('n', '<space>ff', ':Telescope file_browser path=%:p:h select_buffer=true<CR>')
-    end,
-  },
-  {
     'sindrets/diffview.nvim',
     event = "VeryLazy"
   },
   {
     'prisma/vim-prisma',
     event = "VeryLazy"
+  },
+  {
+    'stevearc/oil.nvim',
+    dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+    opts = {},
+    config = function()
+      require("oil").setup()
+    end
   }
 }
