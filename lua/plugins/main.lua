@@ -133,18 +133,6 @@ return {
     event = 'BufReadPre',
     opts = {},
   },
-  -- {
-  --   'f-person/git-blame.nvim',
-  --   event = 'VeryLazy',
-  --   config = function()
-  --     require('gitblame').setup {
-  --       enabled = true,
-  --       message_template = ' <summary> • <author> •  <date> ',
-  --       date_format = '%I:%M %p %a, %d %b %Y',
-  --       virtual_text_column = 1,
-  --     }
-  --   end,
-  -- },
   {
     'windwp/nvim-ts-autotag',
     event = 'VeryLazy',
@@ -609,7 +597,6 @@ return {
   },
   {
     'echasnovski/mini.tabline',
-    event = 'VeryLazy',
     version = false,
     config = function()
       require('mini.tabline').setup()
@@ -662,21 +649,8 @@ return {
     end,
   },
   {
-    'sindrets/diffview.nvim',
-    event = "VeryLazy"
-  },
-  {
     'prisma/vim-prisma',
     event = "VeryLazy"
-  },
-  {
-    'stevearc/oil.nvim',
-    event = "VeryLazy",
-    dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
-    opts = {},
-    config = function()
-      require("oil").setup()
-    end
   },
   {
     "Goose97/timber.nvim",
@@ -686,15 +660,7 @@ return {
       require("timber").setup({
         keymaps = {
           insert_log_below = "<leader>lb",
-          -- insert_log_above = "<leader>lp",
           insert_plain_log_below = "<leader>lp",
-          -- insert_plain_log_above = "<leader>lpa",
-          -- insert_batch_log = "glb",
-          -- add_log_targets_to_batch = "gla",
-          -- insert_log_below_operator = "g<S-l>j",
-          -- insert_log_above_operator = "g<S-l>k",
-          -- insert_batch_log_operator = "g<S-l>b",
-          -- add_log_targets_to_batch_operator = "g<S-l>a",
         },
       })
     end
@@ -712,12 +678,5 @@ return {
     config = function()
       require('beacon').setup()
     end
-  },
-  {
-    "aaronik/treewalker.nvim",
-    event = "VeryLazy",
-    opts = {
-      highlight = true
-    }
   }
 }

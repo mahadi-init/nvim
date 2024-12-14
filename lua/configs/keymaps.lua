@@ -42,17 +42,8 @@ vim.keymap.set({ 'n', 'v' }, '<C-f>', '<CMD>lua require("spectre").open_file_sea
   desc = 'Search on current file',
 })
 
--- Diffview
-vim.keymap.set('n', '<leader>do', '<CMD>DiffviewOpen<CR>')          -- diff view files
-vim.keymap.set('n', '<leader>df', '<CMD>DiffviewFileHistory %<CR>') -- diff view current file
-vim.keymap.set('n', '<leader>dc', '<CMD>DiffviewClose<CR>')         -- diff view close
-
--- oil
-vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-
 -- quickfix
-vim.keymap.set("n", "<C-c>", "<CMD>copen<CR>", { desc = "Open or navigate quickfix" })
-vim.keymap.set("n", "<leader>ca", '<CMD>cdo execute "norm! @a | update"<CR>', { desc = "make update" })
+vim.keymap.set("n", "<leader>c", "<CMD>copen<CR>", { desc = "Open or navigate quickfix" })
 
 -- treewalker
 vim.api.nvim_set_keymap('n', '<C-j>', ':Treewalker Down<CR>', { noremap = true })
