@@ -698,5 +698,26 @@ return {
         },
       })
     end
+  },
+  {
+    'echasnovski/mini.statusline',
+    version = false,
+    config = function()
+      require('mini.statusline').setup()
+    end
+  },
+  {
+    'danilamihailov/beacon.nvim',
+    event = "VeryLazy",
+    config = function()
+      require('beacon').setup()
+    end
+  },
+  {
+    "aaronik/treewalker.nvim",
+    event = "VeryLazy",
+    opts = {
+      highlight = true
+    }
   }
 }
