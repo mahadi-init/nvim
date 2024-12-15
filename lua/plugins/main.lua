@@ -24,10 +24,6 @@ return {
     event = 'VeryLazy',
   },
   {
-    'moll/vim-bbye',
-    event = 'VeryLazy',
-  },
-  {
     'williamboman/mason-lspconfig.nvim',
     event = 'VeryLazy',
     config = function()

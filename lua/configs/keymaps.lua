@@ -3,6 +3,8 @@ local telescope = require 'telescope.builtin'
 vim.keymap.set({ 'n', 'i', 'v' }, '<C-s>', '<CMD>w<CR>') -- save file
 vim.keymap.set('n', '<leader>q', '<CMD>q<CR>')           -- quit neovim
 vim.keymap.set('n', '<ESC>', '<CMD>nohlsearch<CR>')      -- escape and remove search query
+vim.keymap.set('n', '<C-j>', '<C-d>zz')                  -- scroll down
+vim.keymap.set('n', '<C-k>', '<C-u>zz')                  -- scroll up
 vim.keymap.set('n', '<C-d>', '<C-d>zz')                  -- scroll down
 vim.keymap.set('n', '<C-u>', '<C-u>zz')                  -- scroll up
 vim.keymap.set('n', '<C-v>', '<CMD>vsplit<CR>')          -- vertical split
@@ -44,9 +46,3 @@ vim.keymap.set({ 'n', 'v' }, '<C-f>', '<CMD>lua require("spectre").open_file_sea
 
 -- quickfix
 vim.keymap.set("n", "<leader>c", "<CMD>copen<CR>", { desc = "Open or navigate quickfix" })
-
--- treewalker
-vim.api.nvim_set_keymap('n', '<C-j>', ':Treewalker Down<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-k>', ':Treewalker Up<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-h>', ':Treewalker Left<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-l>', ':Treewalker Right<CR>', { noremap = true })
