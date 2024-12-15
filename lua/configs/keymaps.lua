@@ -45,4 +45,7 @@ vim.keymap.set({ 'n', 'v' }, '<C-f>', '<CMD>lua require("spectre").open_file_sea
 })
 
 -- quickfix
-vim.keymap.set("n", "<leader>c", "<CMD>copen<CR>", { desc = "Open or navigate quickfix" })
+vim.keymap.set("n", "<M-c>", "<CMD>copen<CR>", { desc = "Open quickfix" })
+vim.keymap.set("n", "<M-x>", "<CMD>cclose<CR>", { desc = "close quickfix" })
+vim.keymap.set("n", "<M-k>", "<CMD>cnext<CR>", { desc = "next quickfix" })
+vim.keymap.set("n", "<M-j>", "<CMD>cprev<CR>", { desc = "previous quickfix" })
