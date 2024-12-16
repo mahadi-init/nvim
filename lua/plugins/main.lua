@@ -133,7 +133,7 @@ return {
     config = function()
       require('toggleterm').setup {
         direction = 'float',
-        open_mapping = [[<M-t>]],
+        open_mapping = [[<C-o>]],
         start_in_insert = true,
         persist_size = true,
         close_on_exit = true,
