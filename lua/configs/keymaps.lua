@@ -49,3 +49,7 @@ vim.keymap.set("n", "<M-c>", "<CMD>copen<CR>", { desc = "Open quickfix" })
 vim.keymap.set("n", "<M-x>", "<CMD>cclose<CR>", { desc = "close quickfix" })
 vim.keymap.set("n", "<M-k>", "<CMD>cnext<CR>", { desc = "next quickfix" })
 vim.keymap.set("n", "<M-j>", "<CMD>cprev<CR>", { desc = "previous quickfix" })
+
+-- resize window
+vim.keymap.set("n", "=", [[<cmd>vertical resize +5<cr>]]) -- make the window biger vertically
+vim.keymap.set("n", "-", [[<cmd>vertical resize -5<cr>]]) -- make the window smaller vertically
