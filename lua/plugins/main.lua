@@ -509,28 +509,6 @@ return {
     end,
   },
   {
-    'folke/flash.nvim',
-    event = 'VeryLazy',
-    keys = {
-      {
-        's',
-        mode = { 'n', 'x', 'o' },
-        function()
-          require('flash').jump()
-        end,
-        desc = 'Flash',
-      },
-      {
-        'S',
-        mode = { 'n', 'x', 'o' },
-        function()
-          require('flash').treesitter()
-        end,
-        desc = 'Flash Treesitter',
-      },
-    },
-  },
-  {
     'folke/snacks.nvim',
     opts = {
       dashboard = {},
@@ -558,7 +536,6 @@ return {
     event = 'VeryLazy',
     dependencies = {
       'nvim-lua/plenary.nvim',
-      -- { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     },
     opts = {
       defaults = {
@@ -604,7 +581,7 @@ return {
   },
   {
     "Goose97/timber.nvim",
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    version = "*",
     event = "VeryLazy",
     config = function()
       require("timber").setup({
