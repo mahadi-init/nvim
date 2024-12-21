@@ -15,3 +15,11 @@ vim.api.nvim_create_autocmd('UILeave', {
     io.write '\027]111\027\\'
   end,
 })
+
+-- highlight yanks
+vim.api.nvim_create_autocmd("TextYankPost", {
+  pattern = "*",
+  callback = function()
+    vim.highlight.on_yank { timeout = 200 }
+  end
+})

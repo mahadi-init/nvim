@@ -525,28 +525,6 @@ return {
     end,
   },
   {
-    'folke/flash.nvim',
-    event = 'VeryLazy',
-    keys = {
-      {
-        's',
-        mode = { 'n', 'x', 'o' },
-        function()
-          require('flash').jump()
-        end,
-        desc = 'Flash',
-      },
-      {
-        'S',
-        mode = { 'n', 'x', 'o' },
-        function()
-          require('flash').treesitter()
-        end,
-        desc = 'Flash Treesitter',
-      },
-    },
-  },
-  {
     'folke/snacks.nvim',
     opts = {
       dashboard = {},
@@ -629,13 +607,6 @@ return {
           insert_plain_log_below = "<leader>lp",
         },
       })
-    end
-  },
-  {
-    'echasnovski/mini.statusline',
-    version = false,
-    config = function()
-      require('mini.statusline').setup()
     end
   },
   {

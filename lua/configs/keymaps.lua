@@ -13,11 +13,9 @@ vim.keymap.set('n', '<C-Left>', '<CMD>bprevious<CR>')    -- previous buffer
 
 -- telescope
 vim.keymap.set('n', '<leader><leader>', telescope.find_files, { desc = 'find files' }) -- find files
+vim.keymap.set('n', '<leader>ff', telescope.git_status, { desc = 'git status' })       -- git status
 vim.keymap.set('n', '<leader>fw', telescope.live_grep, { desc = 'find words' })        -- live grep
 vim.keymap.set('n', '<leader>b', telescope.buffers, { desc = 'find buffer' })          -- find buffers
-vim.keymap.set('n', '<leader>fq', telescope.quickfix, { desc = 'quickfix locallist' }) -- quickfix
-vim.keymap.set('n', '<leader>fg', telescope.git_files, { desc = 'git files' })         -- git files
-vim.keymap.set('n', '<leader>fs', telescope.git_status, { desc = 'git status' })       -- git status
 
 -- file tree
 vim.keymap.set('n', '<leader>e', '<CMD>Neotree filesystem toggle<CR>', { desc = 'neo tree open' }) -- file tree
