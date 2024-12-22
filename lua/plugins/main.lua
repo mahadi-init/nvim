@@ -628,9 +628,9 @@ return {
       local set = vim.keymap.set
 
       -- Add or skip cursor above/below the main cursor.
-      set({ "n", "v" }, "<up>",
+      set({ "n", "v" }, "<c-up>",
         function() mc.lineAddCursor(-1) end)
-      set({ "n", "v" }, "<down>",
+      set({ "n", "v" }, "<c-down>",
         function() mc.lineAddCursor(1) end)
 
       -- Add or skip adding a new cursor by matching word/selection
