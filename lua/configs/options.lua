@@ -11,6 +11,7 @@ opt.expandtab = true
 opt.shiftwidth = 2
 opt.shiftround = true
 opt.smartindent = true
+opt.ignorecase = true
 
 -- Hide mode indicator
 opt.showmode = true
