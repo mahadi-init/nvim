@@ -36,17 +36,17 @@ return {
     'sainnhe/everforest',
     priority = 1000,
     config = function()
-      -- Optionally configure and load the colorscheme
-      -- directly inside the plugin declaration.
       vim.g.everforest_enable_italic = true
       vim.g.everforest_background = "hard"
-      vim.g.lightline = { colorscheme = 'everforest' }
       vim.cmd.colorscheme('everforest')
     end
   },
   {
-    "itchyny/lightline.vim",
-    event = "VeryLazy"
+    'echasnovski/mini.tabline',
+    version = false,
+    config = function()
+      require('mini.tabline').setup()
+    end
   },
   {
     'williamboman/mason.nvim',
@@ -578,7 +578,7 @@ return {
       require("timber").setup({
         keymaps = {
           insert_log_below = "<C-A-l>",
-          insert_plain_log_below = "<C-l>",
+          insert_plain_log_below = "<C-L>",
         },
       })
     end
