@@ -2,8 +2,6 @@
 require('mason').setup()
 require('mason-lspconfig').setup()
 
-local telescope = require 'telescope.builtin'
-
 -- LSP config
 local lspconfig = require 'lspconfig'
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -30,7 +28,7 @@ local on_attach = function(_, _)
 end
 
 -- List of servers
-local servers = { 'lua_ls', 'ts_ls', 'eslint', 'tailwindcss', 'html', 'prismals', "pyright" }
+local servers = { 'lua_ls', 'ts_ls', 'eslint', 'tailwindcss', 'html' }
 
 -- Server setup
 for _, lsp in ipairs(servers) do

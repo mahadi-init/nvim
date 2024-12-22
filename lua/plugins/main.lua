@@ -28,7 +28,7 @@ return {
     event = 'VeryLazy',
     config = function()
       require('mason').setup {
-        ensure_installed = { 'lua_ls', 'ts_ls', 'eslint', 'tailwindcss', 'html', 'prismals' },
+        ensure_installed = { 'lua_ls', 'ts_ls', 'eslint', 'tailwindcss', 'html' },
       }
     end,
   },
@@ -593,18 +593,14 @@ return {
     end,
   },
   {
-    'prisma/vim-prisma',
-    event = "VeryLazy"
-  },
-  {
     "Goose97/timber.nvim",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     config = function()
       require("timber").setup({
         keymaps = {
-          insert_log_below = "<leader>lb",
-          insert_plain_log_below = "<leader>lp",
+          insert_log_below = "<C-A-l>",
+          insert_plain_log_below = "<C-l>",
         },
       })
     end
