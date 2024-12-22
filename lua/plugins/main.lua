@@ -33,35 +33,15 @@ return {
     end,
   },
   {
-    'ellisonleao/gruvbox.nvim',
+    'sainnhe/everforest',
     priority = 1000,
     config = function()
-      require('gruvbox').setup {
-        terminal_colors = true,
-        undercurl = true,
-        underline = true,
-        bold = true,
-        italic = {
-          strings = false,
-          emphasis = false,
-          comments = false,
-          operators = false,
-          folds = false,
-        },
-        strikethrough = true,
-        invert_selection = false,
-        invert_signs = false,
-        invert_tabline = false,
-        invert_intend_guides = false,
-        inverse = true,
-        contrast = '',
-        palette_overrides = {},
-        overrides = {},
-        dim_inactive = false,
-        transparent_mode = false,
-      }
-      vim.cmd 'colorscheme gruvbox'
-    end,
+      -- Optionally configure and load the colorscheme
+      -- directly inside the plugin declaration.
+      vim.g.everforest_enable_italic = true
+      vim.g.everforest_background = "hard"
+      vim.cmd.colorscheme('everforest')
+    end
   },
   {
     'williamboman/mason.nvim',
