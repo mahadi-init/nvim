@@ -15,14 +15,14 @@ local on_attach = function(_, _)
   -- LSP keymaps
   vim.keymap.set('n', '<leader>lr', buf.rename, {})
   vim.keymap.set('n', '<leader>la', buf.code_action, {})
-  vim.keymap.set('n', '<leader>lf', buf.format, {})
   vim.keymap.set('n', '<leader>ld', diagnostic.open_float)
 
   -- Definition & Implementation
-  vim.keymap.set('n', 'gd', buf.definition, {})
   vim.keymap.set('n', 'K', buf.hover, {})
-  vim.keymap.set('n', 'gi', telescope.lsp_implementations, {})
-  vim.keymap.set('n', 'gr', telescope.lsp_references, {})
+  vim.keymap.set('n', 'gd', buf.definition, {})
+  vim.keymap.set('n', 'gi', buf.implementation, {})
+  vim.keymap.set('n', 'gr', buf.references, {})
+  vim.keymap.set('n', 'gs', buf.signature_help, {})
 
   -- Diagnostic navigation
   vim.keymap.set('n', '[d', diagnostic.goto_prev)
