@@ -40,8 +40,13 @@ return {
       -- directly inside the plugin declaration.
       vim.g.everforest_enable_italic = true
       vim.g.everforest_background = "hard"
+      vim.g.lightline = { colorscheme = 'everforest' }
       vim.cmd.colorscheme('everforest')
     end
+  },
+  {
+    "itchyny/lightline.vim",
+    event = "VeryLazy"
   },
   {
     'williamboman/mason.nvim',
@@ -518,13 +523,6 @@ return {
   {
     'nvim-pack/nvim-spectre',
     event = 'VeryLazy',
-  },
-  {
-    'echasnovski/mini.tabline',
-    version = false,
-    config = function()
-      require('mini.tabline').setup()
-    end,
   },
   {
     'nvim-telescope/telescope.nvim',
