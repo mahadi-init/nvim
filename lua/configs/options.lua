@@ -14,7 +14,7 @@ opt.smartindent = true
 opt.ignorecase = true
 
 -- Hide mode indicator
-opt.showmode = true
+opt.showmode = false
 
 -- Enable relative line numbers
 opt.relativenumber = true
