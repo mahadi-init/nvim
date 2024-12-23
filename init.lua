@@ -44,6 +44,6 @@ require('lazy').setup {
 require 'configs.options'
 require 'configs.autocmds'
 require 'configs.keymaps'
-require 'configs.cmp'
+-- require 'configs.cmp'
 require 'configs.lsp'
 -- IMPORT PACKEAGE END HERE
