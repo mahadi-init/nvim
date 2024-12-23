@@ -4,7 +4,8 @@ require('mason-lspconfig').setup()
 
 -- LSP config
 local lspconfig = require 'lspconfig'
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+-- local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local capabilities = require('blink.cmp').get_lsp_capabilities()
 
 local on_attach = function(_, _)
   local buf = vim.lsp.buf
