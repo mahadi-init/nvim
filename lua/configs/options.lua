@@ -18,6 +18,7 @@ opt.showmode = false
 
 -- Enable relative line numbers
 opt.relativenumber = true
+opt.number = true
 
 -- Disable line wrapping
 opt.wrap = false
