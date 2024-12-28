@@ -14,6 +14,15 @@ return {
         sign_priority = 40,
         virtual_text = false, -- Disable virtual text if needed
       },
+      symbol_in_winbar = {
+        enable = false, -- Set this to false to disable breadcrumbs
+        separator = ' › ',
+        hide_keyword = false,
+        show_file = true,
+        folder_level = 1,
+        color_mode = true,
+        delay = 300,
+      },
     }
   end,
 }
