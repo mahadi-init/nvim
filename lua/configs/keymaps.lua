@@ -15,7 +15,6 @@ vim.keymap.set('n', '<C-Left>', '<CMD>bprevious<CR>') -- previous buffer
 vim.keymap.set('n', '<leader><leader>', telescope.find_files, { desc = 'find files' }) -- find files
 vim.keymap.set('n', '<leader>ff', telescope.git_status, { desc = 'git status' }) -- git status
 vim.keymap.set('n', '<leader>fw', telescope.live_grep, { desc = 'find words' }) -- live grep
-vim.keymap.set('n', '<C-p>', ':Telescope projects<CR>', { desc = 'find projects' }) -- find projects
 vim.keymap.set('n', '<C-b>', telescope.buffers, { desc = 'find buffer' }) -- find buffers
 
 -- file tree
