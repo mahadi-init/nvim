@@ -1,3 +1,4 @@
 return {
-  "prisma/vim-prisma"
+  'prisma/vim-prisma',
+  event = 'VeryLazy',
 }
