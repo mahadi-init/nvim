@@ -4,10 +4,12 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local on_attach = function(_, _)
   local buf = vim.lsp.buf
+  local diagnostic = vim.diagnostic
 
   -- LSP keymaps
   vim.keymap.set('n', '<leader>lr', buf.rename)
   vim.keymap.set('n', '<leader>la', ':Lspsaga code_action<CR>')
+  vim.keymap.set('n', '<leader>ld', diagnostic.open_float)
 
   -- Definition & Implementation & calling
   vim.keymap.set('n', 'K', ':Lspsaga hover_doc<CR>')
