@@ -31,9 +31,6 @@ vim.keymap.set('n', '<leader>gg', '<CMD>LazyGit<CR>', { desc = 'LazyGit' }) -- f
 -- buf delete
 vim.keymap.set('n', '<C-x>', '<CMD>lua Snacks.bufdelete()<CR>', { desc = 'Delete buffer' })
 
--- show current line blame
-vim.api.nvim_set_keymap('n', '<leader>gb', '<CMD>lua Snacks.git.blame_line()<CR>', { noremap = true, silent = true })
-
 -- spectre
 vim.keymap.set('n', '<C-t>', '<CMD>lua require("spectre").toggle()<CR>', {
   desc = 'Toggle Spectre',
