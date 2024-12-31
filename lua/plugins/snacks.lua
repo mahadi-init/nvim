@@ -7,5 +7,7 @@ return {
     notifier = {},
     quickfile = {},
     indent = {},
+    statuscolumn = {},
+    -- words = {},
   },
 }
