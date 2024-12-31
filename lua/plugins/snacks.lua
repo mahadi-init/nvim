@@ -9,5 +9,6 @@ return {
     indent = {},
     statuscolumn = {},
     -- words = {},
+    scope = {},
   },
 }
