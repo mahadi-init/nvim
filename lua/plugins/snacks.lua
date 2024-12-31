@@ -3,9 +3,9 @@ return {
   opts = {
     dashboard = {},
     bufDelete = {},
-    git = {},
     lazygit = {},
     notifier = {},
     quickfile = {},
+    indent = {},
   },
 }
