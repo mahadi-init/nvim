@@ -48,6 +48,3 @@ vim.keymap.set('n', '<M-j>', '<CMD>cnext<CR>', { desc = 'next quickfix' })
 -- resize window
 vim.keymap.set('n', '=', [[<cmd>vertical resize +5<cr>]]) -- make the window biger vertically
 vim.keymap.set('n', '-', [[<cmd>vertical resize -5<cr>]]) -- make the window smaller vertically
-
--- Map 'mn' to jump to the 'm' mark
-vim.keymap.set('n', 'mn', '`m', { noremap = true, silent = true })
