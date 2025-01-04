@@ -1,7 +1,7 @@
 return {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
-  event = "VeryLazy",
+  event = 'VeryLazy',
   enabled = true,
   config = function()
     require('lualine').setup {
@@ -26,14 +26,19 @@ return {
       sections = {
         lualine_a = { 'mode' },
         lualine_b = {
-          'branch', function()
-          local relative_filepath = vim.fn.expand("%:.")
-          return relative_filepath
-        end
+          'branch',
+          function()
+            local relative_filepath = vim.fn.expand '%:.'
+            return relative_filepath
+          end,
         },
         lualine_c = { 'diagnostics' },
-        lualine_x = { 'diff' },
-        lualine_y = { 'filetype' },
+        lualine_x = {
+          function()
+            return require('lazydo').get_lualine_stats()
+          end,
+        },
+        lualine_y = { 'diff', 'filetype' },
         lualine_z = { 'location', 'progress' },
       },
       inactive_sections = {
