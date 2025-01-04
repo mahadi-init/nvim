@@ -33,6 +33,7 @@
   "telescope-orgmode.nvim": { "branch": "main", "commit": "2cd2ea778726c6e44429fef82f23b63197dbce1b" },
   "telescope.nvim": { "branch": "master", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },
   "timber.nvim": { "branch": "main", "commit": "f45a27c005d53b2ec67cafa9df2e267106f0b459" },
+  "todo-comments.nvim": { "branch": "main", "commit": "ae0a2afb47cf7395dc400e5dc4e05274bf4fb9e0" },
   "toggleterm.nvim": { "branch": "main", "commit": "50ea089fc548917cc3cc16b46a8211833b9e3c7c" },
   "vim-prisma": { "branch": "main", "commit": "95c5b25066efb34c75bce78698baa371fe0ee7c2" }
 }
