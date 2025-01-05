@@ -11,7 +11,6 @@ cmp.setup {
     ['<Tab>'] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },
   },
   sources = cmp.config.sources {
-    { name = 'orgmode' },
     { name = 'nvim_lsp', priority = 1000 }, -- Higher priority for LSP
     {
       name = 'buffer',
