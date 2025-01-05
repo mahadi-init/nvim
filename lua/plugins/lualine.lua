@@ -34,11 +34,9 @@ return {
         },
         lualine_c = { 'diagnostics' },
         lualine_x = {
-          function()
-            return require('lazydo').get_lualine_stats()
-          end,
+          'diff',
         },
-        lualine_y = { 'diff', 'filetype' },
+        lualine_y = { 'filetype' },
         lualine_z = { 'location', 'progress' },
       },
       inactive_sections = {
