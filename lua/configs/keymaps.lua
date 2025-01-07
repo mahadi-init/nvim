@@ -17,9 +17,6 @@ vim.keymap.set('n', '<leader>ff', telescope.git_status, { desc = 'git status' })
 vim.keymap.set('n', '<leader>fw', telescope.live_grep, { desc = 'find words' }) -- live grep
 vim.keymap.set('n', '<leader>ft', '<CMD>TodoTelescope<CR>') -- todo telescope
 vim.keymap.set('n', '<C-b>', telescope.buffers, { desc = 'find buffer' }) -- find buffers
-vim.keymap.set('n', '<leader>fp', function()
-  require('telescope').extensions.pomodori.timers()
-end, { desc = 'Manage Pomodori Timers' })
 
 -- file tree
 vim.keymap.set('n', '<leader>e', '<CMD>Neotree filesystem toggle<CR>', { desc = 'neo tree open' }) -- file tree
