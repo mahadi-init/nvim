@@ -6,7 +6,7 @@ return {
     require('bufferline').setup {
       options = {
         offsets = {
-          { filetype = 'neo-tree', text = 'File Explorer', text_align = 'center' },
+          { filetype = 'neo-tree', text_align = 'center' },
         },
         diagnostics = 'nvim_lsp',
         separator_style = 'thin',
