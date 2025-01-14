@@ -1,5 +1,9 @@
 return {
   'echasnovski/mini.tabline',
   version = false,
-  config = true,
+  config = function()
+    require('mini.tabline').setup {
+      show_icons = true,
+    }
+  end,
 }
