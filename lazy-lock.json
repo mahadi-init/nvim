@@ -32,7 +32,7 @@
   "snacks.nvim": { "branch": "main", "commit": "1b7a57a0b14b37a708330a346a767865954ce448" },
   "telescope.nvim": { "branch": "master", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },
   "timber.nvim": { "branch": "main", "commit": "f45a27c005d53b2ec67cafa9df2e267106f0b459" },
-  "todo-comments.nvim": { "branch": "main", "commit": "aba91f1d0d8ef9756fb9847e925b872bb8d7f67c" },
+  "tiny-glimmer.nvim": { "branch": "main", "commit": "34d40a99dedac2229c4cc8ec18c441ddde663f50" },
   "toggleterm.nvim": { "branch": "main", "commit": "50ea089fc548917cc3cc16b46a8211833b9e3c7c" },
   "vim-prisma": { "branch": "main", "commit": "95c5b25066efb34c75bce78698baa371fe0ee7c2" }
 }

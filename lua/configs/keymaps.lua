@@ -7,6 +7,7 @@ vim.keymap.set('n', '<C-j>', '<C-d>zz') -- scroll down
 vim.keymap.set('n', '<C-k>', '<C-u>zz') -- scroll up
 vim.keymap.set('n', '<C-d>', '<C-d>zz') -- scroll down
 vim.keymap.set('n', '<C-u>', '<C-u>zz') -- scroll up
+vim.keymap.set('n', '<y>', '<Y>') -- Y yank to y
 vim.keymap.set('n', '<C-v>', '<CMD>vsplit<CR>') -- vertical split
 vim.keymap.set('n', '<C-Right>', '<CMD>bnext<CR>') -- next buffer
 vim.keymap.set('n', '<C-Left>', '<CMD>bprevious<CR>') -- previous buffer
