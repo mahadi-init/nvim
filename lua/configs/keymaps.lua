@@ -49,3 +49,8 @@ vim.keymap.set('n', '<M-j>', '<CMD>cnext<CR>', { desc = 'next quickfix' })
 -- resize window
 vim.keymap.set('n', '=', [[<cmd>vertical resize +5<cr>]]) -- make the window biger vertically
 vim.keymap.set('n', '-', [[<cmd>vertical resize -5<cr>]]) -- make the window smaller vertically
+
+-- diffview
+vim.keymap.set('n', '<leader>do', '<CMD>DiffviewOpen<CR>', { desc = 'Open diffview' })
+vim.keymap.set('n', '<leader>df', '<CMD>DiffviewFileHistory %<CR>', { desc = 'Open file history' })
+vim.keymap.set('n', '<leader>dc', '<CMD>DiffviewClose<CR>', { desc = 'close diffview' })
