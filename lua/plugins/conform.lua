@@ -20,6 +20,9 @@ return {
         css = {
           'prettierd',
         },
+        json = {
+          'prettierd',
+        },
       },
       format_after_save = {
         lsp_format = 'fallback',
