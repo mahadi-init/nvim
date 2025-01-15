@@ -1,4 +1,5 @@
 {
+  "LazyDo": { "branch": "main", "commit": "71c3c06f42c24e69df6c6d253cd3febbcbc87b81" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
   "cmp-nvim-lsp": { "branch": "main", "commit": "99290b3ec1322070bcfb9e846450a46f6efa50f0" },
   "conform.nvim": { "branch": "master", "commit": "70019124aa4f2e6838be9fbd2007f6d13b27a96d" },
@@ -30,7 +31,7 @@
   "nvim-window-picker": { "branch": "main", "commit": "276879db5234185f22cd19ed8366bf62437667af" },
   "persistence.nvim": { "branch": "main", "commit": "f6aad7dde7fcf54148ccfc5f622c6d5badd0cc3d" },
   "plenary.nvim": { "branch": "master", "commit": "3707cdb1e43f5cea73afb6037e6494e7ce847a66" },
-  "snacks.nvim": { "branch": "main", "commit": "541b46dfac694590a31448b7b764a2b7b16c7f09" },
+  "snacks.nvim": { "branch": "main", "commit": "2e8e8ca36fb5d2e256d524be888a0e84d59b7ed9" },
   "telescope.nvim": { "branch": "master", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },
   "timber.nvim": { "branch": "main", "commit": "7e96bc1a01cea35e872e4ac387edfc1c68ca37f6" },
   "tiny-glimmer.nvim": { "branch": "main", "commit": "5db30587b4998bcedd69d31488be0046c97698aa" },
