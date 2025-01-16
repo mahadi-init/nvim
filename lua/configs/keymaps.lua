@@ -15,7 +15,10 @@ vim.keymap.set('n', '<C-Left>', '<CMD>bprevious<CR>') -- previous buffer
 vim.keymap.set('n', '<leader><leader>', telescope.find_files, { desc = 'find files' }) -- find files
 vim.keymap.set('n', '<leader>ff', telescope.git_status, { desc = 'git status' }) -- git status
 vim.keymap.set('n', '<leader>fw', telescope.live_grep, { desc = 'find words' }) -- live grep
-vim.keymap.set('n', '<C-b>', telescope.buffers, { desc = 'find buffer' }) -- find buffers
+vim.keymap.set('n', '<leader>fb', telescope.buffers, { desc = 'find buffer' }) -- find buffers
+vim.keymap.set('n', '<leader>ft', function()
+  require('telescope.builtin').current_buffer_fuzzy_find { sorter = require('telescope.sorters').get_substr_matcher {} }
+end, { desc = 'find text current buffer' }) -- find text current buffer
 
 -- file tree
 vim.keymap.set('n', '<leader>e', '<CMD>Neotree filesystem toggle<CR>', { desc = 'neo tree open' }) -- file tree
