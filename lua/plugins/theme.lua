@@ -23,16 +23,16 @@ return {
           },
         },
         styles = { -- Style to be applied to different syntax groups
-          comments = 'italic', -- You can use 'italic,bold' for combined styles
-          conditionals = 'italic',
-          constants = 'bold,italic',
+          comments = 'NONE', -- You can use 'NONE,bold' for combined styles
+          conditionals = 'NONE',
+          constants = 'bold',
           functions = 'bold',
-          keywords = 'italic,bold',
+          keywords = 'bold',
           numbers = 'NONE',
           operators = 'NONE',
-          strings = 'italic',
-          types = 'bold,italic',
-          variables = 'italic,bold',
+          strings = 'NONE',
+          types = 'NONE',
+          variables = 'bold',
         },
         inverse = { -- Inverse highlight for different types
           match_paren = false,
