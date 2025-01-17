@@ -16,16 +16,13 @@ vim.keymap.set('n', '<leader><leader>', telescope.find_files, { desc = 'find fil
 vim.keymap.set('n', '<leader>ff', telescope.git_status, { desc = 'git status' }) -- git status
 vim.keymap.set('n', '<leader>fw', telescope.live_grep, { desc = 'find words' }) -- live grep
 vim.keymap.set('n', '<leader>fb', telescope.buffers, { desc = 'find buffer' }) -- find buffers
+vim.keymap.set('n', '<leader>ft', telescope.current_buffer_fuzzy_find) -- find text current buffer
+vim.keymap.set('n', '<leader>fr', telescope.registers) -- register
 
 -- project management
 vim.keymap.set('n', '<leader>fp', function()
   require('telescope').extensions.projects.projects {}
 end, { desc = 'find buffer' }) -- project management
-
--- find word current buffer
-vim.keymap.set('n', '<leader>ft', function()
-  require('telescope.builtin').current_buffer_fuzzy_find { sorter = require('telescope.sorters').get_substr_matcher {} }
-end, { desc = 'find text current buffer' }) -- find text current buffer
 
 -- file tree
 vim.keymap.set('n', '<leader>e', '<CMD>Neotree filesystem toggle<CR>', { desc = 'neo tree open' }) -- file tree
