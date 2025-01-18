@@ -32,7 +32,7 @@ return {
           operators = 'NONE',
           strings = 'NONE',
           types = 'NONE',
-          variables = 'bold',
+          variables = 'NONE',
         },
         inverse = { -- Inverse highlight for different types
           match_paren = false,
