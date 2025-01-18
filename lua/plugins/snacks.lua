@@ -8,7 +8,15 @@ return {
     quickfile = {},
     indent = {},
     statuscolumn = {},
-    -- words = {},
     scope = {},
+    picker = {},
+    zen = {
+      toggles = {
+        dim = false,
+        git_signs = false,
+        mini_diff_signs = false,
+        diagnostics = true,
+      },
+    },
   },
 }

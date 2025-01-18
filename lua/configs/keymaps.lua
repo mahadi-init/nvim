@@ -1,5 +1,6 @@
 local telescope = require 'telescope.builtin'
 
+-- native keymaps
 vim.keymap.set({ 'n', 'i', 'v' }, '<C-s>', '<CMD>w<CR>') -- save file
 vim.keymap.set('n', '<leader>q', '<CMD>q<CR>') -- quit neovim
 vim.keymap.set('n', '<ESC>', '<CMD>nohlsearch<CR>') -- escape and remove search query
@@ -11,18 +12,16 @@ vim.keymap.set('n', '<C-v>', '<CMD>vsplit<CR>') -- vertical split
 vim.keymap.set('n', '<C-Right>', '<CMD>bnext<CR>') -- next buffer
 vim.keymap.set('n', '<C-Left>', '<CMD>bprevious<CR>') -- previous buffer
 
--- telescope
-vim.keymap.set('n', '<leader><leader>', telescope.find_files, { desc = 'find files' }) -- find files
+-- telescope & snacks
 vim.keymap.set('n', '<leader>ff', telescope.git_status, { desc = 'git status' }) -- git status
-vim.keymap.set('n', '<leader>fw', telescope.live_grep, { desc = 'find words' }) -- live grep
-vim.keymap.set('n', '<C-b>', telescope.buffers, { desc = 'find buffer' }) -- find buffers
-vim.keymap.set('n', '<leader>ft', telescope.current_buffer_fuzzy_find) -- find text current buffer
-vim.keymap.set('n', '<leader>fr', telescope.registers) -- register
-
--- project management
-vim.keymap.set('n', '<leader>fp', function()
-  require('telescope').extensions.projects.projects {}
-end, { desc = 'find buffer' }) -- project management
+vim.keymap.set('n', '<leader><leader>', '<CMD>lua Snacks.picker.files()<CR>', { desc = 'find files' }) -- find files
+vim.keymap.set('n', '<leader>fw', '<CMD>lua Snacks.picker.grep()<CR>', { desc = 'find words' }) -- live grep
+vim.keymap.set('n', '<leader>fd', '<CMD>lua Snacks.picker.diagnostics()<CR>', { desc = 'find errors' }) -- find buffers
+vim.keymap.set('n', '<leader>fp', '<CMD>lua Snacks.picker.projects()<CR>', { desc = 'find projects' }) -- project management
+vim.keymap.set('n', '<C-b>', '<CMD>lua Snacks.picker.buffers()<CR>', { desc = 'find buffer' }) -- find buffers
+vim.keymap.set('v', '<C-f>', '<CMD>lua Snacks.picker.grep_word()<CR>', { desc = 'find word' }) -- find buffers
+vim.keymap.set('n', '<C-x>', '<CMD>lua Snacks.bufdelete()<CR>', { desc = 'Delete buffer' })
+vim.keymap.set('n', '<C-z>', '<CMD>lua Snacks.zen()<CR>', { desc = 'Zen mode' })
 
 -- file tree
 vim.keymap.set('n', '<leader>e', '<CMD>Neotree filesystem toggle<CR>', { desc = 'neo tree open' }) -- file tree
@@ -34,17 +33,6 @@ end)
 
 -- lazygit
 vim.keymap.set('n', '<leader>gg', '<CMD>LazyGit<CR>', { desc = 'LazyGit' }) -- file tree
-
--- buf delete
-vim.keymap.set('n', '<C-x>', '<CMD>lua Snacks.bufdelete()<CR>', { desc = 'Delete buffer' })
-
--- spectre
-vim.keymap.set('n', '<C-t>', '<CMD>lua require("spectre").toggle()<CR>', {
-  desc = 'Toggle Spectre',
-})
-vim.keymap.set({ 'n', 'v' }, '<C-f>', '<CMD>lua require("spectre").open_file_search({select_word=true})<CR>', {
-  desc = 'Search on current file',
-})
 
 -- quickfix
 vim.keymap.set('n', '<M-c>', '<CMD>copen<CR>', { desc = 'Open quickfix' })
