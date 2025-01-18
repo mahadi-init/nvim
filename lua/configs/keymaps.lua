@@ -12,13 +12,16 @@ vim.keymap.set('n', '<C-v>', '<CMD>vsplit<CR>') -- vertical split
 vim.keymap.set('n', '<C-Right>', '<CMD>bnext<CR>') -- next buffer
 vim.keymap.set('n', '<C-Left>', '<CMD>bprevious<CR>') -- previous buffer
 
--- telescope & snacks
+-- telescope
+vim.keymap.set('n', '<leader><leader>', telescope.find_files, { desc = 'find files' }) -- find files
 vim.keymap.set('n', '<leader>ff', telescope.git_status, { desc = 'git status' }) -- git status
-vim.keymap.set('n', '<leader><leader>', '<CMD>lua Snacks.picker.files()<CR>', { desc = 'find files' }) -- find files
-vim.keymap.set('n', '<leader>fw', '<CMD>lua Snacks.picker.grep()<CR>', { desc = 'find words' }) -- live grep
+vim.keymap.set('n', '<leader>fw', telescope.live_grep, { desc = 'find words' }) -- live grep
+vim.keymap.set('n', '<leader>fb', telescope.buffers, { desc = 'find buffer' }) -- find buffers
+vim.keymap.set('n', '<leader>ft', telescope.current_buffer_fuzzy_find) -- find text current buffer
+
+-- snacks
 vim.keymap.set('n', '<leader>fd', '<CMD>lua Snacks.picker.diagnostics()<CR>', { desc = 'find errors' }) -- find buffers
 vim.keymap.set('n', '<leader>fp', '<CMD>lua Snacks.picker.projects()<CR>', { desc = 'find projects' }) -- project management
-vim.keymap.set('n', '<C-b>', '<CMD>lua Snacks.picker.buffers()<CR>', { desc = 'find buffer' }) -- find buffers
 vim.keymap.set('v', '<C-f>', '<CMD>lua Snacks.picker.grep_word()<CR>', { desc = 'find word' }) -- find buffers
 vim.keymap.set('n', '<C-x>', '<CMD>lua Snacks.bufdelete()<CR>', { desc = 'Delete buffer' })
 vim.keymap.set('n', '<C-z>', '<CMD>lua Snacks.zen()<CR>', { desc = 'Zen mode' })
