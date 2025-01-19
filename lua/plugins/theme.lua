@@ -24,7 +24,7 @@ return {
         },
         styles = { -- Style to be applied to different syntax groups
           comments = 'NONE', -- You can use 'NONE,bold' for combined styles
-          conditionals = 'italic',
+          conditionals = 'NONE',
           constants = 'NONE',
           functions = 'bold',
           keywords = 'NONE',
