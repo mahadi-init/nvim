@@ -24,10 +24,10 @@ return {
         },
         styles = { -- Style to be applied to different syntax groups
           comments = 'NONE', -- You can use 'NONE,bold' for combined styles
-          conditionals = 'NONE',
-          constants = 'bold',
+          conditionals = 'italic',
+          constants = 'NONE',
           functions = 'bold',
-          keywords = 'bold',
+          keywords = 'NONE',
           numbers = 'NONE',
           operators = 'NONE',
           strings = 'NONE',
