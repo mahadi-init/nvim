@@ -37,11 +37,6 @@ return {
         },
         lualine_x = {
           'diff',
-          function()
-            if require('lazydo')._initialized then
-              return require('lazydo').get_lualine_stats()
-            end
-          end,
         },
         lualine_y = {
           'filetype',
