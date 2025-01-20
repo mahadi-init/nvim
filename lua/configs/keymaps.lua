@@ -24,7 +24,6 @@ vim.keymap.set('n', '<leader>fd', '<CMD>lua Snacks.picker.diagnostics()<CR>', { 
 vim.keymap.set('n', '<leader>fp', '<CMD>lua Snacks.picker.projects()<CR>', { desc = 'find projects' }) -- project management
 vim.keymap.set('v', '<C-f>', '<CMD>lua Snacks.picker.grep_word()<CR>', { desc = 'find word' }) -- find buffers
 vim.keymap.set('n', '<C-x>', '<CMD>lua Snacks.bufdelete()<CR>', { desc = 'Delete buffer' })
-vim.keymap.set('n', '<C-z>', '<CMD>lua Snacks.zen()<CR>', { desc = 'Zen mode' })
 
 -- file tree
 vim.keymap.set('n', '<leader>e', '<CMD>Neotree filesystem toggle<CR>', { desc = 'neo tree open' }) -- file tree
