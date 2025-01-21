@@ -1,4 +1,4 @@
-# nvim/
+# nvim
 
 <a href="https://dotfyle.com/mahadi-init/nvim"><img src="https://dotfyle.com/mahadi-init/nvim/badges/plugins?style=flat" /></a>
 <a href="https://dotfyle.com/mahadi-init/nvim"><img src="https://dotfyle.com/mahadi-init/nvim/badges/leaderkey?style=flat" /></a>
