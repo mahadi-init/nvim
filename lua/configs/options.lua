@@ -3,9 +3,6 @@ local opt = vim.opt
 -- Enable true color support
 opt.termguicolors = true
 
--- change cmd height
-opt.cmdheight = 1
-
 -- Use system clipboard
 opt.clipboard = 'unnamedplus'
 
