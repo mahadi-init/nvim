@@ -1,3 +1,4 @@
+local harpoon = require 'harpoon'
 local telescope = require 'telescope.builtin'
 
 -- native keymaps
@@ -50,3 +51,17 @@ vim.keymap.set('n', '-', [[<cmd>vertical resize -5<cr>]]) -- make the window sma
 vim.keymap.set('n', '<leader>do', '<CMD>DiffviewOpen<CR>', { desc = 'Open diffview' })
 vim.keymap.set('n', '<leader>df', '<CMD>DiffviewFileHistory %<CR>', { desc = 'Open file history' })
 vim.keymap.set('n', '<leader>dc', '<CMD>DiffviewClose<CR>', { desc = 'close diffview' })
+
+vim.keymap.set('n', '<C-a>', function()
+  harpoon:list():add()
+end)
+vim.keymap.set('n', '<C-e>', function()
+  harpoon.ui:toggle_quick_menu(harpoon:list())
+end)
+
+vim.keymap.set('n', '<C-h>', function()
+  harpoon:list():select(1)
+end)
+vim.keymap.set('n', '<C-t>', function()
+  harpoon:list():select(2)
+end)
