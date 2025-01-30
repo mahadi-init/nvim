@@ -10,8 +10,8 @@ vim.keymap.set('n', '<C-k>', '<C-u>zz') -- scroll up
 vim.keymap.set('n', '<C-d>', '<C-d>zz') -- scroll down
 vim.keymap.set('n', '<C-u>', '<C-u>zz') -- scroll up
 vim.keymap.set('n', '<C-v>', '<CMD>vsplit<CR>') -- vertical split
-vim.keymap.set('n', '<C-Right>', '<CMD>bnext<CR>') -- next buffer
-vim.keymap.set('n', '<C-Left>', '<CMD>bprevious<CR>') -- previous buffer
+-- vim.keymap.set('n', '<C-Right>', '<CMD>bnext<CR>') -- next buffer
+-- vim.keymap.set('n', '<C-Left>', '<CMD>bprevious<CR>') -- previous buffer
 
 -- telescope
 vim.keymap.set('n', '<leader><leader>', telescope.find_files, { desc = 'find files' }) -- find files
@@ -81,9 +81,9 @@ vim.keymap.set('n', '<C-a>', function()
 end)
 
 -- Toggle previous & next buffers stored within Harpoon list
-vim.keymap.set('n', '<C-h>', function()
+vim.keymap.set('n', '<C-Left>', function()
   harpoon:list():prev()
 end)
-vim.keymap.set('n', '<C-t>', function()
+vim.keymap.set('n', '<C-Right>', function()
   harpoon:list():next()
 end)
