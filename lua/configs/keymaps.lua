@@ -16,7 +16,14 @@ vim.keymap.set('n', '<C-Left>', '<CMD>bprevious<CR>') -- previous buffer
 vim.keymap.set('n', '<leader><leader>', telescope.find_files, { desc = 'find files' }) -- find files
 vim.keymap.set('n', '<leader>ff', telescope.git_status, { desc = 'git status' }) -- git status
 vim.keymap.set('n', '<leader>fw', telescope.live_grep, { desc = 'find words' }) -- live grep
-vim.keymap.set('n', '<C-b>', telescope.buffers, { desc = 'find buffer' }) -- find buffers
+vim.keymap.set('n', '<C-b>', function()
+  telescope.buffers {
+    initial_mode = 'normal', -- Start in normal mode
+    path_display = function(_, path)
+      return vim.fn.fnamemodify(path, ':h:t') .. '/' .. vim.fn.fnamemodify(path, ':t')
+    end,
+  }
+end, { desc = 'Find buffer' })
 vim.keymap.set('n', '<leader>ft', telescope.current_buffer_fuzzy_find) -- find text current buffer
 
 -- snacks
