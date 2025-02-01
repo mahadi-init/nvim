@@ -15,7 +15,7 @@ return {
         virtual_text = false, -- Disable virtual text if needed
       },
       symbol_in_winbar = {
-        enable = true, -- Set this to false to disable breadcrumbs
+        enable = false, -- Set this to false to disable breadcrumbs
         separator = ' › ',
         hide_keyword = false,
         show_file = true,
