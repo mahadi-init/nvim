@@ -1,4 +1,3 @@
-local harpoon = require 'harpoon'
 local telescope = require 'telescope.builtin'
 
 -- native keymaps
@@ -10,8 +9,8 @@ vim.keymap.set('n', '<C-k>', '<C-u>zz') -- scroll up
 vim.keymap.set('n', '<C-d>', '<C-d>zz') -- scroll down
 vim.keymap.set('n', '<C-u>', '<C-u>zz') -- scroll up
 vim.keymap.set('n', '<C-v>', '<CMD>vsplit<CR>') -- vertical split
--- vim.keymap.set('n', '<C-Right>', '<CMD>bnext<CR>') -- next buffer
--- vim.keymap.set('n', '<C-Left>', '<CMD>bprevious<CR>') -- previous buffer
+vim.keymap.set('n', '<C-Right>', '<CMD>bnext<CR>') -- next buffer
+vim.keymap.set('n', '<C-Left>', '<CMD>bprevious<CR>') -- previous buffer
 
 -- telescope
 vim.keymap.set('n', '<leader><leader>', telescope.find_files, { desc = 'find files' }) -- find files
@@ -51,39 +50,3 @@ vim.keymap.set('n', '-', [[<cmd>vertical resize -5<cr>]]) -- make the window sma
 vim.keymap.set('n', '<leader>do', '<CMD>DiffviewOpen<CR>', { desc = 'Open diffview' })
 vim.keymap.set('n', '<leader>df', '<CMD>DiffviewFileHistory %<CR>', { desc = 'Open file history' })
 vim.keymap.set('n', '<leader>dc', '<CMD>DiffviewClose<CR>', { desc = 'close diffview' })
-
--- harpoon
-local conf = require('telescope.config').values
-local function toggle_telescope(harpoon_files)
-  local file_paths = {}
-  for _, item in ipairs(harpoon_files.items) do
-    table.insert(file_paths, item.value)
-  end
-
-  require('telescope.pickers')
-    .new({}, {
-      prompt_title = 'Harpoon',
-      finder = require('telescope.finders').new_table {
-        results = file_paths,
-      },
-      previewer = conf.file_previewer {},
-      sorter = conf.generic_sorter {},
-    })
-    :find()
-end
-
-vim.keymap.set('n', '<C-e>', function()
-  toggle_telescope(harpoon:list())
-end, { desc = 'Open harpoon window' })
-
-vim.keymap.set('n', '<C-a>', function()
-  harpoon:list():add()
-end)
-
--- Toggle previous & next buffers stored within Harpoon list
-vim.keymap.set('n', '<C-Left>', function()
-  harpoon:list():prev()
-end)
-vim.keymap.set('n', '<C-Right>', function()
-  harpoon:list():next()
-end)
