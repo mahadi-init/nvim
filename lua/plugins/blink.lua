@@ -1,7 +1,6 @@
 return {
   'saghen/blink.cmp',
   event = 'VeryLazy',
-  dependencies = 'rafamadriz/friendly-snippets',
   version = '*',
   opts = {
     keymap = {
@@ -15,8 +14,8 @@ return {
       ['<Up>'] = { 'select_prev', 'fallback' },
       ['<Down>'] = { 'select_next', 'fallback' },
 
-      ['<Tab>'] = { 'select_prev', 'fallback' },
-      ['<S-Tab>'] = { 'select_next', 'fallback' },
+      ['<Tab>'] = { 'select_next', 'fallback' },
+      ['<S-Tab>'] = { 'select_prev', 'fallback' },
 
       ['<C-k>'] = { 'show_signature', 'hide_signature', 'fallback' },
     },
@@ -25,7 +24,7 @@ return {
       nerd_font_variant = 'mono',
     },
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer' },
+      default = { 'lsp', 'buffer' },
     },
   },
   opts_extend = { 'sources.default' },

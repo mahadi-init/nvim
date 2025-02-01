@@ -21,7 +21,6 @@ vim.keymap.set('n', '<leader>ft', telescope.current_buffer_fuzzy_find) -- find t
 
 -- snacks
 vim.keymap.set('n', '<leader>fd', '<CMD>lua Snacks.picker.diagnostics()<CR>', { desc = 'find errors' }) -- find buffers
-vim.keymap.set('n', '<leader>fp', '<CMD>lua Snacks.picker.projects()<CR>', { desc = 'find projects' }) -- project management
 vim.keymap.set('v', '<C-f>', '<CMD>lua Snacks.picker.grep_word()<CR>', { desc = 'find word' }) -- find buffers
 vim.keymap.set('n', '<C-x>', '<CMD>lua Snacks.bufdelete()<CR>', { desc = 'Delete buffer' })
 
