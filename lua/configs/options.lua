@@ -12,6 +12,7 @@ opt.shiftwidth = 2
 opt.shiftround = true
 opt.smartindent = true
 opt.ignorecase = true
+opt.laststatus = 2
 
 -- Hide mode indicator
 opt.showmode = false
