@@ -9,8 +9,8 @@ vim.keymap.set('n', '<C-k>', '<C-u>zz') -- scroll up
 vim.keymap.set('n', '<C-d>', '<C-d>zz') -- scroll down
 vim.keymap.set('n', '<C-u>', '<C-u>zz') -- scroll up
 vim.keymap.set('n', '<C-v>', '<CMD>vsplit<CR>') -- vertical split
-vim.keymap.set('n', '<C-Right>', '<CMD>bnext<CR>') -- next buffer
-vim.keymap.set('n', '<C-Left>', '<CMD>bprevious<CR>') -- previous buffer
+vim.keymap.set('n', '<C-Right>', '<CMD>BufferLineCycleNext<CR>') -- next buffer
+vim.keymap.set('n', '<C-Left>', '<CMD>BufferLineCyclePrev<CR>') -- previous buffer
 
 -- telescope
 vim.keymap.set('n', '<leader><leader>', telescope.find_files, { desc = 'find files' }) -- find files
@@ -72,3 +72,8 @@ vim.keymap.set('n', '<C-t>', '<cmd>lua require("spectre").toggle()<CR>', {
 vim.keymap.set('n', '<C-f>', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
   desc = 'Search on current file',
 })
+
+-- bufferline
+vim.keymap.set('n', '<Leader>bp', '<cmd>BufferLineTogglePin<CR>', { desc = 'Toggle Bufferpin' })
+vim.keymap.set('n', '<Leader>bt', '<cmd>BufferLineSortByTabs<CR>', { desc = 'Sort by tabs' })
+vim.keymap.set('n', '<Leader>bd', '<cmd>BufferLineSortByDirectory<CR>', { desc = 'Sort by dir' })
