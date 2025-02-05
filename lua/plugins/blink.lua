@@ -4,11 +4,10 @@ return {
   version = '*',
   opts = {
     keymap = {
-      -- set to 'none' to disable the 'default' preset
       preset = 'none',
 
       ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
-      ['<Esc>'] = { 'hide', 'fallback' },
+      ['<C-e>'] = { 'hide', 'fallback' },
       ['<CR>'] = { 'accept', 'fallback' },
 
       ['<Up>'] = { 'select_prev', 'fallback' },
@@ -16,8 +15,6 @@ return {
 
       ['<Tab>'] = { 'select_next', 'fallback' },
       ['<S-Tab>'] = { 'select_prev', 'fallback' },
-
-      ['<C-k>'] = { 'show_signature', 'hide_signature', 'fallback' },
     },
     appearance = {
       use_nvim_cmp_as_default = true,
