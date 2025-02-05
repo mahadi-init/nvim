@@ -1,4 +1,4 @@
 return {
-  'mg979/vim-visual-multi',
+  'nvim-pack/nvim-spectre',
   event = 'VeryLazy',
 }

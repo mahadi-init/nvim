@@ -64,3 +64,11 @@ vim.keymap.set(
   '<CMD>lua require("telescope").extensions.undo.undo({ side_by_side = true })<CR>',
   { desc = 'undo tree' }
 )
+
+-- nvim spectra
+vim.keymap.set('n', '<C-t>', '<cmd>lua require("spectre").toggle()<CR>', {
+  desc = 'Toggle Spectre',
+})
+vim.keymap.set('n', '<C-f>', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
+  desc = 'Search on current file',
+})
