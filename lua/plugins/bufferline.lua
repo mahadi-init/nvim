@@ -8,7 +8,7 @@ return {
     require('bufferline').setup {
       options = {
         style_preset = bufferline.style_preset.no_italic,
-        sort_by = 'insert_at_end',
+        sort_by = 'insert_after_current',
         separator_style = 'slant',
         diagnostics = 'nvim_lsp',
         offsets = {
