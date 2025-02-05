@@ -7,7 +7,7 @@ return {
       preset = 'none',
 
       ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
-      ['<Esc>'] = { 'hide', 'fallback' },
+      ['<C-q>'] = { 'hide', 'fallback' },
       ['<CR>'] = { 'accept', 'fallback' },
 
       ['<Up>'] = { 'select_prev', 'fallback' },
