@@ -56,3 +56,11 @@ vim.keymap.set('n', '-', [[<cmd>vertical resize -5<cr>]]) -- make the window sma
 vim.keymap.set('n', '<leader>do', '<CMD>DiffviewOpen<CR>', { desc = 'Open diffview' })
 vim.keymap.set('n', '<leader>df', '<CMD>DiffviewFileHistory %<CR>', { desc = 'Open file history' })
 vim.keymap.set('n', '<leader>dc', '<CMD>DiffviewClose<CR>', { desc = 'close diffview' })
+
+-- undo telescope
+vim.keymap.set(
+  'n',
+  '<leader>ut',
+  '<CMD>lua require("telescope").extensions.undo.undo({ side_by_side = true })<CR>',
+  { desc = 'undo tree' }
+)
