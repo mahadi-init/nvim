@@ -77,3 +77,6 @@ vim.keymap.set('n', '<C-f>', '<cmd>lua require("spectre").open_file_search({sele
 vim.keymap.set('n', '<Leader>bp', '<cmd>BufferLineTogglePin<CR>', { desc = 'Toggle Bufferpin' })
 vim.keymap.set('n', '<Leader>bt', '<cmd>BufferLineSortByTabs<CR>', { desc = 'Sort by tabs' })
 vim.keymap.set('n', '<Leader>bd', '<cmd>BufferLineSortByDirectory<CR>', { desc = 'Sort by dir' })
+
+-- spilit join treej
+vim.keymap.set('n', '<Leader>js', '<cmd>lua require("treesj").toggle() <CR>', { desc = 'split join' })
