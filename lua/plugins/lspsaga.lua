@@ -15,7 +15,7 @@ return {
         virtual_text = false,
       },
       symbol_in_winbar = {
-        enable = false,
+        enable = true,
         separator = ' › ',
         hide_keyword = false,
         show_file = true,
