@@ -1,20 +1,17 @@
 return {
   'saghen/blink.cmp',
-  event = 'VeryLazy',
   version = '*',
+  event = 'VeryLazy',
   opts = {
     keymap = {
       preset = 'none',
-
-      ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
-      ['<C-q>'] = { 'hide', 'fallback' },
       ['<CR>'] = { 'accept', 'fallback' },
+      ['<S-Tab>'] = { 'hide', 'fallback' },
 
       ['<Up>'] = { 'select_prev', 'fallback' },
       ['<Down>'] = { 'select_next', 'fallback' },
 
-      ['<Tab>'] = { 'select_next', 'fallback' },
-      ['<S-Tab>'] = { 'select_prev', 'fallback' },
+      ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
     },
     appearance = {
       use_nvim_cmp_as_default = true,
