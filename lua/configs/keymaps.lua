@@ -57,26 +57,5 @@ vim.keymap.set('n', '<leader>do', '<CMD>DiffviewOpen<CR>', { desc = 'Open diffvi
 vim.keymap.set('n', '<leader>df', '<CMD>DiffviewFileHistory %<CR>', { desc = 'Open file history' })
 vim.keymap.set('n', '<leader>dc', '<CMD>DiffviewClose<CR>', { desc = 'close diffview' })
 
--- undo telescope
-vim.keymap.set(
-  'n',
-  '<leader>ut',
-  '<CMD>lua require("telescope").extensions.undo.undo({ side_by_side = true })<CR>',
-  { desc = 'undo tree' }
-)
-
--- nvim spectra
-vim.keymap.set('n', '<C-t>', '<cmd>lua require("spectre").toggle()<CR>', {
-  desc = 'Toggle Spectre',
-})
-vim.keymap.set('n', '<C-f>', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
-  desc = 'Search on current file',
-})
-
 -- bufferline
 vim.keymap.set('n', '<Leader>bp', '<cmd>BufferLineTogglePin<CR>', { desc = 'Toggle Bufferpin' })
-vim.keymap.set('n', '<Leader>bt', '<cmd>BufferLineSortByTabs<CR>', { desc = 'Sort by tabs' })
-vim.keymap.set('n', '<Leader>bd', '<cmd>BufferLineSortByDirectory<CR>', { desc = 'Sort by dir' })
-
--- spilit join treej
-vim.keymap.set('n', '<Leader>js', '<cmd>lua require("treesj").toggle() <CR>', { desc = 'split join' })

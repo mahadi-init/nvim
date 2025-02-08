@@ -28,6 +28,5 @@ return {
         lsp_format = 'fallback',
       },
     }
-    require('conform').format()
   end,
 }

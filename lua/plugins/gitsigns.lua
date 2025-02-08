@@ -73,8 +73,6 @@ return {
             gitsigns.nav_hunk 'prev'
           end
         end)
-
-        -- Actions
         map('n', '<leader>hs', gitsigns.stage_hunk)
         map('n', '<leader>hr', gitsigns.reset_hunk)
         map('v', '<leader>hs', function()
@@ -96,7 +94,6 @@ return {
           gitsigns.diffthis '~'
         end)
         map('n', '<leader>td', gitsigns.toggle_deleted)
-
         map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
       end,
     }
