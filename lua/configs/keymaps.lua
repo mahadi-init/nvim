@@ -53,9 +53,9 @@ vim.keymap.set('n', '=', [[<cmd>vertical resize +5<cr>]]) -- make the window big
 vim.keymap.set('n', '-', [[<cmd>vertical resize -5<cr>]]) -- make the window smaller vertically
 
 -- diffview
-vim.keymap.set('n', '<leader>do', '<CMD>DiffviewOpen<CR>', { desc = 'Open diffview' })
-vim.keymap.set('n', '<leader>df', '<CMD>DiffviewFileHistory %<CR>', { desc = 'Open file history' })
-vim.keymap.set('n', '<leader>dc', '<CMD>DiffviewClose<CR>', { desc = 'close diffview' })
+vim.keymap.set('n', '<leader>do', '<CMD>DiffviewOpen<CR>')
+vim.keymap.set('n', '<leader>df', '<CMD>DiffviewFileHistory %<CR>')
+vim.keymap.set('n', '<leader>dc', '<CMD>DiffviewClose<CR>')
 
 -- bufferline
-vim.keymap.set('n', '<Leader>bp', '<cmd>BufferLineTogglePin<CR>', { desc = 'Toggle Bufferpin' })
+vim.keymap.set('n', '<Leader>bp', '<cmd>BufferLineTogglePin<CR>')
