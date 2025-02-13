@@ -18,13 +18,13 @@ return {
       nerd_font_variant = 'mono',
     },
     sources = {
-      default = { 'lsp', 'buffer', 'path' },
+      default = { 'lsp', 'buffer', 'path', 'snippets' },
     },
     completion = {
       menu = {
         draw = {
           treesitter = { 'lsp' },
-          columns = { { 'kind_icon' }, { 'label', gap = 1 } },
+          columns = { { 'kind_icon' }, { 'label', gap = 3 } },
           components = {
             label = {
               width = { fill = true, max = 60 },
@@ -52,7 +52,6 @@ return {
         },
       },
     },
-    signature = { enabled = true },
   },
   opts_extend = { 'sources.default' },
 }

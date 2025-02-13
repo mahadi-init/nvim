@@ -1,0 +1,7 @@
+{
+  "config": {
+    "prefix": "con",
+    "body": ["config = function() end"],
+    "description": "configuration"
+  }
+}

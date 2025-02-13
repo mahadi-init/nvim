@@ -1,0 +1,22 @@
+{
+  "React Typescript": {
+    "prefix": "ffc",
+    "body": ["export default function $1() {", "  return <>$1$0</>;", "}"],
+    "description": "Stateless react function"
+  },
+  "React UseState": {
+    "prefix": "ust",
+    "body": ["const [ ${1}, set$2 ] = useState($0)"],
+    "description": "basic react usestate"
+  },
+  "React UseEffect": {
+    "prefix": "uef",
+    "body": ["useEffect(() => {$0}, []);"],
+    "description": "basic react useEffect"
+  },
+  "arrow function": {
+    "prefix": "arr",
+    "body": ["const $1 = () => {$0}"],
+    "description": "basic arrow function"
+  }
+}
