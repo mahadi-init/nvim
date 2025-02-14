@@ -25,7 +25,7 @@ opt.number = true
 opt.wrap = false
 
 vim.diagnostic.config {
-  virtual_text = true,
-  signs = false,
+  virtual_text = false,
+  signs = true,
   underline = true,
 }
