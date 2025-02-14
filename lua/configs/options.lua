@@ -15,7 +15,7 @@ opt.ignorecase = true
 opt.laststatus = 2
 
 -- Hide mode indicator
-opt.showmode = true
+opt.showmode = false
 
 -- Enable relative line numbers
 opt.relativenumber = true
