@@ -24,14 +24,16 @@ return {
     completion = {
       menu = {
         draw = {
-          columns = { { 'kind_icon' }, { 'label', gap = 3 } },
+          columns = {
+            { 'kind_icon', 'label', 'label_description', gap = 1 },
+          },
           components = {
             label = {
               text = function(ctx)
-                return require('colorful-menu').blink_components_text(ctx)
+                return ctx.item.label
               end,
               highlight = function(ctx)
-                return require('colorful-menu').blink_components_highlight(ctx)
+                return ctx.highlights
               end,
             },
           },
