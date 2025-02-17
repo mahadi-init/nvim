@@ -30,5 +30,6 @@
   "telescope.nvim": { "branch": "master", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },
   "timber.nvim": { "branch": "main", "commit": "7e96bc1a01cea35e872e4ac387edfc1c68ca37f6" },
   "toggleterm.nvim": { "branch": "main", "commit": "50ea089fc548917cc3cc16b46a8211833b9e3c7c" },
-  "undo-glow.nvim": { "branch": "main", "commit": "e746f11ceefd2003786b70fb70f9fb7d4bfe444f" }
+  "undo-glow.nvim": { "branch": "main", "commit": "e746f11ceefd2003786b70fb70f9fb7d4bfe444f" },
+  "vim-visual-multi": { "branch": "master", "commit": "a6975e7c1ee157615bbc80fc25e4392f71c344d4" }
 }
