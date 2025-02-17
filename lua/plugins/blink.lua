@@ -22,6 +22,7 @@ return {
       default = { 'lsp', 'buffer', 'path', 'snippets' },
     },
     completion = {
+      accept = { auto_brackets = { enabled = false } },
       menu = {
         draw = {
           columns = {
