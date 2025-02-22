@@ -9,7 +9,8 @@ return {
       options = {
         style_preset = bufferline.style_preset.no_italic,
         sort_by = 'insert_after_current',
-        separator_style = 'slant',
+        show_buffer_icons = false,
+        separator_style = 'thin',
         diagnostics = 'nvim_lsp',
         show_buffer_close_icons = false,
         offsets = {
