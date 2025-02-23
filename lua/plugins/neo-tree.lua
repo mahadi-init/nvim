@@ -185,8 +185,19 @@ return {
         -- "disabled",    -- netrw left alone, neo-tree does not handle opening dirs
         use_libuv_file_watcher = true, -- This will use the OS level file watchers to detect changes
         -- instead of relying on nvim autocmd events.
-        window = {},
-        commands = {}, -- Add a custom command or override a global one using the same function name
+        window = {
+          mappings = {
+            ['<leader>v'] = 'image_wezterm', -- " or another map
+          },
+        },
+        commands = {
+          image_wezterm = function(state)
+            local node = state.tree:get_node()
+            if node.type == 'file' then
+              require('image_preview').PreviewImage(node.path)
+            end
+          end,
+        },
       },
       buffers = {
         follow_current_file = {
@@ -196,7 +207,6 @@ return {
         },
         group_empty_dirs = true, -- when true, empty folders will be grouped together
         show_unloaded = true,
-        window = {},
       },
       git_status = {
         window = {
