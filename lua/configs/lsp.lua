@@ -1,5 +1,6 @@
 -- LSP config
 local lspconfig = require 'lspconfig'
+local builtin = require 'telescope.builtin'
 local capabilities = require('blink.cmp').get_lsp_capabilities()
 
 local on_attach = function(_, _)
@@ -15,6 +16,7 @@ local on_attach = function(_, _)
   vim.keymap.set('n', 'K', ':Lspsaga hover_doc<CR>')
   vim.keymap.set('n', 'gd', ':Lspsaga goto_definition<CR>')
   vim.keymap.set('n', 'gr', ':Lspsaga finder<CR>')
+  vim.keymap.set('n', 'gtr', builtin.lsp_references)
   vim.keymap.set('n', 'gi', ':Lspsaga incoming_calls<CR>')
   vim.keymap.set('n', 'go', ':Lspsaga outgoing_calls<CR>')
 
