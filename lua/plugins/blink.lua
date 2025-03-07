@@ -8,8 +8,8 @@ return {
       ['<CR>'] = { 'accept', 'fallback' },
       ['<S-Tab>'] = { 'hide', 'fallback' },
 
+      ['<Tab>'] = { 'select_next', 'fallback' },
       ['<Up>'] = { 'select_prev', 'fallback' },
-      -- ['<Tab>'] = { 'select_next', 'fallback' },
       ['<Down>'] = { 'select_next', 'fallback' },
 
       ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
