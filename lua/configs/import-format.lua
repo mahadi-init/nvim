@@ -46,11 +46,8 @@ end
 
 -- Function to setup the plugin
 function M.setup()
-  -- Create an autocommand to sort imports on save
-  vim.api.nvim_create_autocmd('BufWritePre', {
-    pattern = '*.js,*.jsx,*.ts,*.tsx', -- Adjust file types as needed
-    callback = sort_imports,
-  })
+  -- Expose a command for manual sorting
+  vim.api.nvim_create_user_command('SortImports', sort_imports, {})
 end
 
 return M

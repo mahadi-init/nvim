@@ -1,4 +1,5 @@
 local telescope = require 'telescope.builtin'
+require('configs.import-format').setup()
 
 -- native keymaps
 vim.keymap.set({ 'n', 'i', 'v' }, '<C-s>', '<CMD>w<CR>') -- save file
@@ -60,3 +61,6 @@ vim.keymap.set('n', '<leader>dc', '<CMD>DiffviewClose<CR>')
 
 -- bufferline
 vim.keymap.set('n', '<Leader>bp', '<cmd>BufferLineTogglePin<CR>')
+
+-- Set up a keymap to trigger the sorting
+vim.keymap.set('n', '<C-a>', '<CMD>SortImports<CR>', { desc = 'Sort Imports by Line Length' })
