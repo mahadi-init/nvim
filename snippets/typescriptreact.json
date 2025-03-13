@@ -23,5 +23,15 @@
     "prefix": "try",
     "body": ["try {", "\t$1", "} catch (err: any) {", "\t$2", "}"],
     "description": "Inserts a try-catch block"
+  },
+  "useSWR Snippet": {
+    "prefix": "swr",
+    "body": [
+      "const { data, isLoading } = useSWR($1, async () => {",
+      "    const data = await get($1);",
+      "    return data;",
+      "});"
+    ],
+    "description": "A snippet for using useSWR with async data fetching."
   }
 }
