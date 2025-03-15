@@ -12,36 +12,64 @@ local function sort_imports()
 
   -- Find the start and end of the import block
   local import_start, import_end = nil, nil
+  local imports = {}
+  local current_import = {}
+
   for i, line in ipairs(lines) do
+    -- Check if the line starts with "import"
     if line:match '^import' then
+      -- If we're already collecting an import, add it to the imports table
+      if #current_import > 0 then
+        table.insert(imports, current_import)
+        current_import = {}
+      end
       import_start = import_start or i
       import_end = i
+      table.insert(current_import, line)
+    elseif line:match '^%s*[%w{},]' and #current_import > 0 then
+      -- If the line is part of a multi-line import, add it to the current import
+      table.insert(current_import, line)
+      import_end = i
+    elseif #current_import > 0 then
+      -- If we were collecting an import and the current line doesn't belong to it, finalize the import
+      table.insert(imports, current_import)
+      current_import = {}
     end
   end
 
+  -- Add the last import if it exists
+  if #current_import > 0 then
+    table.insert(imports, current_import)
+  end
+
   -- If no imports found, return
-  if not import_start or not import_end then
+  if #imports == 0 then
     return
   end
 
-  -- Extract the import lines
-  local imports = {}
-  for i = import_start, import_end do
-    table.insert(imports, lines[i])
-  end
-
-  -- Sort imports by line length
+  -- Sort imports by total line length
   table.sort(imports, function(a, b)
-    return #a < #b
+    return #table.concat(a, '\n') < #table.concat(b, '\n')
   end)
 
   -- Replace the import lines in the buffer
-  for i = import_start, import_end do
-    lines[i] = imports[i - import_start + 1]
+  local new_lines = {}
+  local import_index = 1
+  for i, line in ipairs(lines) do
+    if i < import_start or i > import_end then
+      -- Add non-import lines as-is
+      table.insert(new_lines, line)
+    elseif import_index <= #imports then
+      -- Add sorted imports (flatten multi-line imports into individual lines)
+      for _, import_line in ipairs(imports[import_index]) do
+        table.insert(new_lines, import_line)
+      end
+      import_index = import_index + 1
+    end
   end
 
   -- Update the buffer with the sorted lines
-  vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
+  vim.api.nvim_buf_set_lines(buf, 0, -1, false, new_lines)
 end
 
 -- Function to setup the plugin
