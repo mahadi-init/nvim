@@ -47,8 +47,19 @@ local function sort_imports()
     return
   end
 
-  -- Sort imports by total line length
+  -- Sort imports: multi-line imports first, then by total length
   table.sort(imports, function(a, b)
+    local a_is_multi = #a > 1
+    local b_is_multi = #b > 1
+
+    -- Prioritize multi-line imports
+    if a_is_multi and not b_is_multi then
+      return true
+    elseif not a_is_multi and b_is_multi then
+      return false
+    end
+
+    -- If both are multi-line or both are single-line, sort by total length
     return #table.concat(a, '\n') < #table.concat(b, '\n')
   end)
 
