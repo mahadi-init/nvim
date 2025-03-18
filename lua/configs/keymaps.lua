@@ -64,3 +64,8 @@ vim.keymap.set('n', '<Leader>bp', '<cmd>BufferLineTogglePin<CR>')
 
 -- Set up a keymap to trigger the sorting
 vim.keymap.set('n', '<C-a>', '<CMD>SortImports<CR>', { desc = 'Sort Imports by Line Length' })
+
+-- ssr
+vim.keymap.set({ 'n', 'x' }, '<c-f>', function()
+  require('ssr').open()
+end)
