@@ -15,9 +15,16 @@ vim.keymap.set('n', '<C-Left>', '<CMD>BufferLineCyclePrev<CR>') -- previous buff
 
 -- telescope
 vim.keymap.set('n', '<leader><leader>', telescope.find_files, { desc = 'find files' }) -- find files
-vim.keymap.set('n', '<leader>ff', telescope.git_status, { desc = 'git status' }) -- git status
+vim.keymap.set('n', '<C-g>', function()
+  telescope.git_status {
+    initial_mode = 'normal', -- Start in normal mode
+    path_display = function(_, path)
+      return vim.fn.fnamemodify(path, ':h:t') .. '/' .. vim.fn.fnamemodify(path, ':t')
+    end,
+  }
+end, { desc = 'git status' }) -- git status
 vim.keymap.set('n', '<leader>fw', telescope.live_grep, { desc = 'find words' }) -- live grep
-vim.keymap.set('n', '<leader>fb', function()
+vim.keymap.set('n', '<C-b>', function()
   telescope.buffers {
     initial_mode = 'normal', -- Start in normal mode
     path_display = function(_, path)
@@ -66,6 +73,6 @@ vim.keymap.set('n', '<Leader>bp', '<cmd>BufferLineTogglePin<CR>')
 vim.keymap.set('n', '<C-a>', '<CMD>SortImports<CR>', { desc = 'Sort Imports by Line Length' })
 
 -- ssr
-vim.keymap.set({ 'n', 'x' }, '<c-f>', function()
+vim.keymap.set({ 'n' }, '<c-f>', function()
   require('ssr').open()
 end)
