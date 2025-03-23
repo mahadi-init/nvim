@@ -9,7 +9,7 @@ return {
       desc = 'Convert JSON to TS',
     },
     {
-      '<leader>tb',
+      '<leader>tz',
       '<CMD>ConvertJSONtoLang typescript-zod<CR>',
       desc = 'ConvertJSONtoLang typescript-zod',
     },
