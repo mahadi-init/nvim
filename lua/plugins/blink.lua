@@ -28,6 +28,7 @@ return {
           columns = {
             { 'kind_icon', 'label', 'label_description', gap = 1 },
           },
+          treesitter = { 'lsp' },
           components = {
             label = {
               text = function(ctx)
@@ -40,6 +41,7 @@ return {
           },
         },
       },
+      documentation = { auto_show = true, auto_show_delay_ms = 500 },
     },
   },
   opts_extend = { 'sources.default' },
