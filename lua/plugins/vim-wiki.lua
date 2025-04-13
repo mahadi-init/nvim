@@ -1,5 +1,7 @@
 return {
   'vimwiki/vimwiki',
+  lazy = true,
+  event = 'VeryLazy',
   config = function()
     vim.cmd 'filetype plugin indent on'
     vim.cmd 'syntax enable'

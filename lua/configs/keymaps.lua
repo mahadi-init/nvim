@@ -76,3 +76,12 @@ vim.keymap.set('n', '<C-a>', '<CMD>SortImports<CR>', { desc = 'Sort Imports by L
 vim.keymap.set({ 'n' }, '<c-f>', function()
   require('ssr').open()
 end)
+
+-- Add this to your Neovim config
+local function vimwiki_search()
+  require('telescope.builtin').live_grep {
+    search_dirs = { vim.fn.expand '~/vimwiki' }, -- adjust path to your wiki
+  }
+end
+
+vim.keymap.set('n', '<leader>wws', vimwiki_search, { desc = 'Search Vimwiki' })
