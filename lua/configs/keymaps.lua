@@ -15,7 +15,7 @@ vim.keymap.set('n', '<C-Left>', '<CMD>BufferLineCyclePrev<CR>') -- previous buff
 
 -- telescope
 vim.keymap.set('n', '<leader><leader>', telescope.find_files, { desc = 'find files' }) -- find files
-vim.keymap.set('n', '<C-g>', function()
+vim.keymap.set('n', '<leader>fg', function()
   telescope.git_status {
     initial_mode = 'normal', -- Start in normal mode
     path_display = function(_, path)
