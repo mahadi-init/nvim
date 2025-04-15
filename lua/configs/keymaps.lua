@@ -13,6 +13,7 @@ vim.keymap.set('n', '<C-v>', '<CMD>vsplit<CR>') -- vertical split
 vim.keymap.set('n', '<C-Right>', '<CMD>BufferLineCycleNext<CR>') -- next buffer
 vim.keymap.set('n', '<C-Left>', '<CMD>BufferLineCyclePrev<CR>') -- previous buffer
 vim.keymap.set('n', 'zz', 'zzza', { remap = false, desc = 'Center screen and toggle fold' })
+vim.keymap.set('n', 'zo', require('ufo').openAllFolds)
 
 -- telescope
 vim.keymap.set('n', '<leader><leader>', telescope.find_files, { desc = 'find files' }) -- find files
