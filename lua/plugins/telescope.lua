@@ -25,6 +25,8 @@ return {
         'node_modules',
         '.next',
         'package-lock.json',
+        'bun.lock',
+        'pnpm-lock.yaml',
       },
     },
     pickers = {
