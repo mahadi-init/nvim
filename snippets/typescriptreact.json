@@ -33,5 +33,10 @@
       "});"
     ],
     "description": "A snippet for using useSWR with async data fetching."
+  },
+  "motion import": {
+    "prefix": "motion",
+    "body": ["import { motion } from 'motion/react'"],
+    "description": "imports motion react lib"
   }
 }
