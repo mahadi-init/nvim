@@ -36,6 +36,9 @@ return {
           'diagnostics',
         },
         lualine_x = {
+          function()
+            return require('lsp-progress').progress()
+          end,
           'diff',
         },
         lualine_y = {
