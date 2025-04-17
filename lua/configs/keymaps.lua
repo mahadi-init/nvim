@@ -17,7 +17,7 @@ vim.keymap.set('n', 'zo', require('ufo').openAllFolds)
 
 -- telescope
 vim.keymap.set('n', '<leader><leader>', telescope.find_files, { desc = 'find files' }) -- find files
-vim.keymap.set('n', '<leader>fg', telescope.git_status, { desc = 'git status' }) -- git status
+vim.keymap.set('n', '<C-g>', telescope.git_status, { desc = 'git status' }) -- git status
 vim.keymap.set('n', '<leader>fw', telescope.live_grep, { desc = 'find words' }) -- live grep
 vim.keymap.set('n', '<C-b>', telescope.buffers, { desc = 'Find buffer' })
 vim.keymap.set('n', '<leader>ft', telescope.current_buffer_fuzzy_find) -- find text current buffer
