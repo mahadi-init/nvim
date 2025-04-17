@@ -2,7 +2,6 @@ return {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   event = 'VeryLazy',
-  enabled = true,
   config = function()
     require('lualine').setup {
       options = {
@@ -36,6 +35,9 @@ return {
           'diagnostics',
         },
         lualine_x = {
+          function()
+            return require('lsp-progress').progress()
+          end,
           'diff',
         },
         lualine_y = {
