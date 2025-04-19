@@ -22,9 +22,6 @@ return {
     'williamboman/mason-lspconfig.nvim',
     event = 'VeryLazy',
     config = function()
-      require('mason').setup {
-        ensure_installed = { 'lua_ls', 'ts_ls', 'eslint', 'tailwindcss', 'html' },
-      }
       require('mason-lspconfig').setup()
     end,
   },

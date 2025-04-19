@@ -39,11 +39,10 @@ end)
 vim.keymap.set('n', '<leader>gg', '<CMD>LazyGit<CR>', { desc = 'LazyGit' }) -- file tree
 
 -- quickfix
-vim.keymap.set('n', '<M-c>', '<CMD>copen<CR>', { desc = 'Open quickfix' })
+vim.keymap.set('n', '<M-o>', '<CMD>copen<CR>', { desc = 'Open quickfix' })
 vim.keymap.set('n', '<M-x>', '<CMD>cclose<CR>', { desc = 'close quickfix' })
 vim.keymap.set('n', '<M-k>', '<CMD>cprev<CR>', { desc = 'previous quickfix' })
 vim.keymap.set('n', '<M-j>', '<CMD>cnext<CR>', { desc = 'next quickfix' })
-vim.keymap.set('n', '<M-t>', '<CMD>TodoQuickFix<CR>', { desc = 'quickfix todo list' })
 
 -- resize window
 vim.keymap.set('n', '=', [[<cmd>vertical resize +5<cr>]]) -- make the window biger vertically
@@ -54,13 +53,5 @@ vim.keymap.set('n', '<leader>do', '<CMD>DiffviewOpen<CR>')
 vim.keymap.set('n', '<leader>df', '<CMD>DiffviewFileHistory %<CR>')
 vim.keymap.set('n', '<leader>dc', '<CMD>DiffviewClose<CR>')
 
--- bufferline
-vim.keymap.set('n', '<Leader>bp', '<cmd>BufferLineTogglePin<CR>')
-
 -- Set up a keymap to trigger the sorting
 vim.keymap.set('n', '<C-a>', '<CMD>SortImports<CR>', { desc = 'Sort Imports by Line Length' })
-
--- ssr
-vim.keymap.set({ 'n' }, '<c-f>', function()
-  require('ssr').open()
-end)

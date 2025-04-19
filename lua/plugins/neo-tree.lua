@@ -3,12 +3,22 @@ return {
   event = 'VeryLazy',
   branch = 'v3.x',
   dependencies = {
-    'nvim-lua/plenary.nvim',
-    'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
-    'MunifTanjim/nui.nvim',
+    {
+      'nvim-lua/plenary.nvim',
+      event = 'VeryLazy',
+    },
+    {
+      'nvim-tree/nvim-web-devicons',
+      event = 'VeryLazy',
+    },
+    {
+      'MunifTanjim/nui.nvim',
+      event = 'VeryLazy',
+    },
     {
       's1n7ax/nvim-window-picker',
       version = '2.*',
+      event = 'VeryLazy',
       config = function()
         require('window-picker').setup {
           filter_rules = {
