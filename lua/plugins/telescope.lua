@@ -2,9 +2,6 @@ return {
   'nvim-telescope/telescope.nvim',
   tag = '0.1.8',
   event = 'VeryLazy',
-  dependencies = {
-    'nvim-lua/plenary.nvim',
-  },
   opts = {
     defaults = {
       path_display = {
@@ -18,9 +15,6 @@ return {
       layout_config = { prompt_position = 'top' },
       sorting_strategy = 'ascending',
       winblend = 0,
-      preview = {
-        -- hide_on_startup = true,
-      },
       file_ignore_patterns = {
         'node_modules',
         '.next',

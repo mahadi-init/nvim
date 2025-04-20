@@ -4,6 +4,7 @@ return {
   config = function()
     local helpers = require 'incline.helpers'
     local devicons = require 'nvim-web-devicons'
+
     require('incline').setup {
       window = {
         padding = 0,
