@@ -26,7 +26,7 @@ local on_attach = function(_, _)
 end
 
 -- List of servers
-local servers = { 'lua_ls', 'ts_ls', 'eslint', 'tailwindcss', 'html', 'cssls' }
+local servers = { 'lua_ls', 'ts_ls', 'eslint', 'tailwindcss', 'html', 'cssls', 'prismals' }
 
 -- Server setup
 for _, lsp in ipairs(servers) do
