@@ -21,6 +21,7 @@ return {
         'package-lock.json',
         'bun.lock',
         'pnpm-lock.yaml',
+        '%.svg$', -- This will ignore files ending with .svg
       },
     },
     pickers = {
