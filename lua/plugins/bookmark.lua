@@ -16,10 +16,8 @@ return {
     'Bookmarks',
   },
   keys = {
-    { '<leader>ba', '<cmd>BookmarkAdd<cr>', desc = 'Add Bookmark' },
+    { '<leader>ba', '<cmd>BookmarkAdd<cr>',    desc = 'Add Bookmark' },
     { '<leader>br', '<cmd>BookmarkRemove<cr>', desc = 'Remove Bookmark' },
-    { '<leader>bj', desc = 'Jump to Next Bookmark' },
-    { '<leader>bk', desc = 'Jump to Previous Bookmark' },
-    { '<leader>bl', '<cmd>Bookmarks<cr>', desc = 'List Bookmarks' },
+    { '<leader>bl', '<cmd>Bookmarks<cr>',      desc = 'List Bookmarks' },
   },
 }
