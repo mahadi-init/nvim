@@ -6,7 +6,7 @@ return {
         accept_suggestion = "<Tab>",
         clear_suggestion = "<M-]>",
       },
-      ignore_filetypes = { ["neo-tree"] = true, ["DressingInput"] = true }
+      ignore_filetypes = { ["neo-tree"] = true, ["DressingInput"] = true, ["neo-tree-popup"] = true },
     })
   end,
 }
