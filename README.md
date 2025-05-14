@@ -1,103 +1,124 @@
-# nvim
+# Optimized Neovim Configuration
 
-<a href="https://dotfyle.com/mahadi-init/nvim"><img src="https://dotfyle.com/mahadi-init/nvim/badges/plugins?style=flat" /></a>
-<a href="https://dotfyle.com/mahadi-init/nvim"><img src="https://dotfyle.com/mahadi-init/nvim/badges/leaderkey?style=flat" /></a>
-<a href="https://dotfyle.com/mahadi-init/nvim"><img src="https://dotfyle.com/mahadi-init/nvim/badges/plugin-manager?style=flat" /></a>
+This Neovim configuration is built with performance and usability in mind. It provides a modern IDE-like experience with intelligent code completion, LSP support, and a clean user interface.
 
+## Features
 
-## Install Instructions
+- 🚀 Fast startup time with optimized lazy-loading
+- 🔍 Powerful fuzzy search with Telescope
+- 🖥️ Built-in terminal support
+- 🌈 Beautiful UI with Catppuccin theme
+- 📊 Smart status line
+- 📝 LSP integration for intelligent code editing
+- 🔄 Git integration with LazyGit and Gitsigns
+- 📁 Neo-tree file explorer
+- 🔧 Built-in import sorting for cleaner code
 
- > Install requires Neovim 0.9+. Always review the code before installing a configuration.
+## Installation
 
-Clone the repository and install the plugins:
+1. Make sure you have Neovim 0.9.0+ installed
+2. Clone this repository to your Neovim configuration directory:
 
-```sh
-git clone git@github.com:mahadi-init/nvim ~/.config/mahadi-init/nvim
+```bash
+git clone https://github.com/yourusername/nvim-config.git ~/.config/nvim
 ```
 
-Open Neovim with this config:
+3. Start Neovim and let it install the plugins automatically:
 
-```sh
-NVIM_APPNAME=mahadi-init/nvim/ nvim
+```bash
+nvim
 ```
 
-## Plugins
+## Key Mappings
 
-### colorscheme
+### General
 
-+ [EdenEast/nightfox.nvim](https://dotfyle.com/plugins/EdenEast/nightfox.nvim)
-### completion
+| Key           | Mode | Description                  |
+|---------------|------|------------------------------|
+| `<C-s>`       | n,i,v | Save file                   |
+| `<leader>q`   | n    | Quit Neovim                  |
+| `<ESC>`       | n    | Clear search highlighting    |
+| `<C-j>/<C-d>` | n    | Scroll down (centered)       |
+| `<C-k>/<C-u>` | n    | Scroll up (centered)         |
+| `<C-v>`       | n    | Vertical split               |
+| `<C-Right>`   | n    | Next buffer                  |
+| `<C-Left>`    | n    | Previous buffer              |
+| `<C-x>`       | n    | Delete buffer                |
 
-+ [hrsh7th/nvim-cmp](https://dotfyle.com/plugins/hrsh7th/nvim-cmp)
-### debugging
+### Telescope
 
-+ [Goose97/timber.nvim](https://dotfyle.com/plugins/Goose97/timber.nvim)
-### editing-support
+| Key              | Description        |
+|------------------|--------------------|
+| `<leader><leader>` | Find files         |
+| `<C-g>`          | Git status         |
+| `<leader>fw`     | Find words (grep)  |
+| `<C-b>`          | Find buffers       |
+| `<leader>ft`     | Find in buffer     |
 
-+ [windwp/nvim-ts-autotag](https://dotfyle.com/plugins/windwp/nvim-ts-autotag)
-+ [folke/snacks.nvim](https://dotfyle.com/plugins/folke/snacks.nvim)
-### file-explorer
+### Code Navigation
 
-+ [nvim-neo-tree/neo-tree.nvim](https://dotfyle.com/plugins/nvim-neo-tree/neo-tree.nvim)
-### formatting
+| Key          | Description                 |
+|--------------|-----------------------------|
+| `<leader>lr` | LSP rename                  |
+| `<leader>la` | Code action                 |
+| `<leader>ld` | Line diagnostics            |
+| `K`          | Hover documentation         |
+| `gd`         | Go to definition            |
+| `gr`         | Find references             |
+| `[d`         | Previous diagnostic         |
+| `]d`         | Next diagnostic             |
+| `<C-a>`      | Sort imports                |
 
-+ [stevearc/conform.nvim](https://dotfyle.com/plugins/stevearc/conform.nvim)
-### fuzzy-finder
+### Git
 
-+ [nvim-telescope/telescope.nvim](https://dotfyle.com/plugins/nvim-telescope/telescope.nvim)
-### git
+| Key           | Description              |
+|---------------|--------------------------|
+| `<leader>gg`  | Open LazyGit             |
+| `<leader>do`  | Open Diffview            |
+| `<leader>df`  | File history in Diffview |
+| `<leader>dc`  | Close Diffview           |
 
-+ [kdheepak/lazygit.nvim](https://dotfyle.com/plugins/kdheepak/lazygit.nvim)
-+ [sindrets/diffview.nvim](https://dotfyle.com/plugins/sindrets/diffview.nvim)
-+ [lewis6991/gitsigns.nvim](https://dotfyle.com/plugins/lewis6991/gitsigns.nvim)
-### icon
+### File Explorer
 
-+ [nvim-tree/nvim-web-devicons](https://dotfyle.com/plugins/nvim-tree/nvim-web-devicons)
-### lsp
+| Key          | Description            |
+|--------------|------------------------|
+| `<leader>e`  | Toggle file explorer   |
 
-+ [nvimdev/lspsaga.nvim](https://dotfyle.com/plugins/nvimdev/lspsaga.nvim)
-+ [onsails/lspkind.nvim](https://dotfyle.com/plugins/onsails/lspkind.nvim)
-+ [j-hui/fidget.nvim](https://dotfyle.com/plugins/j-hui/fidget.nvim)
-+ [neovim/nvim-lspconfig](https://dotfyle.com/plugins/neovim/nvim-lspconfig)
-### lsp-installer
+## Structure
 
-+ [williamboman/mason.nvim](https://dotfyle.com/plugins/williamboman/mason.nvim)
-### motion
+```
+nvim/
+├── init.lua                 # Entry point
+├── lua/
+│   ├── configs/             # Core configuration
+│   │   ├── autocmds.lua     # Autocommands
+│   │   ├── diagnostics.lua  # Diagnostic settings
+│   │   ├── import-format.lua# Import formatting
+│   │   ├── keymaps.lua      # Key mappings
+│   │   ├── lazy.lua         # Plugin manager setup
+│   │   ├── lsp.lua          # LSP configuration
+│   │   ├── options.lua      # Neovim options
+│   │   └── utils.lua        # Utility functions
+│   └── plugins/             # Plugin configurations
+└── README.md                # This file
+```
 
-+ [folke/flash.nvim](https://dotfyle.com/plugins/folke/flash.nvim)
-### nvim-dev
+## Customization
 
-+ [nvim-lua/plenary.nvim](https://dotfyle.com/plugins/nvim-lua/plenary.nvim)
-+ [MunifTanjim/nui.nvim](https://dotfyle.com/plugins/MunifTanjim/nui.nvim)
-### plugin-manager
+To modify the configuration:
 
-+ [folke/lazy.nvim](https://dotfyle.com/plugins/folke/lazy.nvim)
-### session
+1. Edit files in `lua/configs/` to change core settings
+2. Edit files in `lua/plugins/` to modify plugin behavior
+3. Add new plugins by creating files in `lua/plugins/`
 
-+ [folke/persistence.nvim](https://dotfyle.com/plugins/folke/persistence.nvim)
-### statusline
+## Performance
 
-+ [nvim-lualine/lualine.nvim](https://dotfyle.com/plugins/nvim-lualine/lualine.nvim)
-### syntax
+This configuration is designed to be lightweight and fast. If you experience slowdowns:
 
-+ [nvim-treesitter/nvim-treesitter](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter)
-### tabline
+1. Check startup time with `nvim --startuptime startup.log`
+2. Review lazy-loaded plugins in `lua/plugins/`
+3. Adjust LSP configurations in `lua/configs/lsp.lua`
 
-+ [echasnovski/mini.tabline](https://dotfyle.com/plugins/echasnovski/mini.tabline)
-### terminal-integration
+## Credits
 
-+ [akinsho/toggleterm.nvim](https://dotfyle.com/plugins/akinsho/toggleterm.nvim)
-### utility
-
-+ [stevearc/dressing.nvim](https://dotfyle.com/plugins/stevearc/dressing.nvim)
-## Language Servers
-
-+ cssls
-+ eslint
-+ html
-+ lua_ls
-+ prismals
-+ tailwindcss
-
-
- This readme was generated by [Dotfyle](https://dotfyle.com)
+This configuration integrates several excellent plugins from the Neovim community. See the individual plugin repositories for their respective licenses and credits.
