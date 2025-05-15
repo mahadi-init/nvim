@@ -4,14 +4,14 @@ local M = {}
 -- Helper function for easier keymap creation
 -- @param mode string|table: Mode or modes to set keymap for
 -- @param lhs string: Left-hand side of the mapping
--- @param rhs string|function: Right-hand side of the mapping 
+-- @param rhs string|function: Right-hand side of the mapping
 -- @param opts table|nil: Optional parameters
 M.map = function(mode, lhs, rhs, opts)
   opts = opts or {}
   -- Set sensible defaults
   if opts.silent == nil then opts.silent = true end
   if opts.noremap == nil then opts.noremap = true end
-  
+
   vim.keymap.set(mode, lhs, rhs, opts)
 end
 
@@ -52,7 +52,7 @@ end
 M.debounce = function(func, timeout)
   local timer = vim.loop.new_timer()
   return function(...)
-    local args = {...}
+    local args = { ... }
     timer:stop()
     timer:start(timeout, 0, function()
       vim.schedule(function()
@@ -63,3 +63,4 @@ M.debounce = function(func, timeout)
 end
 
 return M
+

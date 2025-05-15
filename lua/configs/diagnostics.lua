@@ -1,8 +1,8 @@
 local signs = {
-  { name = "DiagnosticSignError", text = " " },
-  { name = "DiagnosticSignWarn", text = " " },
-  { name = "DiagnosticSignHint", text = "󰌵 " },
-  { name = "DiagnosticSignInfo", text = " " },
+  { name = "DiagnosticSignError", text = " " },
+  { name = "DiagnosticSignWarn", text = " " },
+  { name = "DiagnosticSignHint", text = "󰌵" },
+  { name = "DiagnosticSignInfo", text = " " },
 }
 
 -- Configure diagnostic signs
@@ -42,3 +42,4 @@ return {
   handlers = handlers,
   signs = signs,
 }
+
