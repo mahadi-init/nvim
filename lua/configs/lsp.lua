@@ -3,7 +3,7 @@ local M = {}
 
 M.setup = function()
   local lspconfig = require('lspconfig')
-  
+
   -- Initialize capabilities lazily
   local capabilities = function()
     return require('blink.cmp').get_lsp_capabilities()
@@ -22,7 +22,8 @@ M.setup = function()
     vim.keymap.set('n', 'K', ':Lspsaga hover_doc<CR>', { buffer = bufnr, desc = "LSP: Hover Doc" })
     vim.keymap.set('n', 'gd', ':Lspsaga goto_definition<CR>', { buffer = bufnr, desc = "LSP: Go to Definition" })
     vim.keymap.set('n', 'gr', ':Lspsaga finder<CR>', { buffer = bufnr, desc = "LSP: Find References" })
-    vim.keymap.set('n', 'gtr', function() require('telescope.builtin').lsp_references() end, { buffer = bufnr, desc = "LSP: Telescope References" })
+    vim.keymap.set('n', 'gtr', function() require('telescope.builtin').lsp_references() end,
+      { buffer = bufnr, desc = "LSP: Telescope References" })
     vim.keymap.set('n', 'gi', ':Lspsaga incoming_calls<CR>', { buffer = bufnr, desc = "LSP: Incoming Calls" })
     vim.keymap.set('n', 'go', ':Lspsaga outgoing_calls<CR>', { buffer = bufnr, desc = "LSP: Outgoing Calls" })
 
@@ -54,7 +55,7 @@ M.setup = function()
   for server_name, server_config in pairs(servers) do
     server_config.on_attach = on_attach
     server_config.capabilities = capabilities()
-    
+
     lspconfig[server_name].setup(server_config)
   end
 end
