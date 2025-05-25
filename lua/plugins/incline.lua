@@ -27,7 +27,7 @@ return {
         local display_path = ''
         if #dir_parts > 0 then
           -- Take last 3 parts and join with /
-          local start_idx = math.max(1, #dir_parts - 1)
+          local start_idx = math.max(1, #dir_parts - 2)
           display_path = table.concat({ unpack(dir_parts, start_idx) }, '/') .. '/'
         end
 
