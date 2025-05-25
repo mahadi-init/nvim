@@ -23,5 +23,8 @@ return {
         diagnostics_update_on_event = true,
       },
     }
+
+    vim.keymap.set('n', '<C-Right>', '<CMD>BufferLineCycleNext<CR>') -- next buffer
+    vim.keymap.set('n', '<C-Left>', '<CMD>BufferLineCyclePrev<CR>') -- previous buffer
   end,
 }

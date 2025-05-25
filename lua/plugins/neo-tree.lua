@@ -217,5 +217,6 @@ return {
     }
 
     vim.cmd [[nnoremap \ :Neotree reveal<cr>]]
+    vim.keymap.set('n', '<leader>e', '<CMD>Neotree filesystem toggle<CR>', { desc = 'neo tree open' }) -- file tree
   end,
 }
