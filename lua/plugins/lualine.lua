@@ -25,6 +25,7 @@ return {
         lualine_a = { 'mode' },
         lualine_b = {
           'branch',
+          'diff',
         },
         lualine_c = {
           'diagnostics',
@@ -41,7 +42,6 @@ return {
             end
             return ''
           end,
-          'diff',
         },
         lualine_y = {
           'filetype',
