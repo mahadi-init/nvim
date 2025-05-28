@@ -1,10 +1,6 @@
 return {
   'nvim-lualine/lualine.nvim',
   event = 'VeryLazy',
-  dependencies = {
-    'letieu/harpoon-lualine',
-    event = 'VeryLazy',
-  },
   config = function()
     require('lualine').setup {
       options = {
@@ -29,15 +25,10 @@ return {
         lualine_a = { 'mode' },
         lualine_b = {
           'branch',
-          'diagnostics',
         },
         lualine_c = {
-          {
-            'harpoon2',
-            indicators = { 'b', 'n', 'm' },
-            active_indicators = { 'B', 'N', 'M' },
-            color_active = { fg = '#00ff00' },
-          },
+          'diagnostics',
+          'buffers',
         },
         lualine_x = {
           function()
