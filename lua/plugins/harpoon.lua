@@ -8,6 +8,8 @@ return {
 
     -- REQUIRED
     harpoon:setup()
+    local harpoon_extensions = require 'harpoon.extensions'
+    harpoon:extend(harpoon_extensions.builtins.highlight_current_file())
     -- REQUIRED
 
     vim.keymap.set('n', '<leader>a', function()
@@ -26,14 +28,6 @@ return {
     end)
     vim.keymap.set('n', '<C-m>', function()
       harpoon:list():select(3)
-    end)
-
-    -- Toggle previous & next buffers stored within Harpoon list
-    vim.keymap.set('n', '<C-p>', function()
-      harpoon:list():prev()
-    end)
-    vim.keymap.set('n', '<C-n>', function()
-      harpoon:list():next()
     end)
   end,
 }

@@ -18,6 +18,10 @@ vim.keymap.set('n', '<M-j>', '<CMD>cnext<CR>', { desc = 'next quickfix' })
 vim.keymap.set('n', '=', [[<cmd>vertical resize +5<cr>]]) -- make the window biger vertically
 vim.keymap.set('n', '-', [[<cmd>vertical resize -5<cr>]]) -- make the window smaller vertically
 
+-- buffer switch
+vim.keymap.set('n', '<C-Right>', '<CMD>bnext<CR>')
+vim.keymap.set('n', '<C-Left>', '<CMD>bprev<CR>')
+
 -- session
 vim.keymap.set('n', '<leader>ls', function()
   require('persistence').load()
