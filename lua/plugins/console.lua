@@ -5,8 +5,8 @@ return {
   config = function()
     require('timber').setup {
       keymaps = {
-        insert_log_below = '<C-l>',
-        insert_plain_log_below = '<C-M-l>',
+        insert_log_below = '<C-M-l>',
+        insert_plain_log_below = '<C-l>',
       },
     }
   end,
