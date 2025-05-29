@@ -91,3 +91,8 @@ local disabled_built_ins = {
 for _, plugin in pairs(disabled_built_ins) do
   g['loaded_' .. plugin] = 1
 end
+
+-- FIXME: REMOVE SOME TIME
+vim.deprecate = function(name, alternative, version, plugin, backtrace)
+  -- Do nothing (silently ignore all deprecations)
+end
