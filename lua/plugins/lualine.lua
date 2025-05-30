@@ -25,6 +25,10 @@ return {
         lualine_a = { 'mode' },
         lualine_b = {
           'branch',
+          function()
+            local relative_filepath = vim.fn.expand '%:.'
+            return relative_filepath
+          end,
         },
         lualine_c = {
           'diagnostics',
