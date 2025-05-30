@@ -28,7 +28,6 @@ return {
         },
         lualine_c = {
           'diagnostics',
-          'buffers',
         },
         lualine_x = {
           function()
