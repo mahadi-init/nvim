@@ -6,13 +6,11 @@ return {
       local status = require('codeium.virtual_text').status()
 
       if status.state == 'idle' then
-        -- Output was cleared, for example when leaving insert mode
-        return ' '
+        return ' '
       end
 
       if status.state == 'waiting' then
-        -- Waiting for response
-        return "Waiting..."
+        return " "
       end
 
       if status.state == 'completions' and status.total > 0 then
