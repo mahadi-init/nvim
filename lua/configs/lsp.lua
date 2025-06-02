@@ -28,7 +28,7 @@ local on_attach = function(client, bufnr)
   -- TypeScript specific keymaps
   if client.name == 'ts_ls' then
     -- Modern implementation of organize imports
-    vim.keymap.set('n', '<C-f>', function()
+    vim.keymap.set('n', '<C-a>', function()
       client.request('workspace/executeCommand', {
         command = '_typescript.organizeImports',
         arguments = { vim.api.nvim_buf_get_name(0) },
