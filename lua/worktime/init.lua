@@ -37,22 +37,66 @@ function M.stop_timer()
   end
 end
 
+local function get_project_name()
+  return vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+end
+
+local function get_log_path()
+  return vim.fn.stdpath("data") .. "/worktime/" .. get_project_name() .. ".txt"
+end
+
+local function get_cache_path()
+  return vim.fn.stdpath("data") .. "/worktime/" .. get_project_name() .. ".cache"
+end
+
+function M.add_session(time_start, time_end)
+  local duration = time_end - time_start
+  local log_line = string.format("%d,%d,%d\n", time_start, time_end, duration)
+
+  -- append to log
+  local log_path = get_log_path()
+  vim.fn.mkdir(vim.fn.fnamemodify(log_path, ":h"), "p")
+  local f = io.open(log_path, "a")
+  if f then
+    f:write(log_line)
+    f:close()
+  end
+
+  -- update cache
+  local cache_path = get_cache_path()
+  local cached = 0
+  local fc = io.open(cache_path, "r")
+  if fc then
+    ---@diagnostic disable-next-line: cast-local-type
+    cached = tonumber(fc:read("*l") or "0")
+    fc:close()
+  end
+
+  cached = cached + duration
+  local fw = io.open(cache_path, "w")
+  if fw then
+    fw:write(tostring(cached))
+    fw:close()
+  end
+end
+
 function M.print_total_time()
-  local file = io.open(get_project_file(), "r")
-  if not file then
-    return "No work sessions found for project: " .. project_name
-  end
-
+  local cache_path = get_cache_path()
   local total = 0
-  for line in file:lines() do
-    local _, _, duration = line:match("(%d+),(%d+),(%d+)")
-    if duration then
-      total = total + tonumber(duration)
-    end
+  local f = io.open(cache_path, "r")
+  if f then
+    ---@diagnostic disable-next-line: cast-local-type
+    total = tonumber(f:read("*l") or "0")
+    f:close()
   end
-  file:close()
 
-  return string.format("⏱  Total time on %s: %d minutes", project_name, math.floor(total / 60))
+  local hours = math.floor(total / 3600)
+  local minutes = math.floor((total % 3600) / 60)
+  if hours > 0 then
+    vim.notify(string.format("⏱  Total time on %s:%2dh%2dm", project_name, hours, minutes), vim.log.levels.INFO)
+  else
+    vim.notify(string.format("⏱  Total time on %s:%2dm", project_name, minutes), vim.log.levels.INFO)
+  end
 end
 
 -- Called on VimEnter

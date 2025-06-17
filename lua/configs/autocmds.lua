@@ -1,4 +1,5 @@
 local worktime = require("worktime")
+local start_time = os.time()
 
 -- Autocmd for UIEnter and ColorScheme
 vim.api.nvim_create_autocmd({ 'UIEnter', 'ColorScheme' }, {
@@ -26,16 +27,20 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 
+-- timer and session
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()
     worktime.start_timer()
     worktime.start_session()
-    vim.notify(worktime.print_total_time(), vim.log.levels.INFO)
+    worktime.print_total_time()
   end
 })
 
+
+-- timer and session
 vim.api.nvim_create_autocmd("VimLeavePre", {
   callback = function()
-    worktime.stop_timer()
-  end
+    local end_time = os.time()
+    worktime.add_session(start_time, end_time)
+  end,
 })
