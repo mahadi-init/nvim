@@ -47,6 +47,9 @@ return {
           end,
         },
         lualine_y = {
+          function()
+            return require("worktime").get_session_elapsed()
+          end,
           'filetype',
         },
         lualine_z = { 'location', 'progress' },
