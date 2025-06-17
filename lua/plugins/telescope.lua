@@ -36,9 +36,10 @@ return {
 
     -- Key mappings should be outside the setup function
     vim.keymap.set('n', '<leader><leader>', telescope.find_files, { desc = 'find files' }) -- find files
-    vim.keymap.set('n', '<C-g>', telescope.git_status, { desc = 'git status' }) -- git status
-    vim.keymap.set('n', '<leader>fw', telescope.live_grep, { desc = 'find words' }) -- live grep
+    vim.keymap.set('n', '<C-g>', telescope.git_status, { desc = 'git status' })            -- git status
+    vim.keymap.set('n', '<leader>fw', telescope.live_grep, { desc = 'find words' })        -- live grep
     vim.keymap.set('n', '<C-b>', telescope.buffers, { desc = 'Find buffer' })
     vim.keymap.set('n', '<leader>ft', telescope.current_buffer_fuzzy_find, { desc = 'find text current buffer' })
+    vim.keymap.set('n', '<leader>fm', telescope.marks, { desc = 'marks' })
   end,
 }
