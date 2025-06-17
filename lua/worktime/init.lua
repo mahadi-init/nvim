@@ -93,9 +93,9 @@ function M.print_total_time()
   local hours = math.floor(total / 3600)
   local minutes = math.floor((total % 3600) / 60)
   if hours > 0 then
-    vim.notify(string.format("⏱  Total time on %s:%2dh%2dm", project_name, hours, minutes), vim.log.levels.INFO)
+    vim.notify(string.format("⏱  Total time on %s: %2dh %2dm", project_name, hours, minutes), vim.log.levels.INFO)
   else
-    vim.notify(string.format("⏱  Total time on %s:%2dm", project_name, minutes), vim.log.levels.INFO)
+    vim.notify(string.format("⏱  Total time on %s: %2dm", project_name, minutes), vim.log.levels.INFO)
   end
 end
 
