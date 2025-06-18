@@ -32,7 +32,6 @@ vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()
     worktime.start_timer()
     worktime.start_session()
-    worktime.print_total_time()
   end
 })
 
