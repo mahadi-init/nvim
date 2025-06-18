@@ -30,11 +30,10 @@ return {
       "",
     },
     center = {
-      { icon = " ", desc = date, action = "" },
-      { icon = " ", desc = time, action = "" },
-      { icon = " ", desc = greeting, action = "" },
-      { icon = "🕒 ", desc = "Session: " .. session, action = "" },
-      { icon = "📊 ", desc = "Total: " .. total, action = "" },
+      { icon = "📊 ", desc = "" .. total, action = "" },
+      { icon = "", desc = time, action = "" },
+      { icon = "", desc = greeting, action = "" },
+      { icon = "", desc = date, action = "" },
     },
     footer = { "", "⚡ Happy coding, Mahadi!" },
 
