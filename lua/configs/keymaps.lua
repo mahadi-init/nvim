@@ -1,12 +1,12 @@
 -- native keymaps
 vim.keymap.set({ 'n', 'i', 'v' }, '<C-s>', '<CMD>w<CR>') -- save file
-vim.keymap.set('n', '<leader>q', '<CMD>q<CR>') -- quit neovim
-vim.keymap.set('n', '<ESC>', '<CMD>nohlsearch<CR>') -- escape and remove search query
-vim.keymap.set('n', '<C-j>', '<C-d>zz') -- scroll down
-vim.keymap.set('n', '<C-k>', '<C-u>zz') -- scroll up
-vim.keymap.set('n', '<C-d>', '<C-d>zz') -- scroll down
-vim.keymap.set('n', '<C-u>', '<C-u>zz') -- scroll up
-vim.keymap.set('n', '<C-v>', '<CMD>vsplit<CR>') -- vertical split
+vim.keymap.set('n', '<leader>q', '<CMD>q<CR>')           -- quit neovim
+vim.keymap.set('n', '<ESC>', '<CMD>nohlsearch<CR>')      -- escape and remove search query
+vim.keymap.set('n', '<C-j>', '<C-d>zz')                  -- scroll down
+vim.keymap.set('n', '<C-k>', '<C-u>zz')                  -- scroll up
+vim.keymap.set('n', '<C-d>', '<C-d>zz')                  -- scroll down
+vim.keymap.set('n', '<C-u>', '<C-u>zz')                  -- scroll up
+vim.keymap.set('n', '<C-v>', '<CMD>vsplit<CR>')          -- vertical split
 
 -- quickfix
 vim.keymap.set('n', '<M-o>', '<CMD>copen<CR>', { desc = 'Open quickfix' })
@@ -26,3 +26,11 @@ vim.keymap.set('n', '<C-Left>', '<CMD>bprev<CR>')
 vim.keymap.set('n', '<leader>ls', function()
   require('persistence').load()
 end)
+
+-- worktimereport
+vim.api.nvim_create_user_command("WorktimeReport", function()
+  require("worktime.ui").show_report()
+end, {})
+
+-- worktime
+vim.keymap.set('n', '<leader>wr', '<CMD>WorktimeReport<CR>')

@@ -114,4 +114,25 @@ function M.get_session_elapsed()
   return string.format("🕒 %02d:%02d", mins, secs)
 end
 
+function M.get_cached_total_formatted()
+  local cache_path = get_cache_path()
+
+  local file = io.open(cache_path, "r")
+  if not file then
+    return "0m"
+  end
+
+  local total_seconds = tonumber(file:read("*a")) or 0
+  file:close()
+
+  local hours = math.floor(total_seconds / 3600)
+  local minutes = math.floor((total_seconds % 3600) / 60)
+
+  if hours > 0 then
+    return string.format("%dh %02dm", hours, minutes)
+  else
+    return string.format("%dm", minutes)
+  end
+end
+
 return M
