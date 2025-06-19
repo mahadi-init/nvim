@@ -14,7 +14,6 @@ end
 -- Get date/time & worktime info
 local date = os.date("📅 %A, %d %B %Y")
 local time = os.date("⏰ %I:%M %p")
-local session = worktime.get_session_elapsed():gsub("🕒 ", "")
 local total = worktime.get_cached_total_formatted()
 
 return {
@@ -35,7 +34,6 @@ return {
       { icon = "", desc = greeting, action = "" },
       { icon = "", desc = date, action = "" },
     },
-    footer = { "", "⚡ Happy coding, Mahadi!" },
 
     -- Optional UI tweaks:
     disable_move = false,
