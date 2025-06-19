@@ -38,5 +38,16 @@
     "prefix": "motion",
     "body": ["import { motion } from 'motion/react'"],
     "description": "imports motion react lib"
+  },
+  "params with promise": {
+    "prefix": "params",
+    "body": [
+      "props: {",
+      "  params: Promise<{",
+      "    name: string;",
+      "  }>;",
+      "}"
+    ],
+    "description": "Props with params as a Promise<{ name: string }>"
   }
 }
