@@ -1,5 +1,6 @@
 return {
   "Exafunction/windsurf.nvim",
+  event = "VeryLazy",
   config = function()
     require("codeium").setup({
       -- Optionally disable cmp source if using virtual text only

@@ -4,6 +4,7 @@ return {
     event = 'VeryLazy',
     dependencies = {
       'neovim/nvim-lspconfig',
+      event = "VeryLazy"
     },
     config = function()
       require('mason').setup {

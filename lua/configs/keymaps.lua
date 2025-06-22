@@ -26,11 +26,3 @@ vim.keymap.set('n', '<C-Left>', '<CMD>bprev<CR>')
 vim.keymap.set('n', '<leader>ls', function()
   require('persistence').load()
 end)
-
--- worktimereport
-vim.api.nvim_create_user_command("WorktimeReport", function()
-  require("worktime.ui").show_report()
-end, {})
-
--- worktime
-vim.keymap.set('n', '<leader>wr', '<CMD>WorktimeReport<CR>')
