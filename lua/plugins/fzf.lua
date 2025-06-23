@@ -10,6 +10,37 @@ return {
         ['tab'] = require('fzf-lua.actions').toggle_select,
         ['default'] = require('fzf-lua.actions').qf_add,
       },
+      file_ignore_patterns = {
+        '^.git/',
+        '^node_modules/',
+        '^%.next/',
+        '%.o$',
+        '%.a$',
+        '%.out$',
+        '%.class$',
+        '%.pdf$',
+        '%.zip$',
+      },
+      files = {
+        find_opts = {
+          fd = {
+            '--no-ignore-vcs',
+            '--hidden',
+            '--exclude=node_modules',
+            '--exclude=.next',
+            '--exclude=.git',
+          },
+        },
+      },
+      grep = {
+        rg_opts = {
+          '--hidden',
+          '--glob=!node_modules/**',
+          '--glob=!.next/**',
+          '--glob=!.git/**',
+          '--color=always',
+        },
+      },
     })
 
     vim.keymap.set('n', '<leader><leader>', fzf.files, { desc = 'find files' })
