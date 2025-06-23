@@ -39,7 +39,7 @@ return {
       },
       select = {
         enabled = true,
-        backend = { 'fzf_lua', 'fzf', 'telescope', 'builtin', 'nui' },
+        backend = { 'fzf-lua', 'fzf', 'telescope', 'builtin', 'nui' },
         trim_prompt = true,
         telescope = nil,
         fzf = {
