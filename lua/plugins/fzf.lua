@@ -17,6 +17,5 @@ return {
     vim.keymap.set('n', '<leader>fw', fzf.live_grep, { desc = 'find words' })
     vim.keymap.set('n', '<C-b>', fzf.buffers, { desc = 'Find buffer' })
     vim.keymap.set('n', '<leader>ft', fzf.grep_curbuf, { desc = 'find text current buffer' })
-    vim.keymap.set('n', '<leader>fm', fzf.marks, { desc = 'marks' })
   end
 }

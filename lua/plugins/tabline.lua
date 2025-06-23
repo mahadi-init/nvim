@@ -1,7 +1,7 @@
 return {
   'echasnovski/mini.tabline',
   version = false,
-  event = "VeryLazy",
+  -- event = "VeryLazy",
   config = function()
     require('mini.tabline').setup()
   end
