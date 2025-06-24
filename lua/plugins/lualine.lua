@@ -26,8 +26,19 @@ return {
         lualine_b = {
           'branch',
           function()
-            local relative_filepath = vim.fn.expand '%:.'
-            return relative_filepath
+            local path = vim.fn.expand('%:.') -- Get relative path
+            local parts = {}
+
+            -- Split path into components
+            for part in string.gmatch(path, '([^/]+)') do
+              table.insert(parts, part)
+            end
+
+            -- Return last 3 components joined with /
+            if #parts > 3 then
+              return table.concat({ parts[#parts - 2], parts[#parts - 1], parts[#parts] }, '/')
+            end
+            return path -- Return full path if <= 3 components
           end,
         },
         lualine_c = {
