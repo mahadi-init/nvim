@@ -2,6 +2,13 @@ return {
   'nvim-lualine/lualine.nvim',
   event = 'VeryLazy',
   config = function()
+    local function quran_status()
+      if _G.QuranAudio and _G.QuranAudio.current_surah then
+        return string.format("🕌 %03d - %s", _G.QuranAudio.current_surah.number, _G.QuranAudio.current_surah.name)
+      end
+      return ""
+    end
+
     require('lualine').setup {
       options = {
         icons_enabled = true,
@@ -61,6 +68,7 @@ return {
           function()
             return require("worktime").get_session_elapsed()
           end,
+          quran_status,
           'filetype',
         },
         lualine_z = { 'location', 'progress' },
