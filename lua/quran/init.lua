@@ -222,5 +222,5 @@ vim.api.nvim_create_autocmd("VimLeave", {
 })
 
 -- keymaps
-vim.keymap.set('n', '<leader>pq', '<CMD>QuranSurah<CR>')
-vim.keymap.set('n', '<leader>ps', '<CMD>QuranStop<CR>')
+vim.keymap.set('n', '<leader>nm', '<CMD>QuranSurah<CR>')
+vim.keymap.set('n', '<leader>nb', '<CMD>QuranStop<CR>')
