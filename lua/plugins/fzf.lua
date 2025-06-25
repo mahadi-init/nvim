@@ -20,7 +20,7 @@ return {
         '%.class$',
         '%.pdf$',
         '%.zip$',
-        "package.json",
+        "^dist",
         "bun.lock"
       },
     })
