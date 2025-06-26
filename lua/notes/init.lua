@@ -31,15 +31,27 @@ end
 local function get_notes()
   ensure_note_dir()
   local files = vim.fn.readdir(note_dir)
-  table.sort(files)
-  return files
+  local filtered = {}
+
+  for _, file in ipairs(files) do
+    if file ~= ".git" and file:match("%.md$") then
+      table.insert(filtered, file)
+    end
+  end
+
+  table.sort(filtered)
+  return filtered
 end
 
 -- Open a note
-
 function M.open()
   ensure_note_dir()
-  local files = vim.fn.readdir(note_dir)
+
+  -- Filter notes: ignore hidden files/folders like `.git`, and allow only `.md` files
+  local all_files = vim.fn.readdir(note_dir)
+  local files = vim.tbl_filter(function(file)
+    return not file:match("^%.") and file:match("%.md$")
+  end, all_files)
 
   if #files == 0 then
     print("No notes found.")
@@ -148,6 +160,8 @@ function M.setup()
   vim.api.nvim_create_user_command("NoteNew", M.new, {})
   vim.api.nvim_create_user_command("NoteOpen", M.open, {})
   vim.api.nvim_create_user_command("NoteByTag", M.tag_search, {})
+  vim.api.nvim_create_user_command("NoteSync",
+    string.format("!cd %s && git add . && git commit -m 'auto sync' && git push", note_dir), {})
 end
 
 return M
