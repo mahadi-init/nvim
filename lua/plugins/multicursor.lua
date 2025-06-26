@@ -7,8 +7,9 @@ return {
     mc.setup()
 
     local set = vim.keymap.set
-    -- Add and remove cursors with control + left click.
+    -- Add and remove cursors with alt + left click.
     set('n', '<M-leftmouse>', mc.handleMouse)
+    set({ "n", "x" }, "<C-a>", function() mc.matchAddCursor(1) end)
 
     -- Mappings defined in a keymap layer only apply when there are
     -- multiple cursors. This lets you have overlapping mappings.
