@@ -1,4 +1,5 @@
 local M = {}
+local fzf = require("fzf-lua")
 local note_dir = vim.fn.stdpath("data") .. "/nvim-notes"
 
 local function ensure_note_dir()
@@ -35,18 +36,39 @@ local function get_notes()
 end
 
 -- Open a note
+
 function M.open()
-  local notes = get_notes()
-  if #notes == 0 then
+  ensure_note_dir()
+  local files = vim.fn.readdir(note_dir)
+
+  if #files == 0 then
     print("No notes found.")
     return
   end
 
-  vim.ui.select(notes, { prompt = "Open Note:" }, function(choice)
-    if choice then
-      vim.cmd("edit " .. note_dir .. "/" .. choice)
-    end
-  end)
+  fzf.fzf_exec(files, {
+    prompt = "Notes> ",
+    previewer = "builtin",
+    actions = {
+      ["default"] = function(selected)
+        vim.cmd("edit " .. note_dir .. "/" .. selected[1])
+      end,
+      ["d"] = function(selected)
+        local file = selected[1]
+        local confirm = vim.fn.input("Delete '" .. file .. "'? (y/n): ")
+        if confirm:lower() == "y" then
+          local ok = os.remove(note_dir .. "/" .. file)
+          if ok then
+            print("Deleted note:", file)
+          else
+            print("Failed to delete.")
+          end
+        else
+          print("Aborted.")
+        end
+      end,
+    },
+  })
 end
 
 -- Create a new note with optional tag input
