@@ -20,26 +20,8 @@ return {
         '%.class$',
         '%.pdf$',
         '%.zip$',
-      },
-      files = {
-        find_opts = {
-          fd = {
-            '--no-ignore-vcs',
-            '--hidden',
-            '--exclude=node_modules',
-            '--exclude=.next',
-            '--exclude=.git',
-          },
-        },
-      },
-      grep = {
-        rg_opts = {
-          '--hidden',
-          '--glob=!node_modules/**',
-          '--glob=!.next/**',
-          '--glob=!.git/**',
-          '--color=always',
-        },
+        "^dist",
+        "bun.lock"
       },
     })
 
