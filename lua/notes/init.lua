@@ -122,4 +122,14 @@ function M.tag_search()
   end)
 end
 
+function M.setup()
+  vim.api.nvim_create_user_command("NoteNew", M.new, {})
+  vim.api.nvim_create_user_command("NoteOpen", M.open, {})
+  vim.api.nvim_create_user_command("NoteByTag", M.tag_search, {})
+
+  vim.keymap.set("n", "<leader>nn", ":NoteNew<CR>")
+  vim.keymap.set("n", "<leader>no", ":NoteOpen<CR>")
+  vim.keymap.set("n", "<leader>nt", ":NoteByTag<CR>")
+end
+
 return M
