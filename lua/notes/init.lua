@@ -1,6 +1,7 @@
 local M = {}
 local fzf = require("fzf-lua")
 local note_dir = vim.fn.stdpath("data") .. "/nvim-notes"
+local repo_url = "https://github.com/mahadi-init/neovim-notes"
 
 local function ensure_note_dir()
   if vim.fn.isdirectory(note_dir) == 0 then
@@ -60,7 +61,7 @@ function M.open()
 
   fzf.fzf_exec(files, {
     prompt = "Notes> ",
-    previewer = "builtin",
+    previewer = false,
     actions = {
       ["default"] = function(selected)
         vim.cmd("edit " .. note_dir .. "/" .. selected[1])
@@ -156,12 +157,58 @@ function M.tag_search()
   end)
 end
 
+function M.sync()
+  local path = note_dir
+
+  -- Expand ~ to full path
+  path = vim.fn.expand(path)
+
+  if vim.fn.isdirectory(path) == 0 then
+    -- Folder doesn't exist, clone the repo
+    print("Cloning notes from GitHub...")
+    local result = os.execute("git clone " .. repo_url .. " " .. path)
+    if result == 0 then
+      print("Notes cloned successfully.")
+    else
+      print("Failed to clone repo.")
+    end
+    return
+  end
+
+  -- Folder exists, check for changes
+  local function has_changes()
+    local handle = io.popen("cd " .. path .. " && git status --porcelain")
+    if not handle then return false end
+    local output = handle:read("*a")
+    handle:close()
+    return output ~= ""
+  end
+
+  if has_changes() then
+    print("Syncing changes to GitHub...")
+    local timestamp = os.date("%Y-%m-%d %H:%M:%S")
+    local cmds = {
+      "cd " .. path,
+      "git add .",
+      string.format("git commit -m 'sync: %s'", timestamp),
+      "git push"
+    }
+    local result = os.execute(table.concat(cmds, " && "))
+    if result == 0 then
+      print("Notes synced successfully.")
+    else
+      print("Failed to sync notes.")
+    end
+  else
+    print("No changes to sync.")
+  end
+end
+
 function M.setup()
   vim.api.nvim_create_user_command("NoteNew", M.new, {})
   vim.api.nvim_create_user_command("NoteOpen", M.open, {})
   vim.api.nvim_create_user_command("NoteByTag", M.tag_search, {})
-  vim.api.nvim_create_user_command("NoteSync",
-    string.format("!cd %s && git add . && git commit -m 'auto sync' && git push", note_dir), {})
+  vim.api.nvim_create_user_command("NoteSync", M.sync, {})
 end
 
 return M
