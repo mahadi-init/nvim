@@ -158,49 +158,42 @@ function M.tag_search()
 end
 
 function M.sync()
-  local path = note_dir
-
-  -- Expand ~ to full path
-  path = vim.fn.expand(path)
+  local path = vim.fn.expand(note_dir)
 
   if vim.fn.isdirectory(path) == 0 then
-    -- Folder doesn't exist, clone the repo
+    -- Clone silently without breaking UI
     print("Cloning notes from GitHub...")
-    local result = os.execute("git clone " .. repo_url .. " " .. path)
-    if result == 0 then
-      print("Notes cloned successfully.")
+    local output = vim.fn.system({ "git", "clone", repo_url, path })
+
+    if vim.v.shell_error == 0 then
+      print("✅ Notes cloned successfully.")
     else
-      print("Failed to clone repo.")
+      print("❌ Failed to clone repo:")
+      print(output)
     end
     return
   end
 
-  -- Folder exists, check for changes
-  local function has_changes()
-    local handle = io.popen("cd " .. path .. " && git status --porcelain")
-    if not handle then return false end
-    local output = handle:read("*a")
-    handle:close()
-    return output ~= ""
-  end
+  -- Folder exists: check for changes
+  local status = vim.fn.system({ "git", "-C", path, "status", "--porcelain" })
 
-  if has_changes() then
-    print("Syncing changes to GitHub...")
+  if status ~= "" then
+    print("🔄 Syncing notes to GitHub...")
     local timestamp = os.date("%Y-%m-%d %H:%M:%S")
-    local cmds = {
-      "cd " .. path,
-      "git add .",
-      string.format("git commit -m 'sync: %s'", timestamp),
-      "git push"
-    }
-    local result = os.execute(table.concat(cmds, " && "))
-    if result == 0 then
-      print("Notes synced successfully.")
+
+    -- Run Git commands silently
+    vim.fn.system({ "git", "-C", path, "add", "." })
+    vim.fn.system({ "git", "-C", path, "commit", "-m", "sync: " .. timestamp })
+    local push_output = vim.fn.system({ "git", "-C", path, "push" })
+
+    if vim.v.shell_error == 0 then
+      print("✅ Notes synced successfully.")
     else
-      print("Failed to sync notes.")
+      print("❌ Push failed:")
+      print(push_output)
     end
   else
-    print("No changes to sync.")
+    print("🟢 No changes to sync.")
   end
 end
 

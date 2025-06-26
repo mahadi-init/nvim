@@ -7,6 +7,7 @@ return {
     { "<leader>nn", "<cmd>NoteNew<CR>" },
     { "<leader>no", "<cmd>NoteOpen<CR>" },
     { "<leader>nt", "<cmd>NoteByTag<CR>" },
+    { "<leader>ns", "<cmd>NoteSync<CR>" },
   },
   config = function()
     require("notes").setup()
