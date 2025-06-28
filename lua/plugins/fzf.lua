@@ -21,7 +21,8 @@ return {
         '%.pdf$',
         '%.zip$',
         "^dist",
-        "bun.lock"
+        "bun.lock",
+        "venv"
       },
     })
 
