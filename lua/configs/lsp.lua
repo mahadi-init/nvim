@@ -54,14 +54,6 @@ lspconfig.pyright.setup({
       }
     }
   },
-  root_dir = lspconfig.util.root_pattern(
-    "manage.py",
-    "pyproject.toml",
-    "setup.py",
-    "requirements.txt",
-    "Pipfile",
-    "pyrightconfig.json"
-  ),
 })
 
 -- Server setup
