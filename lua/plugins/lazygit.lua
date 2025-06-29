@@ -12,6 +12,6 @@ return {
     'nvim-lua/plenary.nvim',
   },
   config = function()
-    vim.keymap.set('n', '<leader>gg', '<CMD>LazyGit<CR>', { desc = 'LazyGit' }) -- file tree
+    Key('n', '<leader>gg', '<CMD>LazyGit<CR>', { desc = 'LazyGit' }) -- file tree
   end,
 }

@@ -1,6 +1,7 @@
 -- Optimized Neovim options
 local opt = vim.opt
 local g = vim.g
+Key = vim.keymap.set
 
 -- Performance options
 opt.lazyredraw = true -- Don't redraw screen during macros

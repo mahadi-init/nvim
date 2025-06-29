@@ -1,6 +1,6 @@
 -- LSP config
-local lspconfig = require 'lspconfig'
 local fzf = require("fzf-lua")
+local lspconfig = require 'lspconfig'
 local capabilities = require('blink.cmp').get_lsp_capabilities()
 
 local on_attach = function(client, bufnr)
@@ -9,26 +9,23 @@ local on_attach = function(client, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
   -- LSP keymaps
-  vim.keymap.set('n', '<leader>lr', buf.rename)
-  vim.keymap.set('n', '<leader>la', ':Lspsaga code_action<CR>')
-  vim.keymap.set('n', '<leader>ld', diagnostic.open_float)
+  Key('n', '<leader>lr', buf.rename)
+  Key('n', '<leader>la', ':Lspsaga code_action<CR>')
+  Key('n', '<leader>ld', diagnostic.open_float)
 
   -- Definition & Implementation & calling
-  vim.keymap.set('n', 'K', ':Lspsaga hover_doc<CR>')
-  vim.keymap.set('n', 'gd', ':Lspsaga goto_definition<CR>')
-  vim.keymap.set('n', 'gr', ':Lspsaga finder<CR>')
-  vim.keymap.set('n', 'gtr', fzf.lsp_references)
-  vim.keymap.set('n', 'gi', ':Lspsaga incoming_calls<CR>')
-  vim.keymap.set('n', 'go', ':Lspsaga outgoing_calls<CR>')
+  Key('n', 'K', ':Lspsaga hover_doc<CR>')
+  Key('n', 'gd', ':Lspsaga goto_definition<CR>')
+  Key('n', 'gr', ':Lspsaga finder<CR>')
+  Key('n', 'gtr', fzf.lsp_references)
 
   -- Diagnostic navigation
-  vim.keymap.set('n', '[d', ':Lspsaga diagnostic_jump_prev<CR>')
-  vim.keymap.set('n', ']d', ':Lspsaga diagnostic_jump_next<CR>')
+  Key('n', '[d', ':Lspsaga diagnostic_jump_prev<CR>')
+  Key('n', ']d', ':Lspsaga diagnostic_jump_next<CR>')
 
   -- TypeScript specific keymaps
   if client.name == 'ts_ls' then
-    -- Modern implementation of organize imports
-    vim.keymap.set('n', '<C-f>', function()
+    Key('n', '<C-f>', function()
       client.request('workspace/executeCommand', {
         command = '_typescript.organizeImports',
         arguments = { vim.api.nvim_buf_get_name(0) },
@@ -42,7 +39,22 @@ local on_attach = function(client, bufnr)
 end
 
 -- List of servers
-local servers = { 'lua_ls', 'ts_ls', 'eslint', 'tailwindcss', 'html', 'cssls', 'prismals' }
+local servers = { 'lua_ls', 'ts_ls', 'eslint', 'tailwindcss', 'html', 'cssls', 'prismals', "ruff" }
+
+lspconfig.pyright.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    python = {
+      analysis = {
+        typeCheckingMode = "off",
+        autoSearchPaths = true,
+        useLibraryCodeForTypes = true,
+        diagnosticMode = "workspace",
+      }
+    }
+  },
+})
 
 -- Server setup
 for _, lsp in ipairs(servers) do
