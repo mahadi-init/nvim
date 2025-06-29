@@ -41,6 +41,29 @@ end
 -- List of servers
 local servers = { 'lua_ls', 'ts_ls', 'eslint', 'tailwindcss', 'html', 'cssls', 'prismals', "ruff" }
 
+lspconfig.pyright.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    python = {
+      analysis = {
+        typeCheckingMode = "off",
+        autoSearchPaths = true,
+        useLibraryCodeForTypes = true,
+        diagnosticMode = "workspace",
+      }
+    }
+  },
+  root_dir = lspconfig.util.root_pattern(
+    "manage.py",
+    "pyproject.toml",
+    "setup.py",
+    "requirements.txt",
+    "Pipfile",
+    "pyrightconfig.json"
+  ),
+})
+
 -- Server setup
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
