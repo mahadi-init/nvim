@@ -12,16 +12,18 @@ return {
     picker = {},
   },
   config = function(_, opts)
+    local map = vim.keymap.set
+
     require('snacks').setup(opts)
 
     -- Keymaps
-    vim.keymap.set('n', '<leader>fd', function()
+    map('n', '<leader>fd', function()
       require('snacks').picker.diagnostics()
     end, { desc = 'Find diagnostics/errors' })
-    vim.keymap.set('v', '<C-f>', function()
+    map('v', '<C-f>', function()
       require('snacks').picker.grep_word()
     end, { desc = 'Find word under selection' })
-    vim.keymap.set('n', '<C-x>', function()
+    map('n', '<C-x>', function()
       require('snacks').bufdelete()
     end, { desc = 'Delete buffer' })
   end,

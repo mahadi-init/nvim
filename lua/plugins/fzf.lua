@@ -26,10 +26,10 @@ return {
       },
     })
 
-    vim.keymap.set('n', '<leader><leader>', fzf.files, { desc = 'find files' })
-    vim.keymap.set('n', '<C-g>', fzf.git_status, { desc = 'git status' })
-    vim.keymap.set('n', '<leader>fw', fzf.live_grep, { desc = 'find words' })
-    vim.keymap.set('n', '<C-b>', fzf.buffers, { desc = 'Find buffer' })
-    vim.keymap.set('n', '<leader>ft', fzf.grep_curbuf, { desc = 'find text current buffer' })
+    Key('n', '<leader><leader>', fzf.files, { desc = 'find files' })
+    Key('n', '<C-g>', fzf.git_status, { desc = 'git status' })
+    Key('n', '<leader>fw', fzf.live_grep, { desc = 'find words' })
+    Key('n', '<C-b>', fzf.buffers, { desc = 'Find buffer' })
+    Key('n', '<leader>ft', fzf.grep_curbuf, { desc = 'find text current buffer' })
   end
 }
