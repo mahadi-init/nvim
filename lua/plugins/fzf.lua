@@ -12,17 +12,8 @@ return {
       },
       file_ignore_patterns = {
         '^.git/',
-        '^node_modules/',
-        '^%.next/',
-        '%.o$',
-        '%.a$',
-        '%.out$',
-        '%.class$',
-        '%.pdf$',
-        '%.zip$',
-        "^dist",
         "bun.lock",
-        "venv"
+        "^.gitignore$"
       },
     })
 
