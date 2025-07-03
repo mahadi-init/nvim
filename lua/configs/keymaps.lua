@@ -15,7 +15,7 @@ Key('n', '<M-j>', '<CMD>cnext<CR>', { desc = 'next quickfix' })
 
 -- resize window
 Key('n', '=', [[<cmd>vertical resize +5<cr>]]) -- make the window biger vertically
-Key('n', '-', [[<cmd>vertical resize -5<cr>]]) -- make the window smaller vertically
+-- Key('n', '-', [[<cmd>vertical resize -5<cr>]]) -- make the window smaller vertically
 
 -- buffer switch
 Key('n', '<C-Right>', '<CMD>bnext<CR>')
