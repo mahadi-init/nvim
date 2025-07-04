@@ -5,6 +5,7 @@
   "delimitMate": { "branch": "master", "commit": "becbd2d353a2366171852387288ebb4b33a02487" },
   "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
   "dressing.nvim": { "branch": "master", "commit": "2d7c2db2507fa3c4956142ee607431ddb2828639" },
+  "fern-renderer-web-devicons.nvim": { "branch": "master", "commit": "71b44ab89b037acc3ef87bdec314e128853c6256" },
   "flash.nvim": { "branch": "main", "commit": "3c942666f115e2811e959eabbdd361a025db8b63" },
   "fzf-lua": { "branch": "main", "commit": "3d4342120cf12f36b60a8161a8835b111ec5ec9a" },
   "gitsigns.nvim": { "branch": "main", "commit": "1b0350ab707713b2bc6c236151f1a324175347b1" },
@@ -36,7 +37,5 @@
   "toggleterm.nvim": { "branch": "main", "commit": "50ea089fc548917cc3cc16b46a8211833b9e3c7c" },
   "tsc.nvim": { "branch": "main", "commit": "8c1b4ec6a48d038a79ced8674cb15e7db6dd8ef0" },
   "vim-fern": { "branch": "main", "commit": "88f6d81c2d2348cbfb3120931ce72268195859c6" },
-  "vim-fern-git-status": { "branch": "master", "commit": "151336335d3b6975153dad77e60049ca7111da8e" },
-  "vim-fern-renderer-devicons": { "branch": "master", "commit": "d0f7264494e5764cee785c963b6b2e9105a15b51" },
   "vim-prisma": { "branch": "main", "commit": "95c5b25066efb34c75bce78698baa371fe0ee7c2" }
 }
