@@ -25,18 +25,11 @@ return {
     })
 
     Key("n", "<leader>e", function()
-      vim.ui.input({
-        prompt = "Open Oil at path: ",
-        default = vim.fn.getcwd() .. "/",
-        completion = "file",
-        -- Use fzf-lua as the UI selector
-        ui = pcall(require, 'fzf-lua') and require('fzf-lua').input or nil
-      }, function(path)
-        if path and path ~= "" then
-          vim.cmd.Oil(path)
-        end
-      end)
-    end, { desc = "Open Oil file explorer with fzf suggestions" })
+      vim.fn.inputsave()
+      local path = vim.fn.input("Oil: Open Path » ", vim.fn.getcwd() .. "/", "file")
+      vim.fn.inputrestore()
+      if path ~= "" then vim.cmd.Oil(path) end
+    end, { desc = "Open Oil file explorer" })
 
     Key("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
   end
