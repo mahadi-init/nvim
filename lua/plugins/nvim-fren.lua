@@ -1,6 +1,7 @@
 return {
   "lambdalisue/vim-fern",
   event = "VeryLazy",
+  enabled = false,
   dependencies = {
     "TheLeoP/fern-renderer-web-devicons.nvim",
   },
