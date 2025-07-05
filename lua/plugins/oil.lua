@@ -35,6 +35,7 @@ return {
         file_icons = false,
         color_icons = false,
         git_icons = false,
+        previewer = false,
         actions = {
           ["default"] = function(selected)
             if selected and selected[1] then
