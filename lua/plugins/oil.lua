@@ -20,6 +20,7 @@ return {
         ["<CR>"] = "actions.select",
         ["<C-p>"] = "actions.preview",
         ["<C-l>"] = "actions.refresh",
+        ["<C-c>"] = { "actions.close", mode = "n" },
         ["-"] = { "actions.parent", mode = "n" },
         ["_"] = { "actions.open_cwd", mode = "n" },
         ["g."] = { "actions.toggle_hidden", mode = "n" },
@@ -27,9 +28,11 @@ return {
       use_default_keymaps = false,
     })
 
+
     Key("n", "<leader>e", function()
       local cwd = vim.fn.getcwd()
       local fd_cmd = "fd --type d --hidden --exclude .git"
+      local home = "󰣉 root/"
 
       -- Run the `fd` command to get folder list
       local fd_handle = io.popen(fd_cmd)
@@ -41,10 +44,9 @@ return {
         fd_handle:close()
       end
 
-      -- Prepend the current directory
-      table.insert(results, 1, ".") -- relative path or use cwd for absolute
+      -- Prepend "Home" (mapped to current root)
+      table.insert(results, 1, home)
 
-      -- Show folders using fzf-lua
       require("fzf-lua").fzf_exec(results, {
         prompt = "Select folder » ",
         cwd = cwd,
@@ -55,15 +57,21 @@ return {
         actions = {
           ["default"] = function(selected)
             if selected and selected[1] then
-              local clean_path = selected[1]:match("^%s*(.-)%s*$")
-              -- Use absolute path
-              clean_path = vim.fn.fnamemodify(clean_path, ":p")
+              local selected_path = selected[1]:match("^%s*(.-)%s*$")
+
+              -- If "Home" selected, go to cwd (root)
+              if selected_path == home then
+                selected_path = "."
+              end
+
+              local clean_path = vim.fn.fnamemodify(selected_path, ":p")
               require("oil").open(clean_path)
             end
           end,
         },
       })
     end, { desc = "Search & Open Folder in Oil (fzf-lua)" })
+
 
     Key("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
   end
