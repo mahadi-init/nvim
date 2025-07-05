@@ -4,9 +4,8 @@ local g = vim.g
 Key = vim.keymap.set
 
 -- Performance options
-opt.lazyredraw = true  -- Don't redraw screen during macros
-opt.synmaxcol = 240    -- Avoid syntax highlighting for extremely long lines
-opt.lazyredraw = false -- For Lua
+opt.lazyredraw = true -- Don't redraw screen during macros
+opt.synmaxcol = 240   -- Avoid syntax highlighting for extremely long lines
 
 -- UI Appearance
 opt.termguicolors = true      -- Enable true color support

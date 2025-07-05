@@ -45,7 +45,17 @@ return {
           'diagnostics',
         },
         lualine_x = {
-          "diff"
+          function()
+            local progress = require('lsp-progress').progress()
+            if progress:match 'LSP$' then
+              return '󱚽 '
+            end
+
+            if progress ~= '' then
+              return '󱛆 '
+            end
+            return ''
+          end,
         },
         lualine_y = {
           function()
