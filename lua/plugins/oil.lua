@@ -28,10 +28,26 @@ return {
     })
 
     Key("n", "<leader>e", function()
-      fzf.files({
-        prompt = "Oil: Select folder » ",
-        cwd = vim.fn.getcwd(),
-        cmd = "fd --type d --hidden --exclude .git",
+      local cwd = vim.fn.getcwd()
+      local fd_cmd = "fd --type d --hidden --exclude .git"
+
+      -- Run the `fd` command to get folder list
+      local fd_handle = io.popen(fd_cmd)
+      local results = {}
+      if fd_handle then
+        for line in fd_handle:lines() do
+          table.insert(results, line)
+        end
+        fd_handle:close()
+      end
+
+      -- Prepend the current directory
+      table.insert(results, 1, ".") -- relative path or use cwd for absolute
+
+      -- Show folders using fzf-lua
+      require("fzf-lua").fzf_exec(results, {
+        prompt = "Select folder » ",
+        cwd = cwd,
         file_icons = false,
         color_icons = false,
         git_icons = false,
@@ -40,8 +56,9 @@ return {
           ["default"] = function(selected)
             if selected and selected[1] then
               local clean_path = selected[1]:match("^%s*(.-)%s*$")
+              -- Use absolute path
               clean_path = vim.fn.fnamemodify(clean_path, ":p")
-              oil.open(clean_path)
+              require("oil").open(clean_path)
             end
           end,
         },
