@@ -49,5 +49,10 @@
       "}"
     ],
     "description": "Props with params as a Promise<{ name: string }>"
+  },
+  "Make a comment": {
+    "prefix": "note",
+    "body": ["{/* $1 */}"],
+    "description": "make a comment"
   }
 }

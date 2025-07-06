@@ -23,5 +23,10 @@
     "prefix": "try",
     "body": ["try {", "\t$1", "} catch (err: any) {", "\t$2", "}"],
     "description": "Inserts a try-catch block"
+  },
+  "Make a comment": {
+    "prefix": "note",
+    "body": ["{/* $1 */}"],
+    "description": "make a comment"
   }
 }
