@@ -10,6 +10,6 @@ return {
       auto_close = true,
     }
 
-    Key('n', '<C-o>', '<CMD>HtmlCommentOutline<CR>')
+    Key('n', '<C-h>', '<CMD>HtmlCommentOutline<CR>')
   end,
 }
