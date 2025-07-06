@@ -183,6 +183,9 @@ local function setup_outline_keymaps()
   map('n', '<Esc>', function()
     M.close()
   end, 'Close outline')
+  map('n', 'r', function()
+    M.refresh()
+  end, 'Refresh outline')
   map('n', '?', function()
     vim.notify(
       [[<CR>/<Click> - Jump | q/<Esc> - Close | r - Refresh | ? - Help]],
@@ -219,7 +222,7 @@ local function create_outline_window()
     state.win = vim.api.nvim_get_current_win()
     vim.api.nvim_win_set_buf(state.win, state.buf)
     vim.wo[state.win].wrap = false
-    vim.wo[state.win].cursorline = true
+    vim.wo[state.win].cursorline = false
     vim.wo[state.win].number = false
     vim.wo[state.win].relativenumber = false
     vim.wo[state.win].signcolumn = 'no'
