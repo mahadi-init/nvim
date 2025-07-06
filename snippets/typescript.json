@@ -26,7 +26,7 @@
   },
   "Make a comment": {
     "prefix": "note",
-    "body": ["{/* => $0 <== */}"],
+    "body": ["{/* $0 */}"],
     "description": "make a comment"
   }
 }
