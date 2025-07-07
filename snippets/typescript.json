@@ -24,7 +24,7 @@
     "body": ["try {", "\t$1", "} catch (err: any) {", "\t$2", "}"],
     "description": "Inserts a try-catch block"
   },
-  "Make a comment": {
+  "Make a html comment": {
     "prefix": "note",
     "body": ["{/* $0 */}"],
     "description": "make a comment"

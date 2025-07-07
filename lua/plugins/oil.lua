@@ -3,13 +3,13 @@ return {
   event = 'VeryLazy',
   config = function()
     local oil = require 'oil'
-    local fzf = require 'fzf-lua'
 
     oil.setup {
       default_file_explorer = true,
       skip_confirm_for_simple_edits = true,
       prompt_save_on_select_new_entry = false,
       cleanup_delay_ms = 2000,
+      delete_to_trash = true,
       lsp_file_methods = {
         enabled = true,
         timeout_ms = 500,

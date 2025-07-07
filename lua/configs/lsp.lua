@@ -1,5 +1,5 @@
 -- LSP config
-local fzf = require("fzf-lua")
+local fzf = require 'fzf-lua'
 local lspconfig = require 'lspconfig'
 local capabilities = require('blink.cmp').get_lsp_capabilities()
 
@@ -39,22 +39,23 @@ local on_attach = function(client, bufnr)
 end
 
 -- List of servers
-local servers = { 'lua_ls', 'ts_ls', 'eslint', 'tailwindcss', 'html', 'cssls', 'prismals', "ruff" }
+local servers = { 'lua_ls', 'ts_ls', 'eslint', 'tailwindcss', 'html', 'cssls', 'prismals', 'ruff' }
 
-lspconfig.pyright.setup({
+lspconfig.pyright.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   settings = {
     python = {
       analysis = {
-        typeCheckingMode = "off",
+        typeCheckingMode = 'off',
         autoSearchPaths = true,
+        autoImportCompletions = true,
         useLibraryCodeForTypes = true,
-        diagnosticMode = "workspace",
-      }
-    }
+        diagnosticMode = 'workspace',
+      },
+    },
   },
-})
+}
 
 -- Server setup
 for _, lsp in ipairs(servers) do

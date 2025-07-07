@@ -1,4 +1,4 @@
-local worktime = require("worktime")
+local worktime = require 'worktime'
 local start_time = os.time()
 
 -- Autocmd for UIEnter and ColorScheme
@@ -20,26 +20,35 @@ vim.api.nvim_create_autocmd('UILeave', {
 })
 
 -- highlight yanks
-vim.api.nvim_create_autocmd("TextYankPost", {
+vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
-    vim.highlight.on_yank { higroup = "IncSearch", timeout = 200 }
+    vim.highlight.on_yank { higroup = 'IncSearch', timeout = 200 }
   end,
 })
 
-
 -- timer and session
-vim.api.nvim_create_autocmd("VimEnter", {
+vim.api.nvim_create_autocmd('VimEnter', {
   callback = function()
     worktime.start_timer()
     worktime.start_session()
-  end
+  end,
 })
 
-
 -- timer and session
-vim.api.nvim_create_autocmd("VimLeavePre", {
+vim.api.nvim_create_autocmd('VimLeavePre', {
   callback = function()
     local end_time = os.time()
     worktime.add_session(start_time, end_time)
+  end,
+})
+
+-- Auto-organize imports on save
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = '*.py',
+  callback = function()
+    vim.lsp.buf.code_action {
+      context = { only = { 'source.organizeImports' } },
+      apply = true,
+    }
   end,
 })
