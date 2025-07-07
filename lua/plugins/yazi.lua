@@ -1,31 +1,22 @@
 return {
-  'stevearc/oil.nvim',
+  'mikavilpas/yazi.nvim',
   event = 'VeryLazy',
-  config = function()
-    local oil = require 'oil'
-
-    oil.setup {
-      default_file_explorer = true,
-      skip_confirm_for_simple_edits = true,
-      prompt_save_on_select_new_entry = false,
-      cleanup_delay_ms = 2000,
-      lsp_file_methods = {
-        enabled = true,
-        timeout_ms = 500,
-        autosave_changes = true,
-      },
-      watch_for_changes = true,
-      keymaps = {
-        ['<CR>'] = 'actions.select',
-        ['<C-p>'] = 'actions.preview',
-        ['<C-l>'] = 'actions.refresh',
-        ['<C-c>'] = { 'actions.close', mode = 'n' },
-        ['-'] = { 'actions.parent', mode = 'n' },
-        ['_'] = { 'actions.open_cwd', mode = 'n' },
-        ['g.'] = { 'actions.toggle_hidden', mode = 'n' },
-      },
-      use_default_keymaps = false,
-    }
+  keys = {
+    {
+      '-',
+      mode = { 'n', 'v' },
+      '<cmd>Yazi<cr>',
+      desc = 'Open yazi at the current file',
+    },
+  },
+  opts = {
+    open_for_directories = true,
+    keymaps = {
+      show_help = '<f1>',
+    },
+  },
+  init = function()
+    vim.g.loaded_netrwPlugin = 1
 
     Key('n', '<leader>e', function()
       local cwd = vim.fn.getcwd()
@@ -68,13 +59,11 @@ return {
               end
 
               local clean_path = vim.fn.fnamemodify(selected_path, ':p')
-              require('oil').open(clean_path)
+              require('yazi').yazi({}, clean_path)
             end
           end,
         },
       })
-    end, { desc = 'Search & Open Folder in Oil (fzf-lua)' })
-
-    Key('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
+    end, { desc = 'Search & Open Folder in Yazi (fzf-lua)' })
   end,
 }

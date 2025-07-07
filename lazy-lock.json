@@ -37,6 +37,6 @@
   "timber.nvim": { "branch": "main", "commit": "aac3a12753652a60955d3178b75fdb6c247b9f7d" },
   "toggleterm.nvim": { "branch": "main", "commit": "50ea089fc548917cc3cc16b46a8211833b9e3c7c" },
   "tsc.nvim": { "branch": "main", "commit": "8c1b4ec6a48d038a79ced8674cb15e7db6dd8ef0" },
-  "vim-fern": { "branch": "main", "commit": "88f6d81c2d2348cbfb3120931ce72268195859c6" },
-  "vim-prisma": { "branch": "main", "commit": "95c5b25066efb34c75bce78698baa371fe0ee7c2" }
+  "vim-prisma": { "branch": "main", "commit": "95c5b25066efb34c75bce78698baa371fe0ee7c2" },
+  "yazi.nvim": { "branch": "main", "commit": "924db6fa6201d26ab5fc979f92c9ddd77108a453" }
 }
