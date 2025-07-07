@@ -9,7 +9,6 @@ return {
       skip_confirm_for_simple_edits = true,
       prompt_save_on_select_new_entry = false,
       cleanup_delay_ms = 2000,
-      delete_to_trash = true,
       lsp_file_methods = {
         enabled = true,
         timeout_ms = 500,
