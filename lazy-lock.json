@@ -1,4 +1,5 @@
 {
+  "aerial.nvim": { "branch": "master", "commit": "5c0df1679bf7c814c924dc6646cc5291daca8363" },
   "blink.cmp": { "branch": "main", "commit": "9bcb14b43852a6f2bfd5ac9ef29cb5cf09b1b39b" },
   "conform.nvim": { "branch": "master", "commit": "8132ec733eed3bf415b97b76797ca41b59f51d7d" },
   "dashboard-nvim": { "branch": "master", "commit": "c42fcfbd96dfcaa486c0a0ab52494316f1c31350" },
@@ -25,7 +26,6 @@
   "nvim-ts-autotag": { "branch": "main", "commit": "a1d526af391f6aebb25a8795cbc05351ed3620b5" },
   "nvim-ufo": { "branch": "main", "commit": "80fe8215ba566df2fbf3bf4d25f59ff8f41bc0e1" },
   "nvim-web-devicons": { "branch": "master", "commit": "19d6211c78169e78bab372b585b6fb17ad974e82" },
-  "oil.nvim": { "branch": "master", "commit": "bbad9a76b2617ce1221d49619e4e4b659b3c61fc" },
   "persistence.nvim": { "branch": "main", "commit": "166a79a55bfa7a4db3e26fc031b4d92af71d0b51" },
   "plenary.nvim": { "branch": "master", "commit": "857c5ac632080dba10aae49dba902ce3abf91b35" },
   "promise-async": { "branch": "main", "commit": "119e8961014c9bfaf1487bf3c2a393d254f337e2" },

@@ -39,7 +39,18 @@ local on_attach = function(client, bufnr)
 end
 
 -- List of servers
-local servers = { 'lua_ls', 'ts_ls', 'eslint', 'tailwindcss', 'html', 'cssls', 'prismals', 'ruff' }
+local servers = {
+  'lua_ls',
+  'ts_ls',
+  'eslint',
+  'tailwindcss',
+  'html',
+  'cssls',
+  'prismals',
+  'ruff',
+  'dockerls',
+  'docker_compose_language_service',
+}
 
 lspconfig.pyright.setup {
   on_attach = on_attach,
