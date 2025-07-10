@@ -5,7 +5,7 @@ Key('n', '<C-j>', '<C-d>zz') -- scroll down
 Key('n', '<C-k>', '<C-u>zz') -- scroll up
 Key('n', '<C-d>', '<C-d>zz') -- scroll down
 Key('n', '<C-u>', '<C-u>zz') -- scroll up
-Key('n', '<C-v>', '<CMD>vsplit<CR>') -- vertical split
+Key('n', '<C-v>', '<CMD>leftabove vsplit<CR>') -- vertical split
 
 -- quickfix
 Key('n', '<M-o>', '<CMD>copen<CR>', { desc = 'Open quickfix' })
@@ -17,10 +17,10 @@ Key('n', '<M-j>', '<CMD>cnext<CR>', { desc = 'next quickfix' })
 Key('n', '=', [[<cmd>vertical resize +5<cr>]]) -- make the window biger vertically
 -- Key('n', '-', [[<cmd>vertical resize -5<cr>]]) -- make the window smaller vertically
 --
-vim.keymap.set('n', '<C-Up>', ':m .-2<CR>==', { desc = 'Move line up' })
-vim.keymap.set('v', '<C-Up>', ":m '<-2<CR>gv=gv", { desc = 'Move selection up' })
-vim.keymap.set('n', '<C-Down>', ':m .+1<CR>==', { desc = 'Move line down' })
-vim.keymap.set('v', '<C-Down>', ":m '>+1<CR>gv=gv", { desc = 'Move selection down' })
+vim.keymap.set('n', '<M-Up>', ':m .-2<CR>==', { desc = 'Move line up' })
+vim.keymap.set('v', '<M-Up>', ":m '<-2<CR>gv=gv", { desc = 'Move selection up' })
+vim.keymap.set('n', '<M-Down>', ':m .+1<CR>==', { desc = 'Move line down' })
+vim.keymap.set('v', '<M-Down>', ":m '>+1<CR>gv=gv", { desc = 'Move selection down' })
 
 -- session
 Key('n', '<leader>ls', function()
