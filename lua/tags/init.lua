@@ -169,15 +169,16 @@ function M.show_tags()
         end
       end,
     },
-    preview = function(selected)
+    previewer = function(selected)
       if selected and selected[1] then
         -- Find the corresponding tag_info
         for _, item in ipairs(items) do
           if item.display == selected[1] then
-            return {
-              item.tag_info.filepath .. ':' .. item.tag_info.line_nr,
-              item.tag_info.line_content,
-            }
+            -- Use fzf-lua's builtin file previewer for syntax highlighting
+            return fzf_lua.path.file_or_uri(item.tag_info.filepath, {
+              line = item.tag_info.line_nr,
+              col = 1,
+            })
           end
         end
       end
@@ -240,15 +241,6 @@ function M.setup(opts)
   vim.api.nvim_create_user_command('TagShow', M.show_tags, {})
   vim.api.nvim_create_user_command('TagList', M.list_buffer_tags, {})
   vim.api.nvim_create_user_command('TagClear', M.clear_all_tags, {})
-
-  -- -- Default keymaps (optional)
-  -- vim.keymap.set('n', '<leader>ta', function()
-  --   M.add_tag()
-  -- end, { desc = 'Add tag' })
-  -- vim.keymap.set('n', '<leader>tr', M.remove_tag, { desc = 'Remove tag' })
-  -- vim.keymap.set('n', '<leader>ts', M.show_tags, { desc = 'Show tags' })
-  -- vim.keymap.set('n', '<leader>tl', M.list_buffer_tags, { desc = 'List buffer tags' })
-  -- vim.keymap.set('n', '<leader>tc', M.clear_all_tags, { desc = 'Clear all tags' })
 end
 
 return M
