@@ -8,7 +8,9 @@ return {
 
     -- Add and remove cursors with alt + left click.
     Key('n', '<M-leftmouse>', mc.handleMouse)
-    Key({ "n", "x" }, "<C-a>", function() mc.matchAddCursor(1) end)
+    Key({ 'n', 'x' }, '<C-o>', function()
+      mc.matchAddCursor(1)
+    end)
 
     -- Mappings defined in a keymap layer only apply when there are
     -- multiple cursors. This lets you have overlapping mappings.
