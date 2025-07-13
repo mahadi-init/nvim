@@ -6,7 +6,7 @@ return {
   keys = {
     { '<C-a>', '<cmd>TagAdd<CR>' },
     { '<C-t>', '<cmd>TagShow<CR>' },
-    { '<C-c>', '<cmd>TagClear<CR>' },
+    { '<C-c>', '<cmd>TagRemove<CR>' },
   },
   config = function()
     require('tags').setup()
