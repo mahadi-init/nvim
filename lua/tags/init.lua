@@ -13,7 +13,92 @@ local config = {
     prompt = 'Tags> ',
     preview_window = 'right:50%',
   },
+  data_dir = vim.fn.stdpath 'data' .. '/tag-plugin',
 }
+
+-- Get project root directory
+local function get_project_root()
+  local cwd = vim.fn.getcwd()
+  local git_root = vim.fn.system('git -C ' .. cwd .. ' rev-parse --show-toplevel 2>/dev/null')
+
+  if vim.v.shell_error == 0 then
+    return vim.trim(git_root)
+  else
+    return cwd
+  end
+end
+
+-- Get project-specific tags file path
+local function get_tags_file()
+  local project_root = get_project_root()
+  local project_name = vim.fn.fnamemodify(project_root, ':t')
+  local project_hash = vim.fn.sha256(project_root)
+
+  -- Create data directory if it doesn't exist
+  vim.fn.mkdir(config.data_dir, 'p')
+
+  return config.data_dir .. '/' .. project_name .. '_' .. project_hash:sub(1, 8) .. '.json'
+end
+
+-- Save tags to file
+local function save_tags()
+  local tags_file = get_tags_file()
+  local serializable_tags = {}
+
+  for tag_id, tag_info in pairs(tags) do
+    serializable_tags[tag_id] = {
+      tag_name = tag_info.tag_name,
+      filepath = tag_info.filepath,
+      line_nr = tag_info.line_nr,
+      line_content = tag_info.line_content,
+      timestamp = tag_info.timestamp,
+    }
+  end
+
+  local json_str = vim.fn.json_encode(serializable_tags)
+  local file = io.open(tags_file, 'w')
+  if file then
+    file:write(json_str)
+    file:close()
+  end
+end
+
+-- Load tags from file
+local function load_tags()
+  local tags_file = get_tags_file()
+  local file = io.open(tags_file, 'r')
+
+  if not file then
+    return {}
+  end
+
+  local content = file:read '*all'
+  file:close()
+
+  if content and content ~= '' then
+    local ok, decoded = pcall(vim.fn.json_decode, content)
+    if ok and decoded then
+      return decoded
+    end
+  end
+
+  return {}
+end
+
+-- Restore virtual text for loaded tags
+local function restore_virtual_text()
+  for tag_id, tag_info in pairs(tags) do
+    local bufnr = vim.fn.bufnr(tag_info.filepath)
+    if bufnr ~= -1 then
+      tag_info.bufnr = bufnr
+      vim.api.nvim_buf_set_extmark(bufnr, ns_id, tag_info.line_nr - 1, 0, {
+        virt_text = { { config.tag_symbol .. tag_info.tag_name, 'TagHighlight' } },
+        virt_text_pos = 'eol',
+        id = tag_info.line_nr,
+      })
+    end
+  end
+end
 
 -- Create highlight group
 vim.api.nvim_set_hl(0, 'TagHighlight', { bg = '#2a2a2a', fg = '#fbbf24' })
@@ -64,6 +149,9 @@ function M.add_tag(tag_name)
     id = line_nr, -- Use line number as ID for easy removal
   })
 
+  -- Save tags to file
+  save_tags()
+
   print(' Tagged line ' .. line_nr .. " as '" .. tag_name .. "'")
 end
 
@@ -77,6 +165,10 @@ function M.remove_tag()
     tags[tag_id] = nil
     -- Remove virtual text
     vim.api.nvim_buf_del_extmark(bufnr, ns_id, line_nr)
+
+    -- Save tags to file
+    save_tags()
+
     print('Removed tag from line ' .. line_nr)
   else
     print 'No tag found on current line'
@@ -85,14 +177,24 @@ end
 
 -- Jump to a specific tag
 local function jump_to_tag(tag_info)
-  -- Check if buffer still exists
-  if not vim.api.nvim_buf_is_valid(tag_info.bufnr) then
-    -- Try to open the file
-    vim.cmd('edit ' .. tag_info.filepath)
-    tag_info.bufnr = vim.api.nvim_get_current_buf()
+  -- Check if buffer exists and is valid
+  local bufnr = tag_info.bufnr
+  if not bufnr or type(bufnr) ~= 'number' or not vim.api.nvim_buf_is_valid(bufnr) then
+    -- Try to find existing buffer for this file
+    bufnr = vim.fn.bufnr(tag_info.filepath)
+    if bufnr == -1 then
+      -- Open the file
+      vim.cmd('edit ' .. vim.fn.fnameescape(tag_info.filepath))
+      bufnr = vim.api.nvim_get_current_buf()
+    else
+      -- Switch to existing buffer
+      vim.api.nvim_set_current_buf(bufnr)
+    end
+    -- Update the tag_info with correct buffer number
+    tag_info.bufnr = bufnr
   else
     -- Switch to the buffer
-    vim.api.nvim_set_current_buf(tag_info.bufnr)
+    vim.api.nvim_set_current_buf(bufnr)
   end
 
   -- Jump to the line
@@ -162,6 +264,8 @@ function M.show_tags()
               if vim.api.nvim_buf_is_valid(item.tag_info.bufnr) then
                 vim.api.nvim_buf_del_extmark(item.tag_info.bufnr, ns_id, item.tag_info.line_nr)
               end
+              -- Save tags to file
+              save_tags()
               print('Deleted tag: ' .. item.tag_info.tag_name)
               break
             end
@@ -224,6 +328,8 @@ function M.clear_all_tags()
       end
     end
     tags = {}
+    -- Save empty tags to file
+    save_tags()
     print 'All tags cleared'
   end
 end
@@ -231,6 +337,34 @@ end
 -- Setup function
 function M.setup(opts)
   config = vim.tbl_deep_extend('force', config, opts or {})
+
+  -- Load tags from file on startup
+  tags = load_tags()
+
+  -- Create autocommands for persistence and virtual text restoration
+  local augroup = vim.api.nvim_create_augroup('TagPlugin', { clear = true })
+
+  -- Save tags when exiting Neovim
+  vim.api.nvim_create_autocmd('VimLeavePre', {
+    group = augroup,
+    callback = save_tags,
+  })
+
+  -- Restore virtual text when opening files
+  vim.api.nvim_create_autocmd('BufReadPost', {
+    group = augroup,
+    callback = function()
+      vim.defer_fn(restore_virtual_text, 100) -- Small delay to ensure buffer is ready
+    end,
+  })
+
+  -- Also restore when switching buffers
+  vim.api.nvim_create_autocmd('BufEnter', {
+    group = augroup,
+    callback = function()
+      vim.defer_fn(restore_virtual_text, 10)
+    end,
+  })
 
   -- Create user commands
   vim.api.nvim_create_user_command('TagAdd', function(args)
