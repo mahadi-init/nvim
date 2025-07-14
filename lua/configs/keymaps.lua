@@ -12,6 +12,12 @@ Key('n', '<M-o>', '<CMD>copen<CR>', { desc = 'Open quickfix' })
 Key('n', '<M-x>', '<CMD>cclose<CR>', { desc = 'close quickfix' })
 Key('n', '<M-k>', '<CMD>cprev<CR>', { desc = 'previous quickfix' })
 Key('n', '<M-j>', '<CMD>cnext<CR>', { desc = 'next quickfix' })
+Key('n', '<M-d>', function()
+  local qf_list = vim.fn.getqflist()
+  local current_line = vim.fn.line '.'
+  table.remove(qf_list, current_line)
+  vim.fn.setqflist(qf_list, 'r')
+end, { desc = 'Remove current quickfix entry' })
 
 -- resize window
 Key('n', '=', [[<cmd>vertical resize +5<cr>]]) -- make the window biger vertically
