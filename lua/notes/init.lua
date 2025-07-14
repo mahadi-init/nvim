@@ -9,25 +9,6 @@ local function ensure_note_dir()
   end
 end
 
--- Extract the first line starting with `#` as title
-local function get_title(path)
-  local file = io.open(path, 'r')
-  if not file then
-    return ''
-  end
-
-  for line in file:lines() do
-    local trimmed = line:match '^%s*(.*)'
-    if trimmed and trimmed:sub(1, 1) == '#' then
-      file:close()
-      return trimmed:gsub('^%s*#%s*', '')
-    end
-  end
-
-  file:close()
-  return ''
-end
-
 -- List all markdown notes
 local function get_notes()
   ensure_note_dir()
@@ -110,41 +91,16 @@ function M.search_by_title()
     return
   end
 
-  -- Build a list of { title: ..., file: ... }
-  local choices = {}
-  local note_map = {}
-
-  for _, file in ipairs(notes) do
-    local full_path = note_dir .. '/' .. file
-    local title = get_title(full_path)
-    if title == '' then
-      title = '[Untitled]'
-    end
-    local display = string.format('%s\t%s', title, file)
-    table.insert(choices, display)
-    note_map[display] = file
-  end
-
-  fzf.fzf_exec(choices, {
-    prompt = 'Search Notes by Title> ',
-    fzf_opts = {
-      ['--delimiter'] = '\\t',
-      ['--with-nth'] = '1',
-    },
+  fzf.fzf_exec(notes, {
+    prompt = 'Search Notes by Filename> ',
+    previewer = false,
     actions = {
       ['default'] = function(selected)
-        local display = selected[1]
-        local file = note_map[display]
-        if file then
-          vim.cmd('edit ' .. note_dir .. '/' .. file)
-        end
+        local file = selected[1]
+        vim.cmd('edit ' .. note_dir .. '/' .. file)
       end,
       ['ctrl-d'] = function(selected)
-        local display = selected[1]
-        local file = note_map[display]
-        if not file then
-          return
-        end
+        local file = selected[1]
         local confirm = vim.fn.input("Delete '" .. file .. "'? (y/n): ")
         if confirm:lower() == 'y' then
           local ok = os.remove(note_dir .. '/' .. file)
