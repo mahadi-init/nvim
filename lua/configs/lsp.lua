@@ -48,7 +48,6 @@ local servers = {
   'cssls',
   'ruff',
   'dockerls',
-  'docker_compose_language_service',
 }
 
 lspconfig.pyright.setup {
