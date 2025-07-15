@@ -4,9 +4,9 @@ return {
   lazy = true,
   cmd = { 'TagAdd', 'TagRemove', 'TagShow', 'TagClear' },
   keys = {
-    { '<C-a>', '<cmd>TagAdd<CR>' },
+    { '<C-c>', '<cmd>TagAdd<CR>' },
     { '<C-t>', '<cmd>TagShow<CR>' },
-    { '<C-c>', '<cmd>TagRemove<CR>' },
+    { '<leader>tr', '<cmd>TagRemove<CR>' },
     { '<leader>tc', '<cmd>TagClear<CR>' },
   },
   config = function()
