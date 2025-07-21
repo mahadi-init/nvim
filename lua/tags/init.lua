@@ -334,10 +334,18 @@ function M.clear_all_tags()
   end
 end
 
+local function is_nvim_notes_buffer()
+  local current_path = vim.fn.expand '%:p'
+  if string.find(current_path, 'nvim%-notes') then
+    print 'tags are invalid here'
+    return true
+  end
+  return false
+end
+
 -- Setup function
 function M.setup(opts)
   config = vim.tbl_deep_extend('force', config, opts or {})
-
   -- Load tags from file on startup
   tags = load_tags()
 
@@ -354,6 +362,9 @@ function M.setup(opts)
   vim.api.nvim_create_autocmd('BufReadPost', {
     group = augroup,
     callback = function()
+      if is_nvim_notes_buffer() then
+        return
+      end
       vim.defer_fn(restore_virtual_text, 100) -- Small delay to ensure buffer is ready
     end,
   })
@@ -362,19 +373,47 @@ function M.setup(opts)
   vim.api.nvim_create_autocmd('BufEnter', {
     group = augroup,
     callback = function()
+      if is_nvim_notes_buffer() then
+        return
+      end
       vim.defer_fn(restore_virtual_text, 10)
     end,
   })
-
-  -- Create user commands
+  -- Create user commands with nvim-notes check
   vim.api.nvim_create_user_command('TagAdd', function(args)
+    if is_nvim_notes_buffer() then
+      return
+    end
     M.add_tag(args.args)
   end, { nargs = '?' })
 
-  vim.api.nvim_create_user_command('TagRemove', M.remove_tag, {})
-  vim.api.nvim_create_user_command('TagShow', M.show_tags, {})
-  vim.api.nvim_create_user_command('TagList', M.list_buffer_tags, {})
-  vim.api.nvim_create_user_command('TagClear', M.clear_all_tags, {})
+  vim.api.nvim_create_user_command('TagRemove', function()
+    if is_nvim_notes_buffer() then
+      return
+    end
+    M.remove_tag()
+  end, {})
+
+  vim.api.nvim_create_user_command('TagShow', function()
+    if is_nvim_notes_buffer() then
+      return
+    end
+    M.show_tags()
+  end, {})
+
+  vim.api.nvim_create_user_command('TagList', function()
+    if is_nvim_notes_buffer() then
+      return
+    end
+    M.list_buffer_tags()
+  end, {})
+
+  vim.api.nvim_create_user_command('TagClear', function()
+    if is_nvim_notes_buffer() then
+      return
+    end
+    M.clear_all_tags()
+  end, {})
 end
 
 return M
