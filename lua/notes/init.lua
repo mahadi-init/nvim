@@ -25,44 +25,6 @@ local function get_notes()
   return filtered
 end
 
--- Open a note via fzf
-function M.open()
-  ensure_note_dir()
-
-  local files = vim.tbl_filter(function(file)
-    return not file:match '^%.' and file:match '%.md$'
-  end, vim.fn.readdir(note_dir))
-
-  if #files == 0 then
-    print 'No notes found.'
-    return
-  end
-
-  fzf.fzf_exec(files, {
-    prompt = 'Notes> ',
-    previewer = false,
-    actions = {
-      ['default'] = function(selected)
-        vim.cmd('edit ' .. note_dir .. '/' .. selected[1])
-      end,
-      ['ctrl-d'] = function(selected)
-        local file = selected[1]
-        local confirm = vim.fn.input("Delete '" .. file .. "'? (y/n): ")
-        if confirm:lower() == 'y' then
-          local ok = os.remove(note_dir .. '/' .. file)
-          if ok then
-            print('Deleted note:', file)
-          else
-            print 'Failed to delete.'
-          end
-        else
-          print 'Aborted.'
-        end
-      end,
-    },
-  })
-end
-
 -- Create a new note
 function M.new()
   ensure_note_dir()
@@ -156,7 +118,6 @@ end
 
 function M.setup()
   vim.api.nvim_create_user_command('NoteNew', M.new, {})
-  vim.api.nvim_create_user_command('NoteOpen', M.open, {})
   vim.api.nvim_create_user_command('NoteByTitle', M.search_by_title, {})
   vim.api.nvim_create_user_command('NoteSync', M.sync, {})
 end
