@@ -8,7 +8,7 @@ return {
 
     -- Add and remove cursors with alt + left click.
     Key('n', '<M-leftmouse>', mc.handleMouse)
-    Key({ 'n', 'x' }, '<C-o>', function()
+    Key('x', '<C-o>', function()
       mc.matchAddCursor(1)
     end)
 
@@ -16,11 +16,11 @@ return {
     -- multiple cursors. This lets you have overlapping mappings.
     mc.addKeymapLayer(function(layerSet)
       -- Select a different cursor as the main one.
-      layerSet({ 'n', 'x' }, '<left>', mc.prevCursor)
-      layerSet({ 'n', 'x' }, '<right>', mc.nextCursor)
+      layerSet('x', '<left>', mc.prevCursor)
+      layerSet('x', '<right>', mc.nextCursor)
 
       -- Delete the main cursor.
-      layerSet({ 'n', 'x' }, '<leader>x', mc.deleteCursor)
+      layerSet('x', '<leader>x', mc.deleteCursor)
 
       -- Enable and clear cursors using escape.
       layerSet('n', '<esc>', function()
