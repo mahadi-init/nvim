@@ -46,24 +46,6 @@ local servers = {
   'tailwindcss',
   'html',
   'cssls',
-  'ruff',
-  'dockerls',
-}
-
-lspconfig.pyright.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
-    python = {
-      analysis = {
-        typeCheckingMode = 'off',
-        autoSearchPaths = true,
-        autoImportCompletions = true,
-        useLibraryCodeForTypes = true,
-        diagnosticMode = 'workspace',
-      },
-    },
-  },
 }
 
 -- Server setup
