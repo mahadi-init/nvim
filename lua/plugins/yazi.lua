@@ -20,7 +20,7 @@ return {
 
     Key('n', '<leader>e', function()
       local cwd = vim.fn.getcwd()
-      local fd_cmd = 'fd --type d --hidden --exclude .git'
+      local fd_cmd = 'fdfind --type d --hidden --exclude .git'
       local home = '󰣉 root/'
 
       -- Run the `fd` command to get folder list
