@@ -18,10 +18,8 @@ return {
   init = function()
     vim.g.loaded_netrwPlugin = 1
 
-    Key('n', '<leader>e', function()
-      local cwd = vim.fn.getcwd()
+    Key('n', '<C-a>', function()
       local fd_cmd = 'fdfind --type d --hidden --exclude .git'
-      local home = '󰣉 root/'
 
       -- Run the `fd` command to get folder list
       local fd_handle = io.popen(fd_cmd)
@@ -33,37 +31,26 @@ return {
         fd_handle:close()
       end
 
-      -- Prepend "Home" (mapped to current root)
-      table.insert(results, 1, home)
+      vim.ui.select(results, {
+        prompt = 'Select directory to open in Yazi:',
+        format_item = function(item)
+          -- Show relative path if it's shorter, otherwise show full path
+          local relative = vim.fn.fnamemodify(item, ':.')
+          return (#relative < #item) and relative or item
+        end,
+      }, function(selected)
+        if selected then
+          -- Convert to absolute path
+          local abs_path = vim.fn.fnamemodify(selected, ':p')
 
-      require('fzf-lua').fzf_exec(results, {
-        prompt = 'Select folder » ',
-        cwd = cwd,
-        file_icons = false,
-        color_icons = false,
-        git_icons = false,
-        previewer = false,
-        file_ignore_patterns = {
-          '^.git/',
-          'bun.lock',
-          '^.gitignore$',
-        },
-        actions = {
-          ['default'] = function(selected)
-            if selected and selected[1] then
-              local selected_path = selected[1]:match '^%s*(.-)%s*$'
-
-              -- If "Home" selected, go to cwd (root)
-              if selected_path == home then
-                selected_path = '.'
-              end
-
-              local clean_path = vim.fn.fnamemodify(selected_path, ':p')
-              require('yazi').yazi({}, clean_path)
-            end
-          end,
-        },
-      })
+          -- Verify directory still exists
+          if vim.fn.isdirectory(abs_path) == 1 then
+            require('yazi').yazi({}, abs_path)
+          else
+            vim.notify('Directory no longer exists: ' .. abs_path, vim.log.levels.ERROR)
+          end
+        end
+      end)
     end, { desc = 'Search & Open Folder in Yazi (fzf-lua)' })
   end,
 }

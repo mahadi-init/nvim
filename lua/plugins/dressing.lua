@@ -1,6 +1,5 @@
 return {
   'stevearc/dressing.nvim',
-  event = 'VeryLazy',
   config = function()
     require('dressing').setup {
       input = {
@@ -39,7 +38,7 @@ return {
       },
       select = {
         enabled = true,
-        backend = { 'fzf-lua', 'fzf', 'telescope', 'builtin', 'nui' },
+        backend = { 'fzf-lua', 'fzf' },
         trim_prompt = true,
         telescope = nil,
         fzf = {
