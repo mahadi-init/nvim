@@ -11,6 +11,7 @@ return {
     scope = {},
     picker = {},
     explorer = {},
+    input = {},
   },
   config = function(_, opts)
     require('snacks').setup(opts)
