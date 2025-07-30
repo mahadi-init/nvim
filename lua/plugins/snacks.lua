@@ -10,7 +10,6 @@ return {
     statuscolumn = {},
     scope = {},
     picker = {},
-    explorer = {},
     input = {},
   },
   config = function(_, opts)
@@ -27,10 +26,6 @@ return {
 
     Key('n', '<C-x>', function()
       require('snacks').bufdelete()
-    end, { desc = 'Delete buffer' })
-
-    Key('n', '<leader>e', function()
-      Snacks.explorer.open(opts)
     end, { desc = 'Delete buffer' })
   end,
 }
