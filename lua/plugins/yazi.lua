@@ -8,11 +8,6 @@ return {
       '<cmd>Yazi<cr>',
       desc = 'Open yazi at the current file',
     },
-    {
-      '<leader>e',
-      '<cmd>Yazi cwd<cr>',
-      desc = "Open the file manager in nvim's working directory",
-    },
   },
   opts = {
     open_for_directories = true,
@@ -32,6 +27,9 @@ return {
         end
         fd_handle:close()
       end
+
+      local cwd = vim.fn.getcwd()
+      table.insert(results, 1, cwd)
 
       vim.ui.select(results, {
         prompt = 'Select directory to open in Yazi:',
