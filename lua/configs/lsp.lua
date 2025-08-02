@@ -46,7 +46,6 @@ local servers = {
   'tailwindcss',
   'html',
   'cssls',
-  'rust_analyzer',
 }
 
 -- Server setup
