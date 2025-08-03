@@ -26,7 +26,7 @@ return {
         lualine_b = {
           'branch',
           function()
-            local path = vim.fn.expand('%:.') -- Get relative path
+            local path = vim.fn.expand '%:.' -- Get relative path
             local parts = {}
 
             -- Split path into components
@@ -58,9 +58,6 @@ return {
           end,
         },
         lualine_y = {
-          function()
-            return require("worktime").get_session_elapsed()
-          end,
           'filetype',
         },
         lualine_z = { 'location', 'progress' },

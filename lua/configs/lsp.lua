@@ -6,7 +6,6 @@ local capabilities = require('blink.cmp').get_lsp_capabilities()
 local on_attach = function(client, bufnr)
   local buf = vim.lsp.buf
   local diagnostic = vim.diagnostic
-  local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
   -- LSP keymaps
   Key('n', '<leader>lr', buf.rename)
@@ -22,27 +21,13 @@ local on_attach = function(client, bufnr)
   -- Diagnostic navigation
   Key('n', '[d', ':Lspsaga diagnostic_jump_prev<CR>')
   Key('n', ']d', ':Lspsaga diagnostic_jump_next<CR>')
-
-  -- TypeScript specific keymaps
-  if client.name == 'ts_ls' then
-    Key('n', '<C-f>', function()
-      client.request('workspace/executeCommand', {
-        command = '_typescript.organizeImports',
-        arguments = { vim.api.nvim_buf_get_name(0) },
-      }, function(err)
-        if err then
-          vim.notify('Error organizing imports: ' .. err.message, vim.log.levels.ERROR)
-        end
-      end, bufnr)
-    end, vim.tbl_extend('keep', bufopts, { desc = 'Organize imports' }))
-  end
 end
 
 -- List of servers
 local servers = {
   'lua_ls',
   'ts_ls',
-  'eslint',
+  'eslint_d',
   'tailwindcss',
   'html',
   'cssls',
