@@ -51,6 +51,6 @@ return {
           end
         end
       end)
-    end, { desc = 'Search & Open Folder in Yazi (fzf-lua)' })
+    end, { desc = 'Search & Open Folder in Yazi' })
   end,
 }

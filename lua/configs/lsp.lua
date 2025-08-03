@@ -1,9 +1,8 @@
 -- LSP config
-local fzf = require 'fzf-lua'
 local lspconfig = require 'lspconfig'
 local capabilities = require('blink.cmp').get_lsp_capabilities()
 
-local on_attach = function(client, bufnr)
+local on_attach = function()
   local buf = vim.lsp.buf
   local diagnostic = vim.diagnostic
 
@@ -16,7 +15,9 @@ local on_attach = function(client, bufnr)
   Key('n', 'K', ':Lspsaga hover_doc<CR>')
   Key('n', 'gd', ':Lspsaga goto_definition<CR>')
   Key('n', 'gr', ':Lspsaga finder<CR>')
-  Key('n', 'gtr', fzf.lsp_references)
+  Key('n', 'gtr', function()
+    Snacks.picker.lsp_references()
+  end)
 
   -- Diagnostic navigation
   Key('n', '[d', ':Lspsaga diagnostic_jump_prev<CR>')

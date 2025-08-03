@@ -5,7 +5,6 @@
   "delimitMate": { "branch": "master", "commit": "becbd2d353a2366171852387288ebb4b33a02487" },
   "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
   "flash.nvim": { "branch": "main", "commit": "3c942666f115e2811e959eabbdd361a025db8b63" },
-  "fzf-lua": { "branch": "main", "commit": "3e644b863718980da1f50c96620b18d2fb36499c" },
   "gitsigns.nvim": { "branch": "main", "commit": "8270378ab83540b03d09c0194ba3e208f9d0cb72" },
   "gruvbox-material": { "branch": "master", "commit": "cf4709418b4066aee67d9c0bfaa1b0d631ce68a5" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },

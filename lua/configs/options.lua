@@ -1,6 +1,5 @@
 -- Optimized Neovim options
 local opt = vim.opt
-local g = vim.g
 Key = vim.keymap.set
 
 -- Performance options
@@ -63,32 +62,3 @@ vim.diagnostic.config {
     source = 'always',
   },
 }
-
--- Completion options
-opt.completeopt = { 'menu', 'menuone', 'noselect' }
-
--- Disable built-in plugins to reduce startup time
-local disabled_built_ins = {
-  '2html_plugin',
-  'getscript',
-  'getscriptPlugin',
-  'gzip',
-  'logipat',
-  'netrw',
-  'netrwPlugin',
-  'netrwSettings',
-  'netrwFileHandlers',
-  'matchit',
-  'tar',
-  'tarPlugin',
-  'rrhelper',
-  'spellfile_plugin',
-  'vimball',
-  'vimballPlugin',
-  'zip',
-  'zipPlugin',
-}
-
-for _, plugin in pairs(disabled_built_ins) do
-  g['loaded_' .. plugin] = 1
-end
