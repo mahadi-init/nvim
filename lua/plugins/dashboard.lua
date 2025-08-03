@@ -2,7 +2,7 @@ return {
   'glepnir/dashboard-nvim',
   event = 'VimEnter',
   config = function()
-    -- Get date/time & worktime info
+    -- Get date/time
     local date = os.date '📅 %A, %d %B %Y'
     local time = os.date '⏰ %I:%M %p'
 
