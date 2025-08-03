@@ -27,7 +27,7 @@ end
 local servers = {
   'lua_ls',
   'ts_ls',
-  'eslint_d',
+  'eslint',
   'tailwindcss',
   'html',
   'cssls',
