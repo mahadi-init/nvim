@@ -34,7 +34,7 @@ opt.clipboard = 'unnamedplus' -- Use system clipboard
 -- Search behavior
 opt.ignorecase = true -- Case-insensitive search
 opt.smartcase = true -- Case-sensitive if uppercase present
-opt.hlsearch = true -- Highlight search results
+opt.hlsearch = false -- Highlight search results
 opt.incsearch = true -- Incremental search
 
 -- File behavior
