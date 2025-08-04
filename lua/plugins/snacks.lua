@@ -106,7 +106,7 @@ return {
 
     -- Sb Lines
     {
-      '<leader>sb',
+      '<leader>sl',
       function()
         Snacks.picker.lines()
       end,
