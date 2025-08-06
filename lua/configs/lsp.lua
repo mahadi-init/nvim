@@ -8,20 +8,21 @@ local on_attach = function()
 
   -- LSP keymaps
   Key('n', '<leader>lr', buf.rename)
-  Key('n', '<leader>la', ':Lspsaga code_action<CR>')
+  Key('n', '<leader>la', buf.code_action)
   Key('n', '<leader>ld', diagnostic.open_float)
 
   -- Definition & Implementation & calling
-  Key('n', 'K', ':Lspsaga hover_doc<CR>')
-  Key('n', 'gd', ':Lspsaga goto_definition<CR>')
-  Key('n', 'gr', ':Lspsaga finder<CR>')
+  Key('n', 'K', function()
+    Snacks.hover()
+  end)
+  Key('n', 'gr', buf.references)
   Key('n', 'gtr', function()
     Snacks.picker.lsp_references()
   end)
 
   -- Diagnostic navigation
-  Key('n', '[d', ':Lspsaga diagnostic_jump_prev<CR>')
-  Key('n', ']d', ':Lspsaga diagnostic_jump_next<CR>')
+  Key('n', '[d', diagnostic.goto_prev)
+  Key('n', ']d', diagnostic.goto_next)
 end
 
 -- List of servers

@@ -3,7 +3,6 @@ return {
   event = 'VeryLazy',
   opts = {
     bufDelete = {},
-    lazygit = {},
     notifier = {},
     quickfile = {},
     indent = {},

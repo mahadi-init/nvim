@@ -5,6 +5,7 @@ Key = vim.keymap.set
 -- Performance options
 opt.lazyredraw = true -- Don't redraw screen during macros
 opt.synmaxcol = 240 -- Avoid syntax highlighting for extremely long lines
+opt.winborder = 'rounded'
 
 -- UI Appearance
 opt.termguicolors = true -- Enable true color support
