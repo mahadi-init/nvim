@@ -34,11 +34,6 @@
     ],
     "description": "A snippet for using useSWR with async data fetching."
   },
-  "motion import": {
-    "prefix": "motion",
-    "body": ["import { motion } from 'motion/react'"],
-    "description": "imports motion react lib"
-  },
   "params with promise": {
     "prefix": "params",
     "body": [
@@ -50,9 +45,9 @@
     ],
     "description": "Props with params as a Promise<{ name: string }>"
   },
-  "Make a html comment": {
-    "prefix": "note",
-    "body": ["{/* $0 */}"],
-    "description": "make a comment"
+  "console": {
+    "prefix": "log",
+    "body": ["console.log($0)"],
+    "description": "console logging"
   }
 }
