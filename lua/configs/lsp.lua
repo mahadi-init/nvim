@@ -10,17 +10,8 @@ local on_attach = function()
   Key('n', '<leader>lr', buf.rename)
   Key('n', '<leader>la', buf.code_action)
   Key('n', '<leader>ld', diagnostic.open_float)
-
-  -- Definition & Implementation & calling
-  Key('n', 'K', function()
-    Snacks.hover()
-  end)
+  Key('n', 'K', buf.hover)
   Key('n', 'gr', buf.references)
-  Key('n', 'gtr', function()
-    Snacks.picker.lsp_references()
-  end)
-
-  -- Diagnostic navigation
   Key('n', '[d', diagnostic.goto_prev)
   Key('n', ']d', diagnostic.goto_next)
 end
