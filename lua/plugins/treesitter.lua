@@ -1,10 +1,10 @@
 return {
   'nvim-treesitter/nvim-treesitter',
-  event = 'VeryLazy',
+  lazy = false,
   config = function()
     require('nvim-treesitter.configs').setup {
       highlight = {
-        enable = true,
+        enable = false,
       },
     }
   end,
