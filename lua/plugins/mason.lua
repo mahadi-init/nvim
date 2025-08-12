@@ -1,29 +1,19 @@
 return {
-  {
-    'williamboman/mason.nvim',
+  'williamboman/mason.nvim',
+  event = 'VeryLazy',
+  dependencies = {
+    'neovim/nvim-lspconfig',
     event = 'VeryLazy',
-    dependencies = {
-      'neovim/nvim-lspconfig',
-      event = "VeryLazy"
-    },
-    config = function()
-      require('mason').setup {
-        ui = {
-          icons = {
-            package_installed = '✓',
-            package_pending = '➜',
-            package_uninstalled = '✗',
-          },
+  },
+  config = function()
+    require('mason').setup {
+      ui = {
+        icons = {
+          package_installed = '✓',
+          package_pending = '➜',
+          package_uninstalled = '✗',
         },
-      }
-      require('mason').setup()
-    end,
-  },
-  {
-    'williamboman/mason-lspconfig.nvim',
-    event = 'VeryLazy',
-    config = function()
-      require('mason-lspconfig').setup()
-    end,
-  },
+      },
+    }
+  end,
 }
