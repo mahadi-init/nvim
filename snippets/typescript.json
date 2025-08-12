@@ -25,7 +25,7 @@
     "description": "Inserts a try-catch block"
   },
   "Make a html comment": {
-    "prefix": "note",
+    "prefix": "comment",
     "body": ["{/* $0 */}"],
     "description": "make a comment"
   }
