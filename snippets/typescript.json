@@ -24,6 +24,11 @@
     "body": ["try {", "\t$1", "} catch (err: any) {", "\t$2", "}"],
     "description": "Inserts a try-catch block"
   },
+  "console": {
+    "prefix": "log",
+    "body": ["console.log($0)"],
+    "description": "console logging"
+  },
   "Make a html comment": {
     "prefix": "comment",
     "body": ["{/* $0 */}"],
