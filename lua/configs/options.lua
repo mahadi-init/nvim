@@ -19,7 +19,7 @@ opt.fillchars = { eob = ' ' } -- Remove ~ at end of buffer
 opt.scrolloff = 5 -- Keep 5 lines visible when scrolling
 opt.splitbelow = true -- Open horizontal splits below
 opt.splitright = true -- Open vertical splits to the right
-opt.cursorline = true -- Highlight current line
+opt.cursorline = false -- Highlight current line
 
 -- Editing behavior
 opt.expandtab = true -- Use spaces instead of tabs
