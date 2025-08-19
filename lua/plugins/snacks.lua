@@ -3,7 +3,7 @@ return {
   event = 'VeryLazy',
   opts = {
     bufDelete = {},
-    notifier = {},
+    -- notifier = {},
     quickfile = {},
     indent = {},
     statuscolumn = {},

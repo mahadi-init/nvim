@@ -8,6 +8,7 @@ return {
     require('mini.tabline').setup()
     require('mini.pairs').setup()
     require('mini.git').setup()
+    require('mini.notify').setup()
 
     require('mini.diff').setup {
       view = {
