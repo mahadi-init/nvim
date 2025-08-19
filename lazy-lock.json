@@ -2,6 +2,7 @@
   "blink.cmp": { "branch": "main", "commit": "bae4bae0eedd1fa55f34b685862e94a222d5c6f8" },
   "conform.nvim": { "branch": "master", "commit": "973f3cb73887d510321653044791d7937c7ec0fa" },
   "debugprint.nvim": { "branch": "main", "commit": "5ca122718985dda9e66a7f15e1797ed7e950a70d" },
+  "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
   "gruvbox-material": { "branch": "master", "commit": "81aeeee11a45ae8e4f26df67bfbbe18795bda6ee" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
   "lazygit.nvim": { "branch": "main", "commit": "3c524ebec6072568064235c407195e9f9fd0cb8a" },
