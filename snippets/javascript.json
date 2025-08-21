@@ -24,24 +24,9 @@
     "body": ["try {", "\t$1", "} catch (err: any) {", "\t$2", "}"],
     "description": "Inserts a try-catch block"
   },
-  "console": {
-    "prefix": "log",
-    "body": ["console.log($0)"],
-    "description": "console logging"
-  },
-  "comment": {
-    "prefix": "comment",
-    "body": ["{/* $0 */}"],
-    "description": "comment"
-  },
-  "note": {
-    "prefix": "note",
-    "body": ["{/*NOTE: $0 */}"],
-    "description": "note"
-  },
-  "fixme": {
-    "prefix": "fixme",
-    "body": ["{/*FIXME: $0 */}"],
-    "description": "fixme"
+  "Image": {
+    "prefix": "img",
+    "body": ["<Image src={$0} width={1920} height={1080} alt='img' />"],
+    "description": "nextjs image component"
   }
 }

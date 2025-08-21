@@ -1,19 +1,4 @@
 {
-  "React Typescript": {
-    "prefix": "ffc",
-    "body": ["export default function $1() {", "  return $0;", "}"],
-    "description": "Stateless react function"
-  },
-  "React UseState": {
-    "prefix": "ust",
-    "body": ["const [ ${1}, set$2 ] = useState($0)"],
-    "description": "basic react usestate"
-  },
-  "React UseEffect": {
-    "prefix": "uef",
-    "body": ["useEffect(() => {$0}, []);"],
-    "description": "basic react useEffect"
-  },
   "arrow function": {
     "prefix": "arr",
     "body": ["const $1 = () => {$0}"],
@@ -23,25 +8,5 @@
     "prefix": "try",
     "body": ["try {", "\t$1", "} catch (err: any) {", "\t$2", "}"],
     "description": "Inserts a try-catch block"
-  },
-  "console": {
-    "prefix": "log",
-    "body": ["console.log($0)"],
-    "description": "console logging"
-  },
-  "comment": {
-    "prefix": "comment",
-    "body": ["{/* $0 */}"],
-    "description": "comment"
-  },
-  "note": {
-    "prefix": "note",
-    "body": ["{/*NOTE: $0 */}"],
-    "description": "note"
-  },
-  "fixme": {
-    "prefix": "fixme",
-    "body": ["{/*FIXME: $0 */}"],
-    "description": "fixme"
   }
 }
