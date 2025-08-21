@@ -49,5 +49,20 @@
     "prefix": "log",
     "body": ["console.log($0)"],
     "description": "console logging"
+  },
+  "comment": {
+    "prefix": "comment",
+    "body": ["{/* $0 */}"],
+    "description": "comment"
+  },
+  "note": {
+    "prefix": "note",
+    "body": ["{/*NOTE: $0 */}"],
+    "description": "note"
+  },
+  "fixme": {
+    "prefix": "fixme",
+    "body": ["{/*FIXME: $0 */}"],
+    "description": "fixme"
   }
 }

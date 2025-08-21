@@ -29,9 +29,19 @@
     "body": ["console.log($0)"],
     "description": "console logging"
   },
-  "Make a html comment": {
+  "comment": {
     "prefix": "comment",
     "body": ["{/* $0 */}"],
-    "description": "make a comment"
+    "description": "comment"
+  },
+  "note": {
+    "prefix": "note",
+    "body": ["{/*NOTE: $0 */}"],
+    "description": "note"
+  },
+  "fixme": {
+    "prefix": "fixme",
+    "body": ["{/*FIXME: $0 */}"],
+    "description": "fixme"
   }
 }
