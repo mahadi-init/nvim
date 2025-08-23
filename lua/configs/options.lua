@@ -39,7 +39,7 @@ vim.o.winbar =
 
 -- Statusline with just git branch
 vim.o.statusline =
-  '%#Identifier# %{mode()} %*%#Comment#│%*%#Function#%{v:lua.git_branch()}%*%#Comment# │%*%#Type# %{&ff} %*%#Comment#│%*%#String# %{&fenc?&fenc:&enc} %*%=%#Comment#│%*%#Identifier# %l:%c %*%#Comment#│%*%#Number# %p%% %*%#Comment#│%*%#Function# %{strftime("%H:%M")} %*'
+  '%#Identifier# %{mode()} %*%#Comment#│%*%#Function#%{v:lua.git_branch()}%*%#Comment# │%*%#Type# %{&ff} %*%#Comment#│%*%#String# %{&fenc?&fenc:&enc} %*%=%#Comment# %*%#Identifier# %l:%c %*%#Comment#│%*%#Number# %p%% %*%#Comment#│%*%#Function# %{strftime("%H:%M")} %*'
 
 -- Editing behavior
 opt.expandtab = true -- Use spaces instead of tabs
