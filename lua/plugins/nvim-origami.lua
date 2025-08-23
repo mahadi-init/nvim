@@ -7,6 +7,9 @@ return {
       autoFold = {
         enabled = false,
       },
+      foldKeymaps = {
+        setup = false,
+      },
     }
   end,
 }
