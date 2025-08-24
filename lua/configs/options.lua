@@ -33,13 +33,47 @@ function _G.git_branch()
   return ''
 end
 
--- WINBAR: File info and navigation
-vim.o.winbar =
-  '%#Function# %*%#Comment#%{expand("%:~:h")}/%*%#Title#%t%*%#WarningMsg#%m%*%#Comment# %*%=%#String# %y %*%#Comment#│%*%#Number# %L lines %*'
+vim.o.statusline = table.concat {
+  -- Mode
+  '%#Identifier# %{mode()} ',
+  '%*%#Comment#│%*',
 
--- Statusline with just git branch
-vim.o.statusline =
-  '%#Identifier# %{mode()} %*%#Comment#│%*%#Function#%{v:lua.git_branch()}%*%#Comment# │%*%#Type# %{&ff} %*%#Comment#│%*%#String# %{&fenc?&fenc:&enc} %*%=%#Comment# %*%#Identifier# %l:%c %*%#Comment#│%*%#Number# %p%% %*%#Comment#│%*%#Function# %{strftime("%H:%M")} %*'
+  -- Git branch
+  '%#Function#%{v:lua.git_branch()}%*',
+  '%#Comment# │%*',
+
+  -- File format & encoding
+  '%#Type# %{&ff} %*',
+  '%#Comment#│%*',
+  '%#String# %{&fenc?&fenc:&enc} │%* ',
+
+  -- File path + name (relative to cwd)
+  '%#Title#%{expand("%:.")}%*',
+  '%#WarningMsg#%m%*',
+  '%#Comment#',
+
+  -- Right side
+  '%=%#Comment# %*',
+
+  -- Filetype
+  '%#String# %y %*',
+  '%#Comment#│%*',
+
+  -- Total lines
+  '%#Number# %L lines %*',
+  '%#Comment#│%*',
+
+  -- Cursor position
+  '%#Identifier# %l:%c %*',
+  '%#Comment#│%*',
+
+  -- Progress %
+  '%#Number# %p%% %*',
+  '%#Comment#│%*',
+
+  -- Time (12-hour with AM/PM)
+  '%#Function# %{strftime("%I:%M %p")} %*',
+}
 
 -- Editing behavior
 opt.expandtab = true -- Use spaces instead of tabs
