@@ -22,7 +22,7 @@ end, { desc = 'Remove current quickfix entry' })
 
 -- resize window
 Key('n', '=', [[<cmd>vertical resize +5<cr>]]) -- make the window biger vertically
-Key('n', '-', [[<cmd>vertical resize -5<cr>]]) -- make the window smaller vertically
+-- Key('n', '-', [[<cmd>vertical resize -5<cr>]]) -- make the window smaller vertically
 
 -- move lines
 vim.keymap.set('n', '<M-Up>', ':m .-2<CR>==', { desc = 'Move line up' })
