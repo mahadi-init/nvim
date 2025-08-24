@@ -1,3 +1,4 @@
+require 'custom.marks'
 require 'configs.options'
 require 'configs.lazy'
 require 'configs.keymaps'

@@ -20,7 +20,7 @@ return {
   init = function()
     vim.g.loaded_netrwPlugin = 1
 
-    Key('n', '<C-a>', function()
+    Key('n', '<leader>e', function()
       local fd_cmd = 'fdfind --type d --hidden --exclude .git'
 
       -- Run the `fd` command to get folder list

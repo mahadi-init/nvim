@@ -37,6 +37,10 @@ vim.o.winbar = table.concat {
   -- filename
   '%#Title#%{expand("%:.")}%*',
   '%#WarningMsg#%m%*',
+  '%#Comment# │%*',
+
+  -- Show mark number
+  ' %{v:lua.current_mark_number()} ',
   '%#Comment#',
 
   -- Right side
@@ -44,10 +48,6 @@ vim.o.winbar = table.concat {
 
   -- Filetype
   '%#String# %y %*',
-  '%#Comment#│%*',
-
-  -- Total lines
-  '%#Number# %L lines %*',
   '%#Comment#',
 }
 
@@ -77,6 +77,10 @@ vim.o.statusline = table.concat {
 
   -- Progress %
   '%#Number# %p%% %*',
+  '%#Comment#│%*',
+
+  -- Total lines
+  '%#Number# %L lines %*',
   '%#Comment#',
 }
 
