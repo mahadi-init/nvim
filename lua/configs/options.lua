@@ -33,21 +33,8 @@ function _G.git_branch()
   return ''
 end
 
-vim.o.statusline = table.concat {
-  -- Mode
-  '%#Identifier# %{mode()} ',
-  '%*%#Comment#│%*',
-
-  -- Git branch
-  '%#Function#%{v:lua.git_branch()}%*',
-  '%#Comment# │%*',
-
-  -- File format & encoding
-  '%#Type# %{&ff} %*',
-  '%#Comment#│%*',
-  '%#String# %{&fenc?&fenc:&enc} │%* ',
-
-  -- File path + name (relative to cwd)
+vim.o.winbar = table.concat {
+  -- filename
   '%#Title#%{expand("%:.")}%*',
   '%#WarningMsg#%m%*',
   '%#Comment#',
@@ -61,7 +48,28 @@ vim.o.statusline = table.concat {
 
   -- Total lines
   '%#Number# %L lines %*',
+  '%#Comment#',
+}
+
+vim.o.statusline = table.concat {
+  -- Mode
+  '%#Identifier# %{mode()} ',
+  '%*%#Comment#│%*',
+
+  -- Git branch
+  '%#Function#%{v:lua.git_branch()}%*',
+  '%#Comment# │%*',
+
+  -- File format & encoding
+  '%#Type# %{&ff} %*',
   '%#Comment#│%*',
+  '%#String# %{&fenc?&fenc:&enc}',
+
+  -- Right side
+  '%=%#Comment# %*',
+
+  -- Time (12-hour with AM/PM)
+  '%#Function# %{strftime("%I:%M %p")} │%*',
 
   -- Cursor position
   '%#Identifier# %l:%c %*',
@@ -69,10 +77,7 @@ vim.o.statusline = table.concat {
 
   -- Progress %
   '%#Number# %p%% %*',
-  '%#Comment#│%*',
-
-  -- Time (12-hour with AM/PM)
-  '%#Function# %{strftime("%I:%M %p")} %*',
+  '%#Comment#',
 }
 
 -- Editing behavior
