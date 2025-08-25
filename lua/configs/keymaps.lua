@@ -35,6 +35,6 @@ vim.keymap.set('v', '<M-Down>', ":m '>+1<CR>gv=gv", { desc = 'Move selection dow
 -- Key('n', '<C-Left>', '<CMD>bprev<CR>')
 
 -- session
-Key('n', '<leader>ls', function()
-  require('persistence').load()
-end)
+-- Key('n', '<leader>ls', function()
+--   require('persistence').load()
+-- end)

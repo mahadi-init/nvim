@@ -1,6 +1,7 @@
 -- Make marks table global so winbar can access it
 _G.marks = _G.marks or {}
 _G.current_mark_index = _G.current_mark_index or 1
+local marks_file = vim.fn.stdpath 'data' .. '/marks.json'
 
 -- Helper: relative path
 local function relpath(path)
@@ -148,3 +149,31 @@ for i = 1, 9 do
     end
   end, { desc = 'Jump to mark ' .. i })
 end
+
+-- Save marks to file
+local function save_marks()
+  local json = vim.fn.json_encode(_G.marks)
+  vim.fn.writefile({ json }, marks_file)
+end
+
+-- Load marks from file
+local function load_marks()
+  if vim.fn.filereadable(marks_file) == 1 then
+    local lines = vim.fn.readfile(marks_file)
+    if lines[1] then
+      local ok, data = pcall(vim.fn.json_decode, lines[1])
+      if ok and type(data) == 'table' then
+        _G.marks = data
+        _G.current_mark_index = #_G.marks
+      end
+    end
+  end
+end
+
+-- Auto save on exit
+vim.api.nvim_create_autocmd('VimLeavePre', {
+  callback = save_marks,
+})
+
+-- Load marks on startup
+load_marks()
