@@ -1,7 +1,17 @@
 -- Make marks table global so winbar can access it
 _G.marks = _G.marks or {}
 _G.current_mark_index = _G.current_mark_index or 1
-local marks_file = vim.fn.stdpath 'data' .. '/marks.json'
+
+-- === Project-based persistence ===
+-- Helper: compute a safe filename based on cwd
+local function get_marks_file()
+  local cwd = vim.loop.cwd() or 'global'
+  local safe = cwd:gsub('[^%w]', '_') -- sanitize
+  return vim.fn.stdpath 'data' .. '/marks_' .. safe .. '.json'
+end
+
+-- Current project's marks file
+local marks_file = get_marks_file()
 
 -- Helper: relative path
 local function relpath(path)
@@ -149,6 +159,8 @@ for i = 1, 9 do
     end
   end, { desc = 'Jump to mark ' .. i })
 end
+
+-- === Persistence ===
 
 -- Save marks to file
 local function save_marks()
