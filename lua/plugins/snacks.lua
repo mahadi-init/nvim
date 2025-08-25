@@ -1,6 +1,7 @@
 return {
   'folke/snacks.nvim',
   event = 'VeryLazy',
+  lazy = false,
   opts = {
     bufDelete = {},
     quickfile = {},
@@ -9,6 +10,7 @@ return {
     scope = {},
     picker = {},
     input = {},
+    dashboard = {},
   },
   keys = {
     {
