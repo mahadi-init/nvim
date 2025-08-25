@@ -18,19 +18,22 @@ function _G.current_mark_number()
   return '󰍑 ' -- not marked
 end
 
--- Add current file to marks
+-- Toggle mark on current file
 vim.keymap.set('n', '<C-a>', function()
   local file = vim.fn.expand '%:p'
-  for _, f in ipairs(_G.marks) do
+  for i, f in ipairs(_G.marks) do
     if f == file then
-      vim.notify('Already marked: ' .. relpath(file), vim.log.levels.INFO)
+      table.remove(_G.marks, i)
+      vim.notify('Unmarked: ' .. relpath(file))
+      vim.cmd 'redrawstatus' -- refresh winbar
       return
     end
   end
+  -- if not found, add it
   table.insert(_G.marks, 1, file)
   vim.notify('Marked: ' .. relpath(file))
-  vim.cmd 'redrawstatus' -- ✅ update winbar
-end)
+  vim.cmd 'redrawstatus' -- refresh winbar
+end, { desc = 'Toggle mark' })
 
 -- Jump to marked file
 vim.keymap.set('n', '<C-l>', function()
