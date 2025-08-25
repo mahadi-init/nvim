@@ -1,6 +1,6 @@
 -- Make marks table global so winbar can access it
 _G.marks = _G.marks or {}
-_G.current_mark_index = 1
+_G.current_mark_index = _G.current_mark_index or 1
 
 -- Helper: relative path
 local function relpath(path)
@@ -12,7 +12,7 @@ function _G.current_mark_number()
   local buf = vim.fn.expand '%:p' -- absolute path of current buffer
   for i, f in ipairs(_G.marks) do
     if f == buf then
-      return '󰍎 ' .. i -- icon + number
+      return '󰍎 ' .. i -- colored mark number
     end
   end
   return '󰍑 ' -- not marked
@@ -25,12 +25,17 @@ vim.keymap.set('n', '<C-a>', function()
     if f == file then
       table.remove(_G.marks, i)
       vim.notify('Unmarked: ' .. relpath(file))
+      -- Adjust current_mark_index if needed
+      if _G.current_mark_index > #_G.marks then
+        _G.current_mark_index = #_G.marks
+      end
       vim.cmd 'redrawstatus' -- refresh winbar
       return
     end
   end
-  -- if not found, add it
-  table.insert(_G.marks, 1, file)
+  -- if not found, add it to the end
+  table.insert(_G.marks, file)
+  _G.current_mark_index = #_G.marks -- point to the new one
   vim.notify('Marked: ' .. relpath(file))
   vim.cmd 'redrawstatus' -- refresh winbar
 end, { desc = 'Toggle mark' })
@@ -48,6 +53,12 @@ vim.keymap.set('n', '<C-l>', function()
     end,
   }, function(choice)
     if choice then
+      for i, f in ipairs(_G.marks) do
+        if f == choice then
+          _G.current_mark_index = i
+          break
+        end
+      end
       vim.cmd('edit ' .. vim.fn.fnameescape(choice))
     end
   end)
@@ -69,8 +80,11 @@ vim.keymap.set('n', '<C-e>', function()
       for i, f in ipairs(_G.marks) do
         if f == choice then
           table.remove(_G.marks, i)
+          if _G.current_mark_index > #_G.marks then
+            _G.current_mark_index = #_G.marks
+          end
           vim.notify('Removed: ' .. relpath(choice))
-          vim.cmd 'redrawstatus' -- ✅ update winbar
+          vim.cmd 'redrawstatus'
           return
         end
       end
@@ -97,7 +111,7 @@ vim.keymap.set('n', '<C-Right>', function()
     return
   end
   if #_G.marks == 1 then
-    return -- only one mark, do nothing
+    return
   end
   local next_i = _G.current_mark_index + 1
   if next_i > #_G.marks then
@@ -113,7 +127,7 @@ vim.keymap.set('n', '<C-Left>', function()
     return
   end
   if #_G.marks == 1 then
-    return -- only one mark, do nothing
+    return
   end
   local prev_i = _G.current_mark_index - 1
   if prev_i < 1 then
@@ -122,11 +136,12 @@ vim.keymap.set('n', '<C-Left>', function()
   goto_mark(prev_i)
 end, { desc = 'Previous mark' })
 
--- Quick navigation
+-- Quick navigation by index
 for i = 1, 9 do
   vim.keymap.set('n', '<C-' .. i .. '>', function()
     local file = _G.marks[i]
     if file then
+      _G.current_mark_index = i
       vim.cmd('edit ' .. vim.fn.fnameescape(file))
     else
       vim.notify('No file at slot ' .. i, vim.log.levels.WARN)
