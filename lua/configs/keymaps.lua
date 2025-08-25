@@ -31,8 +31,8 @@ vim.keymap.set('n', '<M-Down>', ':m .+1<CR>==', { desc = 'Move line down' })
 vim.keymap.set('v', '<M-Down>', ":m '>+1<CR>gv=gv", { desc = 'Move selection down' })
 
 -- buffer chnage
-Key('n', '<C-Right>', '<CMD>bnext<CR>')
-Key('n', '<C-Left>', '<CMD>bprev<CR>')
+-- Key('n', '<C-Right>', '<CMD>bnext<CR>')
+-- Key('n', '<C-Left>', '<CMD>bprev<CR>')
 
 -- session
 Key('n', '<leader>ls', function()

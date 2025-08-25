@@ -1,5 +1,6 @@
 -- Make marks table global so winbar can access it
 _G.marks = _G.marks or {}
+_G.current_mark_index = 1
 
 -- Helper: relative path
 local function relpath(path)
@@ -73,6 +74,50 @@ vim.keymap.set('n', '<C-e>', function()
     end
   end)
 end)
+
+-- Jump to mark by index safely
+local function goto_mark(i)
+  local file = _G.marks[i]
+  if file then
+    _G.current_mark_index = i
+    vim.cmd('edit ' .. vim.fn.fnameescape(file))
+    vim.cmd 'redrawstatus' -- refresh winbar
+  else
+    vim.notify('No file at slot ' .. i, vim.log.levels.WARN)
+  end
+end
+
+-- Cycle next
+vim.keymap.set('n', '<C-Right>', function()
+  if vim.tbl_isempty(_G.marks) then
+    vim.notify('No marks yet', vim.log.levels.WARN)
+    return
+  end
+  if #_G.marks == 1 then
+    return -- only one mark, do nothing
+  end
+  local next_i = _G.current_mark_index + 1
+  if next_i > #_G.marks then
+    next_i = 1
+  end
+  goto_mark(next_i)
+end, { desc = 'Next mark' })
+
+-- Cycle previous
+vim.keymap.set('n', '<C-Left>', function()
+  if vim.tbl_isempty(_G.marks) then
+    vim.notify('No marks yet', vim.log.levels.WARN)
+    return
+  end
+  if #_G.marks == 1 then
+    return -- only one mark, do nothing
+  end
+  local prev_i = _G.current_mark_index - 1
+  if prev_i < 1 then
+    prev_i = #_G.marks
+  end
+  goto_mark(prev_i)
+end, { desc = 'Previous mark' })
 
 -- Quick navigation
 for i = 1, 9 do
