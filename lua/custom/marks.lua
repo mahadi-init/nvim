@@ -29,27 +29,52 @@ function _G.current_mark_number()
   return '󰍑 ' -- not marked
 end
 
--- Toggle mark on current file
+-- Add mark (always add, not toggle)
 vim.keymap.set('n', '<C-a>', function()
+  local file = vim.fn.expand '%:p'
+
+  -- prevent duplicates
+  for _, f in ipairs(_G.marks) do
+    if f == file then
+      vim.notify('Already marked: ' .. relpath(file), vim.log.levels.INFO)
+      return
+    end
+  end
+
+  table.insert(_G.marks, file)
+  _G.current_mark_index = #_G.marks
+  vim.notify('Marked: ' .. relpath(file))
+  vim.cmd 'redrawstatus'
+end, { desc = 'Add mark' })
+
+-- Unmark current file
+vim.keymap.set('n', '<C-x>', function()
   local file = vim.fn.expand '%:p'
   for i, f in ipairs(_G.marks) do
     if f == file then
       table.remove(_G.marks, i)
-      vim.notify('Unmarked: ' .. relpath(file))
-      -- Adjust current_mark_index if needed
       if _G.current_mark_index > #_G.marks then
         _G.current_mark_index = #_G.marks
       end
-      vim.cmd 'redrawstatus' -- refresh winbar
+      vim.notify('Unmarked: ' .. relpath(file))
+      vim.cmd 'redrawstatus'
       return
     end
   end
-  -- if not found, add it to the end
-  table.insert(_G.marks, file)
-  _G.current_mark_index = #_G.marks -- point to the new one
-  vim.notify('Marked: ' .. relpath(file))
-  vim.cmd 'redrawstatus' -- refresh winbar
-end, { desc = 'Toggle mark' })
+  vim.notify('Not marked: ' .. relpath(file), vim.log.levels.WARN)
+end, { desc = 'Unmark current file' })
+
+-- Unmark all
+vim.api.nvim_create_user_command('UnmarkAll', function()
+  if vim.tbl_isempty(_G.marks) then
+    vim.notify('No marks to clear', vim.log.levels.WARN)
+    return
+  end
+  _G.marks = {}
+  _G.current_mark_index = 1
+  vim.notify 'All marks cleared'
+  vim.cmd 'redrawstatus'
+end, { desc = 'Clear all marks' })
 
 -- Jump to marked file
 vim.keymap.set('n', '<C-l>', function()
@@ -71,34 +96,6 @@ vim.keymap.set('n', '<C-l>', function()
         end
       end
       vim.cmd('edit ' .. vim.fn.fnameescape(choice))
-    end
-  end)
-end)
-
--- Remove a mark
-vim.keymap.set('n', '<C-e>', function()
-  if vim.tbl_isempty(_G.marks) then
-    vim.notify('No marks to remove', vim.log.levels.WARN)
-    return
-  end
-  vim.ui.select(_G.marks, {
-    prompt = 'Remove mark:',
-    format_item = function(item)
-      return relpath(item)
-    end,
-  }, function(choice)
-    if choice then
-      for i, f in ipairs(_G.marks) do
-        if f == choice then
-          table.remove(_G.marks, i)
-          if _G.current_mark_index > #_G.marks then
-            _G.current_mark_index = #_G.marks
-          end
-          vim.notify('Removed: ' .. relpath(choice))
-          vim.cmd 'redrawstatus'
-          return
-        end
-      end
     end
   end)
 end)
