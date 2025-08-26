@@ -64,6 +64,34 @@ vim.keymap.set('n', '<C-x>', function()
   vim.notify('Not marked: ' .. relpath(file), vim.log.levels.WARN)
 end, { desc = 'Unmark current file' })
 
+-- Remove a mark
+vim.keymap.set('n', '<C-e>', function()
+  if vim.tbl_isempty(_G.marks) then
+    vim.notify('No marks to remove', vim.log.levels.WARN)
+    return
+  end
+  vim.ui.select(_G.marks, {
+    prompt = 'Remove mark:',
+    format_item = function(item)
+      return relpath(item)
+    end,
+  }, function(choice)
+    if choice then
+      for i, f in ipairs(_G.marks) do
+        if f == choice then
+          table.remove(_G.marks, i)
+          if _G.current_mark_index > #_G.marks then
+            _G.current_mark_index = #_G.marks
+          end
+          vim.notify('Removed: ' .. relpath(choice))
+          vim.cmd 'redrawstatus'
+          return
+        end
+      end
+    end
+  end)
+end)
+
 -- Unmark all
 vim.api.nvim_create_user_command('UnmarkAll', function()
   if vim.tbl_isempty(_G.marks) then
