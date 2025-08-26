@@ -1,7 +1,7 @@
 return {
   'folke/snacks.nvim',
-  event = 'VeryLazy',
   lazy = false,
+  event = 'VeryLazy',
   opts = {
     bufDelete = {},
     quickfile = {},
@@ -13,13 +13,6 @@ return {
     dashboard = {},
   },
   keys = {
-    {
-      '<leader><leader>',
-      function()
-        Snacks.picker.files()
-      end,
-      desc = 'Smart Find Files',
-    },
     {
       '<C-b>',
       function()

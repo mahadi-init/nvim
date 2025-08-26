@@ -194,6 +194,24 @@ local function load_marks()
   end
 end
 
+vim.o.winbar = table.concat {
+  -- filename
+  '%#Title#%{expand("%:.")}%*',
+  '%#WarningMsg#%m%*',
+  '%#Comment# │%*',
+
+  -- Show mark number
+  ' %{v:lua.current_mark_number()} ',
+  '%#Comment#',
+
+  -- Right side
+  '%=%#Comment# %*',
+
+  -- Filetype
+  '%#String# %y %*',
+  '%#Comment#',
+}
+
 -- Auto save on exit
 vim.api.nvim_create_autocmd('VimLeavePre', {
   callback = save_marks,

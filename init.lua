@@ -1,5 +1,6 @@
-require 'custom.marks'
-require 'configs.options'
-require 'configs.lazy'
-require 'configs.keymaps'
-require 'configs.lsp'
+require 'core.options'
+require 'core.marks'
+require 'core.keymaps'
+require 'core.lazy'
+require 'core.lsp'
+require 'core.find-file-folder' -- must be after plugin load

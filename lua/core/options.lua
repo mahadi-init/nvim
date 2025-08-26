@@ -33,24 +33,6 @@ function _G.git_branch()
   return ''
 end
 
-vim.o.winbar = table.concat {
-  -- filename
-  '%#Title#%{expand("%:.")}%*',
-  '%#WarningMsg#%m%*',
-  '%#Comment# │%*',
-
-  -- Show mark number
-  ' %{v:lua.current_mark_number()} ',
-  '%#Comment#',
-
-  -- Right side
-  '%=%#Comment# %*',
-
-  -- Filetype
-  '%#String# %y %*',
-  '%#Comment#',
-}
-
 vim.o.statusline = table.concat {
   -- Mode
   '%#Identifier# %{mode()} ',
