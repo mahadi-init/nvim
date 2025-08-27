@@ -1,5 +1,5 @@
 Key({ 'n', 'i', 'v' }, '<C-s>', '<CMD>w<CR>') -- save file
-Key('n', '<leader>q', '<CMD>q<CR>') -- quit neovim
+-- Key('n', '<leader>qq', '<CMD>q<CR>') -- quit neovim
 Key('n', '<ESC>', '<CMD>nohlsearch<CR>') -- escape and remove search query
 Key('n', '<C-j>', '<C-d>zz') -- scroll down
 Key('n', '<C-k>', '<C-u>zz') -- scroll up
