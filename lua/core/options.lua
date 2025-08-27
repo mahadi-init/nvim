@@ -9,7 +9,7 @@ opt.winborder = 'rounded'
 
 -- UI Appearance
 opt.termguicolors = true -- Enable true color support
-opt.showmode = true -- Hide mode indicator (shown in statusline)
+opt.showmode = false -- Hide mode indicator (shown in statusline)
 opt.relativenumber = true -- Relative line numbers
 opt.number = true -- Show current line number
 opt.signcolumn = 'yes' -- Always show sign column
