@@ -11,6 +11,7 @@ return {
     picker = {},
     input = {},
     dashboard = {},
+    explorer = {},
   },
   keys = {
     {
@@ -46,6 +47,13 @@ return {
       '<C-x>',
       function()
         Snacks.bufdelete()
+      end,
+      desc = 'Delete Buffer',
+    },
+    {
+      '<leader>e',
+      function()
+        Snacks.explorer()
       end,
       desc = 'Delete Buffer',
     },
