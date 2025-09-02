@@ -1,6 +1,6 @@
 return {
   'stevearc/conform.nvim',
-  event = 'VeryLazy',
+  event = 'LspAttach',
   config = function()
     local prettier_formatters = {
       'prettierd',

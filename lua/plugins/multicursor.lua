@@ -1,7 +1,7 @@
 return {
   'jake-stewart/multicursor.nvim',
   branch = '1.0',
-  event = 'VeryLazy',
+  keys = { '<C-o>', '<M-leftmouse>' },
   config = function()
     local mc = require 'multicursor-nvim'
     mc.setup()
@@ -10,26 +10,6 @@ return {
     Key('n', '<M-leftmouse>', mc.handleMouse)
     Key('x', '<C-o>', function()
       mc.matchAddCursor(1)
-    end)
-
-    -- Mappings defined in a keymap layer only apply when there are
-    -- multiple cursors. This lets you have overlapping mappings.
-    mc.addKeymapLayer(function(layerSet)
-      -- Select a different cursor as the main one.
-      layerSet('x', '<left>', mc.prevCursor)
-      layerSet('x', '<right>', mc.nextCursor)
-
-      -- Delete the main cursor.
-      layerSet('x', '<leader>x', mc.deleteCursor)
-
-      -- Enable and clear cursors using escape.
-      layerSet('n', '<esc>', function()
-        if not mc.cursorsEnabled() then
-          mc.enableCursors()
-        else
-          mc.clearCursors()
-        end
-      end)
     end)
 
     -- Customize how cursors look.

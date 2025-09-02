@@ -1,6 +1,6 @@
 return {
   'axelvc/template-string.nvim',
-  event = 'VeryLazy',
+  event = 'LspAttach',
   config = function()
     require('template-string').setup {
       filetypes = {

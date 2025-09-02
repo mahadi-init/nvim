@@ -1,8 +1,7 @@
 return {
   'chrisgrieser/nvim-origami',
-  opts = {},
-  event = 'VeryLazy',
   lazy = false,
+  opts = {},
   config = function()
     require('origami').setup {
       autoFold = {

@@ -1,6 +1,6 @@
 return {
   'williamboman/mason-lspconfig.nvim',
-  event = 'VeryLazy',
+  event = 'LspAttach',
   config = function()
     require('mason-lspconfig').setup()
   end,
