@@ -33,6 +33,31 @@ function _G.git_branch()
   return ''
 end
 
+-- Helper function to get diagnostic counts
+function _G.diagnostic_count(severity)
+  local count = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity[severity] })
+
+  if count == 0 then
+    return ''
+  end
+
+  -- Switch case for severity icons
+  local icon
+  if severity == 'ERROR' then
+    icon = ' '
+  elseif severity == 'WARN' then
+    icon = ' '
+  elseif severity == 'INFO' then
+    icon = ' '
+  elseif severity == 'HINT' then
+    icon = '󰌶 '
+  else
+    icon = ' '
+  end
+
+  return ' │ ' .. icon .. count
+end
+
 vim.o.statusline = table.concat {
   -- Mode
   '%#Identifier# %{mode()} ',
@@ -46,6 +71,13 @@ vim.o.statusline = table.concat {
   '%#Type# %{&ff} %*',
   '%#Comment#│%*',
   '%#String# %{&fenc?&fenc:&enc}',
+  '%#Comment#',
+
+  -- Error diagnostics
+  '%#DiagnosticError# %{v:lua.diagnostic_count("ERROR")} %*',
+  '%#DiagnosticWarn#%{v:lua.diagnostic_count("WARN")} %*',
+  '%#DiagnosticInfo#%{v:lua.diagnostic_count("INFO")} %*',
+  '%#DiagnosticHint#%{v:lua.diagnostic_count("HINT")} %*',
 
   -- Right side
   '%=%#Comment# %*',
