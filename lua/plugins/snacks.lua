@@ -10,6 +10,7 @@ return {
     picker = {},
     input = {},
     dashboard = {},
+    notifier = {},
   },
   keys = {
     {
