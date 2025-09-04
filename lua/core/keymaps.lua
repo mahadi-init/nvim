@@ -28,3 +28,7 @@ Key('n', '<M-Up>', ':m .-2<CR>==', { desc = 'Move line up' })
 Key('v', '<M-Up>', ":m '<-2<CR>gv=gv", { desc = 'Move selection up' })
 Key('n', '<M-Down>', ':m .+1<CR>==', { desc = 'Move line down' })
 Key('v', '<M-Down>', ":m '>+1<CR>gv=gv", { desc = 'Move selection down' })
+
+Key('n', '<leader>ls', function()
+  require('persistence').load()
+end)

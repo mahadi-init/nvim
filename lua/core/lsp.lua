@@ -36,15 +36,3 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
-
-local notified_clients = {}
-vim.api.nvim_create_autocmd('LspAttach', {
-  group = vim.api.nvim_create_augroup('LspNotifyOnce', {}),
-  callback = function(event)
-    local client = vim.lsp.get_client_by_id(event.data.client_id)
-    if client and not notified_clients[client.name] then
-      notified_clients[client.name] = true
-      vim.notify(string.format('%s ready', client.name), vim.log.levels.INFO)
-    end
-  end,
-})

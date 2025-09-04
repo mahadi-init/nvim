@@ -5,15 +5,6 @@ return {
   config = function()
     require('mini.icons').setup()
     require('mini.pairs').setup()
-    -- require('mini.notify').setup()
-
-    require('mini.diff').setup {
-      view = {
-        style = 'sign',
-        signs = { add = '┃', change = '┃', delete = '┃' },
-        priority = 199,
-      },
-    }
 
     local hipatterns = require 'mini.hipatterns'
     hipatterns.setup {

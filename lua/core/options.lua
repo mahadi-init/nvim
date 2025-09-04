@@ -58,46 +58,6 @@ function _G.diagnostic_count(severity)
   return ' │ ' .. icon .. count
 end
 
-vim.o.statusline = table.concat {
-  -- Mode
-  '%#Identifier# %{mode()} ',
-  '%*%#Comment#│%*',
-
-  -- Git branch
-  '%#Function#%{v:lua.git_branch()}%*',
-  '%#Comment# │%*',
-
-  -- File format & encoding
-  '%#Type# %{&ff} %*',
-  '%#Comment#│%*',
-  '%#String# %{&fenc?&fenc:&enc}',
-  '%#Comment#',
-
-  -- Error diagnostics
-  '%#DiagnosticError# %{v:lua.diagnostic_count("ERROR")} %*',
-  '%#DiagnosticWarn#%{v:lua.diagnostic_count("WARN")} %*',
-  '%#DiagnosticInfo#%{v:lua.diagnostic_count("INFO")} %*',
-  '%#DiagnosticHint#%{v:lua.diagnostic_count("HINT")} %*',
-
-  -- Right side
-  '%=%#Comment# %*',
-
-  -- Time (12-hour with AM/PM)
-  '%#Function# %{strftime("%I:%M %p")} │%*',
-
-  -- Cursor position
-  '%#Identifier# %l:%c %*',
-  '%#Comment#│%*',
-
-  -- Progress %
-  '%#Number# %p%% %*',
-  '%#Comment#│%*',
-
-  -- Total lines
-  '%#Number# %L lines %*',
-  '%#Comment#',
-}
-
 -- Editing behavior
 opt.expandtab = true -- Use spaces instead of tabs
 opt.shiftwidth = 2 -- 2 spaces for indentation
