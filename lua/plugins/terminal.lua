@@ -1,10 +1,6 @@
 return {
   'akinsho/toggleterm.nvim',
   version = '*',
-  event = 'TermOpen',
-  keys = {
-    '<C-t>',
-  },
   config = function()
     require('toggleterm').setup {
       direction = 'float',

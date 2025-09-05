@@ -1,9 +1,7 @@
 return {
   'williamboman/mason.nvim',
-  event = 'LspAttach',
   dependencies = {
     'neovim/nvim-lspconfig',
-    event = 'LspAttach',
   },
   config = function()
     require('mason').setup {
