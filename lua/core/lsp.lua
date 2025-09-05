@@ -15,6 +15,9 @@ local on_attach = function()
   Key('n', 'gr', function()
     Snacks.picker.lsp_references()
   end)
+  Key('n', '<leader>ll', function()
+    diagnostic.setqflist { severity = { min = vim.diagnostic.severity.WARN } }
+  end)
   Key('n', '[d', diagnostic.goto_prev)
   Key('n', ']d', diagnostic.goto_next)
 end
