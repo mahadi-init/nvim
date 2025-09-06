@@ -4,7 +4,6 @@ Key('n', '<C-j>', '<C-d>zz') -- scroll down
 Key('n', '<C-k>', '<C-u>zz') -- scroll up
 Key('n', '<C-d>', '<C-d>zz') -- scroll down
 Key('n', '<C-u>', '<C-u>zz') -- scroll up
-Key('n', 'zz', 'za') -- fold
 Key('n', '<C-v>', '<CMD>leftabove vsplit<CR>') -- vertical split
 
 -- quickfix
