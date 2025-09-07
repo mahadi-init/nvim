@@ -3,6 +3,7 @@ return {
   dependencies = {
     'kevinhwang91/promise-async',
   },
+  event = 'BufReadPost',
   config = function()
     require('ufo').setup {
       provider_selector = function()

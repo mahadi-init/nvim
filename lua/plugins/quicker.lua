@@ -1,6 +1,7 @@
 return {
   'stevearc/quicker.nvim',
   opts = {},
+  event = "FileType qf",
   config = function()
     require('quicker').setup {
       opts = {
