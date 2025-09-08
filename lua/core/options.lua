@@ -88,6 +88,20 @@ opt.foldlevel = 99 -- High fold level by default
 opt.foldlevelstart = 99 -- Start with all folds open
 opt.foldenable = true -- Enable folding
 
+vim.o.winbar = table.concat {
+  -- filename
+  '%#Title#%{expand("%:.")}%*',
+  '%#WarningMsg#%m%*',
+  '%#Comment#',
+
+  -- Right side
+  '%=%#Comment# %*',
+
+  -- Filetype
+  '%#String# %y %*',
+  '%#Comment#',
+}
+
 -- Diagnostics appearance
 vim.diagnostic.config {
   virtual_text = false, -- No virtual text

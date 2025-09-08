@@ -22,6 +22,10 @@ end, { desc = 'Remove current quickfix entry' })
 Key('n', '=', [[<cmd>vertical resize +5<cr>]]) -- make the window biger vertically
 -- Key('n', '-', [[<cmd>vertical resize -5<cr>]]) -- make the window smaller vertically
 
+-- change between buffers
+vim.keymap.set('n', '<C-Right>', ':bnext<CR>', { desc = 'Next buffer' })
+vim.keymap.set('n', '<C-Left>', ':bprevious<CR>', { desc = 'Previous buffer' })
+
 -- move lines
 Key('n', '<M-Up>', ':m .-2<CR>==', { desc = 'Move line up' })
 Key('v', '<M-Up>', ":m '<-2<CR>gv=gv", { desc = 'Move selection up' })
