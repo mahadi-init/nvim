@@ -22,42 +22,6 @@ opt.splitbelow = true -- Open horizontal splits below
 opt.splitright = true -- Open vertical splits to the right
 opt.cursorline = false -- Highlight current line
 
--- Function to get git branch only
-function _G.git_branch()
-  local handle = io.popen('cd "' .. vim.fn.expand '%:p:h' .. '" && git branch --show-current 2>/dev/null')
-  if handle then
-    local branch = handle:read '*line'
-    handle:close()
-    return branch and #branch > 0 and ' ' .. branch or ''
-  end
-  return ''
-end
-
--- Helper function to get diagnostic counts
-function _G.diagnostic_count(severity)
-  local count = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity[severity] })
-
-  if count == 0 then
-    return ''
-  end
-
-  -- Switch case for severity icons
-  local icon
-  if severity == 'ERROR' then
-    icon = ' '
-  elseif severity == 'WARN' then
-    icon = ' '
-  elseif severity == 'INFO' then
-    icon = ' '
-  elseif severity == 'HINT' then
-    icon = '󰌶 '
-  else
-    icon = ' '
-  end
-
-  return ' │ ' .. icon .. count
-end
-
 -- Editing behavior
 opt.expandtab = true -- Use spaces instead of tabs
 opt.shiftwidth = 2 -- 2 spaces for indentation
