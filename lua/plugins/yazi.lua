@@ -14,20 +14,15 @@ return {
   init = function()
     vim.g.loaded_netrwPlugin = 1
 
-    local function files_and_folders()
-      local fd_cmd = 'fdfind --type f --type d --hidden --exclude .git'
+    local function folders_only()
+      local fd_cmd = 'fdfind --type d --hidden --exclude .git'
       local fd_handle = io.popen(fd_cmd)
       local results = {}
 
       if fd_handle then
         for line in fd_handle:lines() do
           local abs_path = vim.fn.fnamemodify(line, ':p')
-          local display
-          if vim.fn.isdirectory(abs_path) == 1 then
-            display = '📁 ' .. line .. '/' -- mark as folder
-          else
-            display = '📄 ' .. line -- mark as file
-          end
+          local display = '📁 ' .. line .. '/'
           table.insert(results, { path = abs_path, display = display })
         end
         fd_handle:close()
@@ -37,11 +32,11 @@ return {
       local cwd = vim.fn.getcwd()
       table.insert(results, 1, {
         path = cwd,
-        display = '📂 root', -- different icon for clarity
+        display = '📂 root',
       })
 
       vim.ui.select(results, {
-        prompt = 'Files and Folders:',
+        prompt = 'Folders:',
         format_item = function(item)
           return item.display
         end,
@@ -50,14 +45,10 @@ return {
           return
         end
 
-        if vim.fn.isdirectory(selected.path) == 1 then
-          require('yazi').yazi({}, selected.path)
-        else
-          vim.cmd('edit ' .. selected.path)
-        end
+        require('yazi').yazi({}, selected.path)
       end)
     end
 
-    vim.keymap.set('n', '<leader><leader>', files_and_folders, { desc = 'Files & Folders (Yazi compatible)' })
+    vim.keymap.set('n', '<C-a>', folders_only, { desc = 'Folders only (Yazi compatible)' })
   end,
 }

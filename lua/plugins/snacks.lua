@@ -14,6 +14,13 @@ return {
   },
   keys = {
     {
+      '<leader><leader>',
+      function()
+        Snacks.picker.files()
+      end,
+      desc = 'Buffers',
+    },
+    {
       '<C-l>',
       function()
         Snacks.picker.buffers()
