@@ -36,15 +36,36 @@ Key('n', '<leader>ls', function()
   require('persistence').load()
 end)
 
--- buffer list view
+-- buffer list view (only real files)
 vim.keymap.set('n', '<C-l>', function()
+  local exclude_ft = {
+    'help',
+    'quickfix',
+    'toggleterm',
+    'TelescopePrompt',
+    'gitcommit',
+  }
+
+  local function is_excluded(buf)
+    local ft = vim.bo[buf].filetype
+    for _, e in ipairs(exclude_ft) do
+      if ft == e then
+        return true
+      end
+    end
+    return false
+  end
+
   local buffers = {}
   for _, buf in ipairs(vim.api.nvim_list_bufs()) do
     if vim.api.nvim_buf_is_loaded(buf) then
-      table.insert(buffers, {
-        bufnr = buf,
-        name = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(buf), ':t'),
-      })
+      local name = vim.api.nvim_buf_get_name(buf)
+      if name ~= '' and not is_excluded(buf) then
+        table.insert(buffers, {
+          bufnr = buf,
+          name = vim.fn.fnamemodify(name, ':t'),
+        })
+      end
     end
   end
 
