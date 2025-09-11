@@ -18,15 +18,22 @@ return {
       function()
         Snacks.picker.files()
       end,
-      desc = 'Buffers',
+      desc = 'search files',
     },
     {
-      '<C-l>',
+      '<leader>e',
       function()
-        Snacks.picker.buffers()
+        Snacks.explorer()
       end,
-      desc = 'Buffers',
+      desc = 'explorer',
     },
+    -- {
+    --   '<C-l>',
+    --   function()
+    --     Snacks.picker.buffers()
+    --   end,
+    --   desc = 'Buffers',
+    -- },
     {
       '<C-/>',
       function()

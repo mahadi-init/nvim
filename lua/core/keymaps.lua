@@ -35,3 +35,37 @@ Key('v', '<M-Down>', ":m '>+1<CR>gv=gv", { desc = 'Move selection down' })
 Key('n', '<leader>ls', function()
   require('persistence').load()
 end)
+
+-- buffer list view
+vim.keymap.set('n', '<C-l>', function()
+  local buffers = {}
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    if vim.api.nvim_buf_is_loaded(buf) then
+      table.insert(buffers, {
+        bufnr = buf,
+        name = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(buf), ':t'),
+      })
+    end
+  end
+
+  vim.ui.select(buffers, {
+    prompt = 'Switch buffer:',
+    format_item = function(item)
+      return item.name
+    end,
+  }, function(choice)
+    if choice then
+      vim.api.nvim_set_current_buf(choice.bufnr)
+    end
+  end)
+end, { desc = 'List buffers' })
+
+-- buffer switch using number
+for i = 1, 9 do
+  vim.keymap.set('n', '<C-' .. i .. '>', function()
+    local buffers = vim.t.bufs or vim.api.nvim_list_bufs() -- keep tab-local order if possible
+    if i <= #buffers then
+      vim.api.nvim_set_current_buf(buffers[i])
+    end
+  end, { desc = 'Go to buffer ' .. i })
+end
