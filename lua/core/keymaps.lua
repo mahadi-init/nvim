@@ -81,12 +81,41 @@ vim.keymap.set('n', '<C-l>', function()
   end)
 end, { desc = 'List buffers' })
 
--- buffer switch using number
-for i = 1, 9 do
-  vim.keymap.set('n', '<C-' .. i .. '>', function()
-    local buffers = vim.t.bufs or vim.api.nvim_list_bufs() -- keep tab-local order if possible
-    if i <= #buffers then
-      vim.api.nvim_set_current_buf(buffers[i])
+-- buffer switch using number (only real buffers)
+local function get_real_buffers()
+  local exclude_ft = {
+    'help',
+    'quickfix',
+    'toggleterm',
+    'TelescopePrompt',
+    'gitcommit',
+  }
+
+  local buffers = {}
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    if vim.api.nvim_buf_is_loaded(buf) then
+      local ft = vim.bo[buf].filetype
+      local name = vim.api.nvim_buf_get_name(buf)
+      if name ~= '' and not vim.tbl_contains(exclude_ft, ft) then
+        table.insert(buffers, buf)
+      end
     end
-  end, { desc = 'Go to buffer ' .. i })
+  end
+  return buffers
+end
+
+for i = 1, 9 do
+  vim.keymap.set(
+    'n',
+    '<C-' .. i .. '>',
+    (function(n)
+      return function()
+        local buffers = get_real_buffers()
+        if n <= #buffers then
+          vim.api.nvim_set_current_buf(buffers[n])
+        end
+      end
+    end)(i),
+    { desc = 'Go to buffer ' .. i }
+  )
 end
