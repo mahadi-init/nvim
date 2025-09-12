@@ -57,6 +57,8 @@ vim.keymap.set('n', '<C-l>', function()
   end
 
   local buffers = {}
+  local cwd = vim.fn.getcwd()
+
   for _, buf in ipairs(vim.api.nvim_list_bufs()) do
     if vim.api.nvim_buf_is_loaded(buf) then
       local name = vim.api.nvim_buf_get_name(buf)
@@ -64,6 +66,7 @@ vim.keymap.set('n', '<C-l>', function()
         table.insert(buffers, {
           bufnr = buf,
           name = vim.fn.fnamemodify(name, ':t'),
+          relpath = vim.fn.fnamemodify(name, ':.'), -- relative to cwd
         })
       end
     end
@@ -72,7 +75,7 @@ vim.keymap.set('n', '<C-l>', function()
   vim.ui.select(buffers, {
     prompt = 'Switch buffer:',
     format_item = function(item)
-      return item.name
+      return string.format('%s  —  %s', item.name, item.relpath)
     end,
   }, function(choice)
     if choice then
