@@ -89,12 +89,20 @@ Key("n", "-", [[<cmd>vertical resize -5<cr>]])
 -- cycle between buffer
 Key("n", "<C-l>", ":bnext<CR>", { desc = "Next buffer" })
 Key("n", "<C-h>", ":bprevious<CR>", { desc = "Previous buffer" })
+Key("n", "<C-x>", ":bd<CR>", { desc = "delete buffer" })
 
 -- move lines
 Key("n", "<M-Up>", ":m .-2<CR>==", { desc = "Move line up" })
 Key("v", "<M-Up>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 Key("n", "<M-Down>", ":m .+1<CR>==", { desc = "Move line down" })
 Key("v", "<M-Down>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
+
+-- Autocmds (highlight yanks)
+vim.api.nvim_create_autocmd("TextYankPost", {
+	callback = function()
+		vim.highlight.on_yank({ higroup = "IncSearch", timeout = 200 })
+	end,
+})
 
 local lazygit_status = pcall(require, "lazygit")
 if lazygit_status then
