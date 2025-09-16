@@ -26,6 +26,10 @@ Plug("kdheepak/lazygit.nvim")
 Plug("jake-stewart/multicursor.nvim")
 Plug("nvim-mini/mini.diff")
 Plug("akinsho/toggleterm.nvim")
+Plug("preservim/nerdtree")
+Plug("ryanoasis/vim-devicons")
+Plug("tiagofumo/vim-nerdtree-syntax-highlight")
+Plug("PhilRunninger/nerdtree-visual-selection")
 
 vim.call("plug#end")
 
@@ -74,8 +78,6 @@ vim.diagnostic.config({
 Key({ "n", "i", "v" }, "<C-s>", "<CMD>w<CR>")
 Key("n", "<ESC>", "<CMD>nohlsearch<CR>")
 Key("n", "<C-v>", "<CMD>leftabove vsplit<CR>")
-Key("n", "<C-j>", "<C-d>")
-Key("n", "<C-k>", "<C-u>")
 
 -- QuickFix
 Key("n", "<M-o>", "<CMD>copen<CR>", { desc = "Open quickfix" })
@@ -97,6 +99,9 @@ Key("n", "<M-Up>", ":m .-2<CR>==", { desc = "Move line up" })
 Key("v", "<M-Up>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 Key("n", "<M-Down>", ":m .+1<CR>==", { desc = "Move line down" })
 Key("v", "<M-Down>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
+
+-- nerdtree
+Key("n", "<C-a>", ":NERDTreeToggle<CR>", { desc = "file explorer" })
 
 -- Autocmds (highlight yanks)
 vim.api.nvim_create_autocmd("TextYankPost", {
