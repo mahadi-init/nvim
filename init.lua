@@ -91,7 +91,7 @@ Key("n", "<M-j>", "<CMD>cnext<CR>", { desc = "next quickfix" })
 
 -- resize window
 Key("n", "=", [[<cmd>vertical resize +5<cr>]])
-Key("n", "-", [[<cmd>vertical resize -5<cr>]])
+-- Key("n", "-", [[<cmd>vertical resize -5<cr>]])
 
 -- cycle between buffer
 Key("n", "<C-Right>", ":bnext<CR>", { desc = "Next buffer" })
@@ -106,6 +106,7 @@ Key("v", "<M-Down>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
 
 -- nerdtree
 Key("n", "<C-a>", ":NERDTreeToggle<CR>", { desc = "file explorer" })
+Key("n", "-", ":NERDTreeFind<CR>", { desc = "find file" })
 
 -- Autocmds (highlight yanks)
 vim.api.nvim_create_autocmd("TextYankPost", {
