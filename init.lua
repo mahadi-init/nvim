@@ -30,6 +30,7 @@ Plug("preservim/nerdtree")
 Plug("ryanoasis/vim-devicons")
 Plug("tiagofumo/vim-nerdtree-syntax-highlight")
 Plug("PhilRunninger/nerdtree-visual-selection")
+Plug("j-hui/fidget.nvim")
 
 vim.call("plug#end")
 
@@ -367,4 +368,10 @@ if toggle_term_status then
 		open_mapping = [[<c-`>]],
 		direction = "float",
 	})
+end
+
+-- fidget
+local fidget_status, fidget = pcall(require, "fidget")
+if fidget_status then
+	fidget.setup({})
 end
