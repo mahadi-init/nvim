@@ -6,29 +6,12 @@ A modern, modular Neovim setup optimized for web development with full LSP suppo
 
 ```
 ~/.config/nvim/
-├── init.lua                 # Entry point
-├── lua/
-│   ├── core/               # Core configuration
-│   │   ├── init.lua        # Loads core modules
-│   │   ├── options.lua     # Global Neovim settings
-│   │   ├── keymaps.lua     # Key mappings
-│   │   └── autocmds.lua    # Auto commands
-│   ├── plugins/            # Plugin configurations
-│   │   ├── init.lua        # Loads all plugin configs
-│   │   ├── colorscheme.lua # Theme setup
-│   │   ├── telescope.lua   # Fuzzy finder
-│   │   ├── lsp.lua         # Language Server Protocol
-│   │   ├── cmp.lua         # Autocompletion
-│   │   ├── treesitter.lua  # Syntax highlighting
-│   │   ├── conform.lua     # Code formatting
-│   │   ├── multicursor.lua # Multiple cursors
-│   │   ├── mini.lua        # Diff highlighting
-│   │   ├── toggleterm.lua  # Terminal integration
-│   │   ├── fidget.lua      # LSP status UI
-│   │   ├── ufo.lua         # Folding
-│   │   └── nerdtree.lua    # File explorer
-│   └── utils/              # Utility functions
-│       └── init.lua
+├── init.lua                
+├── snippets/
+│   ├── all.json
+│   ├── javascript.json
+│   ├── typescript.json
+│   ├── typescriptreact.json 
 ```
 
 ## 🎨 Features
