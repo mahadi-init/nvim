@@ -31,8 +31,7 @@ Plug("ryanoasis/vim-devicons")
 Plug("tiagofumo/vim-nerdtree-syntax-highlight")
 Plug("PhilRunninger/nerdtree-visual-selection")
 Plug("j-hui/fidget.nvim")
-Plug("kevinhwang91/promise-async")
-Plug("kevinhwang91/nvim-ufo")
+Plug("chrisgrieser/nvim-origami")
 
 vim.call("plug#end")
 
@@ -64,7 +63,8 @@ opt.swapfile = false
 opt.backup = false
 opt.writebackup = false
 opt.autoread = true
-opt.foldlevelstart = 99
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
 
 -- Diagnostics appearance
 vim.diagnostic.config({
@@ -342,7 +342,6 @@ if multicursor_status then
 	-- Mappings defined in a keymap layer only apply when there are
 	-- multiple cursors. This lets you have overlapping mappings.
 	multicursor.addKeymapLayer(function(layerSet)
-		-- Enable and clear cursors using escape.
 		layerSet("n", "<esc>", function()
 			if not multicursor.cursorsEnabled() then
 				multicursor.enableCursors()
@@ -380,17 +379,31 @@ if fidget_status then
 	fidget.setup({})
 end
 
--- ufo
-local ufo_status, ufo = pcall(require, "ufo")
-if ufo_status then
-	capabilities.textDocument.foldingRange = {
-		dynamicRegistration = false,
-		lineFoldingOnly = true,
-	}
+-- fold origami
+local origami_status, origami = pcall(require, "origami")
+if origami_status then
+	origami.setup({
+		useLspFoldsWithTreesitterFallback = true,
+		pauseFoldsOnSearch = true,
+		foldtext = {
+			enabled = true,
+			padding = 3,
+			lineCount = {
+				template = "%d lines", -- `%d` is replaced with the number of folded lines
+				hlgroup = "Comment",
+			},
+			diagnosticsCount = true, -- uses hlgroups and icons from `vim.diagnostic.config().signs`
+			gitsignsCount = true, -- requires `gitsigns.nvim`
+		},
+		autoFold = {
+			enabled = false,
+		},
+		foldKeymaps = {
+			setup = false,
+			hOnlyOpensOnFirstColumn = false,
+		},
+	})
 
-	ufo.setup({})
-
-	-- Set up key mappings
 	Key("n", "zz", "za", {
 		noremap = false,
 		silent = true,
