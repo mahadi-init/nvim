@@ -26,12 +26,10 @@ Plug("kdheepak/lazygit.nvim")
 Plug("jake-stewart/multicursor.nvim")
 Plug("nvim-mini/mini.diff")
 Plug("akinsho/toggleterm.nvim")
-Plug("preservim/nerdtree")
-Plug("ryanoasis/vim-devicons")
-Plug("tiagofumo/vim-nerdtree-syntax-highlight")
-Plug("PhilRunninger/nerdtree-visual-selection")
+Plug("mikavilpas/yazi.nvim")
 Plug("j-hui/fidget.nvim")
 Plug("chrisgrieser/nvim-origami")
+Plug("stevearc/dressing.nvim")
 
 vim.call("plug#end")
 
@@ -65,6 +63,7 @@ opt.writebackup = false
 opt.autoread = true
 vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
+vim.g.loaded_netrwPlugin = 1
 
 -- Diagnostics appearance
 vim.diagnostic.config({
@@ -105,9 +104,69 @@ Key("v", "<M-Up>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 Key("n", "<M-Down>", ":m .+1<CR>==", { desc = "Move line down" })
 Key("v", "<M-Down>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
 
--- nerdtree
-Key("n", "<C-a>", ":NERDTreeToggle<CR>", { desc = "file explorer" })
-Key("n", "-", ":NERDTreeFind<CR>", { desc = "find file" })
+-- Yazi.nvim configuration
+local yazi_status, yazi = pcall(require, "yazi")
+if yazi_status then
+	yazi.setup({
+		open_for_directories = true,
+	})
+
+	-- Set up key mappings
+	Key("n", "-", "<cmd>Yazi<CR>", {
+		noremap = true,
+		silent = true,
+		desc = "Open yazi at the current file",
+	})
+	Key("v", "-", "<cmd>Yazi<CR>", {
+		noremap = true,
+		silent = true,
+		desc = "Open yazi at the current file",
+	})
+
+	-- Folders only function
+	local function folders_only()
+		local fd_cmd = "fdfind --type d --hidden --exclude .git"
+		local fd_handle = io.popen(fd_cmd)
+		local results = {}
+
+		if fd_handle then
+			for line in fd_handle:lines() do
+				local abs_path = vim.fn.fnamemodify(line, ":p")
+				local display = "📁 " .. line .. "/"
+				table.insert(results, { path = abs_path, display = display })
+			end
+			fd_handle:close()
+		end
+
+		-- add project root (cwd) at the very top
+		local cwd = vim.fn.getcwd()
+		table.insert(results, 1, {
+			path = cwd,
+			display = "📂 root",
+		})
+
+		vim.ui.select(results, {
+			prompt = "Folders:",
+			format_item = function(item)
+				return item.display
+			end,
+		}, function(selected)
+			if not selected then
+				return
+			end
+
+			require("yazi").yazi({}, selected.path)
+		end)
+	end
+
+	-- Set up key mapping for folders only
+	vim.api.nvim_set_keymap("n", "<C-a>", "", {
+		noremap = true,
+		silent = true,
+		desc = "Folders only (Yazi compatible)",
+		callback = folders_only,
+	})
+end
 
 -- Autocmds (highlight yanks)
 vim.api.nvim_create_autocmd("TextYankPost", {
@@ -193,17 +252,18 @@ if lsp_status and blink_status then
 		local opts = { noremap = true, silent = true, buffer = bufnr }
 
 		-- LSP keymaps
-		vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, opts)
-		vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, opts)
-		vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, opts)
-		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-		vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-		vim.keymap.set("n", "<leader>ll", function()
-			vim.diagnostic.setqflist({ severity = { min = vim.diagnostic.severity.WARN } })
+		Key("n", "<leader>lr", vim.lsp.buf.rename, opts)
+		Key("n", "<leader>la", vim.lsp.buf.code_action, opts)
+		Key("n", "<leader>ld", vim.diagnostic.open_float, opts)
+		Key("n", "K", vim.lsp.buf.hover, opts)
+		Key("n", "gd", builtin.lsp_definitions, opts)
+		Key("n", "gr", builtin.lsp_references, opts)
+		Key("n", "gs", builtin.lsp_document_symbols)
+		Key("n", "<leader>ll", function()
+			builtin.diagnostics({ bnfnr = 0 })
 		end, opts)
-		vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-		vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+		Key("n", "[d", vim.diagnostic.goto_prev, opts)
+		Key("n", "]d", vim.diagnostic.goto_next, opts)
 	end
 
 	-- List of servers
