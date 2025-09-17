@@ -37,6 +37,7 @@ Plug("kevinhwang91/nvim-ufo")
 vim.call("plug#end")
 
 -- Configure and load color scheme
+vim.g.dracula_italic = 0
 vim.opt.background = "dark"
 vim.cmd("silent! colorscheme dracula")
 
