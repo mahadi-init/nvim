@@ -186,10 +186,9 @@ end
 -- LSP Configuration
 local lsp_status, lspconfig = pcall(require, "lspconfig")
 local blink_status, blink = pcall(require, "blink.cmp")
+local capabilities = blink.get_lsp_capabilities()
 
 if lsp_status and blink_status then
-	local capabilities = blink.get_lsp_capabilities()
-
 	local on_attach = function(_, bufnr)
 		local opts = { noremap = true, silent = true, buffer = bufnr }
 
@@ -384,11 +383,12 @@ end
 -- ufo
 local ufo_status, ufo = pcall(require, "ufo")
 if ufo_status then
-	ufo.setup({
-		provider_selector = function()
-			return { "treesitter", "indent" }
-		end,
-	})
+	capabilities.textDocument.foldingRange = {
+		dynamicRegistration = false,
+		lineFoldingOnly = true,
+	}
+
+	ufo.setup({})
 
 	-- Set up key mappings
 	Key("n", "zz", "za", {
