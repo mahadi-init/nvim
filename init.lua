@@ -31,6 +31,8 @@ Plug("ryanoasis/vim-devicons")
 Plug("tiagofumo/vim-nerdtree-syntax-highlight")
 Plug("PhilRunninger/nerdtree-visual-selection")
 Plug("j-hui/fidget.nvim")
+Plug("kevinhwang91/promise-async")
+Plug("kevinhwang91/nvim-ufo")
 
 vim.call("plug#end")
 
@@ -61,6 +63,7 @@ opt.swapfile = false
 opt.backup = false
 opt.writebackup = false
 opt.autoread = true
+opt.foldlevelstart = 99
 
 -- Diagnostics appearance
 vim.diagnostic.config({
@@ -374,4 +377,21 @@ end
 local fidget_status, fidget = pcall(require, "fidget")
 if fidget_status then
 	fidget.setup({})
+end
+
+-- ufo
+local ufo_status, ufo = pcall(require, "ufo")
+if ufo_status then
+	ufo.setup({
+		provider_selector = function()
+			return { "treesitter", "indent" }
+		end,
+	})
+
+	-- Set up key mappings
+	Key("n", "zz", "za", {
+		noremap = false,
+		silent = true,
+		desc = "Center screen and toggle fold",
+	})
 end
