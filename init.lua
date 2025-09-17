@@ -94,8 +94,8 @@ Key("n", "=", [[<cmd>vertical resize +5<cr>]])
 Key("n", "-", [[<cmd>vertical resize -5<cr>]])
 
 -- cycle between buffer
-Key("n", "<C-l>", ":bnext<CR>", { desc = "Next buffer" })
-Key("n", "<C-h>", ":bprevious<CR>", { desc = "Previous buffer" })
+Key("n", "<C-Right>", ":bnext<CR>", { desc = "Next buffer" })
+Key("n", "<C-Left>", ":bprevious<CR>", { desc = "Previous buffer" })
 Key("n", "<C-x>", ":bd<CR>", { desc = "delete buffer" })
 
 -- move lines
