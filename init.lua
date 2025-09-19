@@ -30,7 +30,6 @@ Plug("mikavilpas/yazi.nvim")
 Plug("j-hui/fidget.nvim")
 Plug("chrisgrieser/nvim-origami")
 Plug("stevearc/dressing.nvim")
-Plug("chentoast/marks.nvim")
 
 vim.call("plug#end")
 
@@ -470,10 +469,4 @@ if origami_status then
 		silent = true,
 		desc = "Center screen and toggle fold",
 	})
-end
-
--- marks
-local marks_status, marks = pcall(require, "marks")
-if marks_status then
-	marks.setup()
 end
