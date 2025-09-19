@@ -132,7 +132,7 @@ if yazi_status then
 		if fd_handle then
 			for line in fd_handle:lines() do
 				local abs_path = vim.fn.fnamemodify(line, ":p")
-				local display = "📁 " .. line .. "/"
+				local display = line .. "/"
 				table.insert(results, { path = abs_path, display = display })
 			end
 			fd_handle:close()
@@ -142,7 +142,7 @@ if yazi_status then
 		local cwd = vim.fn.getcwd()
 		table.insert(results, 1, {
 			path = cwd,
-			display = "📂 root",
+			display = "root",
 		})
 
 		vim.ui.select(results, {
