@@ -160,7 +160,7 @@ if yazi_status then
 	end
 
 	-- Set up key mapping for folders only
-	vim.api.nvim_set_keymap("n", "<C-a>", "", {
+	vim.api.nvim_set_keymap("n", "<C-e>", "", {
 		noremap = true,
 		silent = true,
 		desc = "Folders only (Yazi compatible)",
