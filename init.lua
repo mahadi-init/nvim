@@ -30,6 +30,7 @@ Plug("mikavilpas/yazi.nvim")
 Plug("j-hui/fidget.nvim")
 Plug("chrisgrieser/nvim-origami")
 Plug("stevearc/dressing.nvim")
+Plug("chentoast/marks.nvim")
 
 vim.call("plug#end")
 
@@ -227,7 +228,7 @@ end
 local builtin = require("telescope.builtin")
 Key("n", "<leader><leader>", builtin.find_files, { desc = "find files" })
 Key("n", "<C-/>", builtin.live_grep, { desc = "Telescope live grep" })
-Key("n", "<C-b>", builtin.buffers, { desc = "Telescope buffers" })
+Key("n", "<C-l>", builtin.buffers, { desc = "Telescope buffers" })
 Key("n", "<C-g>", builtin.git_status, { desc = "git status" })
 
 -- mason
@@ -469,4 +470,10 @@ if origami_status then
 		silent = true,
 		desc = "Center screen and toggle fold",
 	})
+end
+
+-- marks
+local marks_status, marks = pcall(require, "marks")
+if marks_status then
+	marks.setup()
 end
