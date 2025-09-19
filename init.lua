@@ -428,7 +428,7 @@ end
 local toggle_term_status, toggleterm = pcall(require, "toggleterm")
 if toggle_term_status then
 	toggleterm.setup({
-		open_mapping = [[<c-`>]],
+		open_mapping = [[<c-t>]],
 		direction = "float",
 	})
 end
