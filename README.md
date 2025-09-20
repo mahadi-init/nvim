@@ -42,7 +42,6 @@ A modern, modular Neovim setup optimized for web development with full LSP suppo
 - **Blink CMP** - Fast autocompletion engine
 - **Conform** - Code formatting with Prettier/Stylua
 - **Multicursor** - Multiple cursor editing
-- **ToggleTerm** - Integrated terminal
 - **LazyGit** - Git integration
 - **Fidget** - LSP progress notifications
 

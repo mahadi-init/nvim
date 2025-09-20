@@ -25,7 +25,6 @@ Plug("lukas-reineke/indent-blankline.nvim")
 Plug("kdheepak/lazygit.nvim")
 Plug("jake-stewart/multicursor.nvim")
 Plug("nvim-mini/mini.diff")
-Plug("akinsho/toggleterm.nvim")
 Plug("mikavilpas/yazi.nvim")
 Plug("j-hui/fidget.nvim")
 Plug("chrisgrieser/nvim-origami")
@@ -421,15 +420,6 @@ if mini_diff_status then
 			signs = { add = "┃", change = "┃", delete = "┃" },
 			priority = 199,
 		},
-	})
-end
-
--- toggle term
-local toggle_term_status, toggleterm = pcall(require, "toggleterm")
-if toggle_term_status then
-	toggleterm.setup({
-		open_mapping = [[<c-t>]],
-		direction = "float",
 	})
 end
 
