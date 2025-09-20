@@ -20,7 +20,6 @@ Plug("saghen/blink.cmp")
 Plug("stevearc/conform.nvim")
 Plug("windwp/nvim-ts-autotag")
 Plug("axelvc/template-string.nvim")
-Plug("Raimondi/delimitMate")
 Plug("lukas-reineke/indent-blankline.nvim")
 Plug("kdheepak/lazygit.nvim")
 Plug("jake-stewart/multicursor.nvim")
@@ -81,6 +80,13 @@ vim.diagnostic.config({
 Key({ "n", "i", "v" }, "<C-s>", "<CMD>w<CR>")
 Key("n", "<ESC>", "<CMD>nohlsearch<CR>")
 Key("n", "<C-v>", "<CMD>leftabove vsplit<CR>")
+
+-- autopairs
+vim.keymap.set("i", "(", "()<Left>")
+vim.keymap.set("i", "[", "[]<Left>")
+vim.keymap.set("i", "{", "{}<Left>")
+vim.keymap.set("i", '"', '""<Left>')
+vim.keymap.set("i", "'", "''<Left>")
 
 -- QuickFix
 Key("n", "<M-o>", "<CMD>copen<CR>", { desc = "Open quickfix" })
