@@ -226,7 +226,7 @@ end
 
 local builtin = require("telescope.builtin")
 Key("n", "<leader><leader>", builtin.find_files, { desc = "find files" })
-Key("n", "<C-/>", builtin.live_grep, { desc = "Telescope live grep" })
+Key("n", "<C-f>", builtin.live_grep, { desc = "Telescope live grep" })
 Key("n", "<C-l>", builtin.buffers, { desc = "Telescope buffers" })
 Key("n", "<C-g>", builtin.git_status, { desc = "git status" })
 
