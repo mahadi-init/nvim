@@ -109,6 +109,16 @@ Key("v", "<M-Up>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 Key("n", "<M-Down>", ":m .+1<CR>==", { desc = "Move line down" })
 Key("v", "<M-Down>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
 
+-- treesitter
+local treesitter_status, treesitter = pcall(require, "nvim-treesitter.configs")
+if treesitter_status then
+	treesitter.setup({
+		highlight = {
+			enable = true,
+		},
+	})
+end
+
 -- Yazi.nvim configuration
 local yazi_status, yazi = pcall(require, "yazi")
 if yazi_status then
@@ -280,6 +290,7 @@ if lsp_status and blink_status then
 		"html",
 		"cssls",
 		"bashls",
+		"svelte",
 	}
 
 	-- Server setup
