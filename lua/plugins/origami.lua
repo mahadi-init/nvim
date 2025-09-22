@@ -1,6 +1,6 @@
 return {
 	"chrisgrieser/nvim-origami",
-	event = "VeryLazy",
+	event = "BufRead",
 	config = function()
 		require("origami").setup({
 			useLspFoldsWithTreesitterFallback = true,
