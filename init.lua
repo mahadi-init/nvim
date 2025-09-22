@@ -258,11 +258,10 @@ if mason_lsp_status then
 end
 
 -- LSP Configuration
-local lsp_status, lspconfig = pcall(require, "lspconfig")
 local blink_status, blink = pcall(require, "blink.cmp")
-local capabilities = blink.get_lsp_capabilities()
+local capabilities = blink_status and blink.get_lsp_capabilities() or {}
 
-if lsp_status and blink_status then
+if blink_status then
 	local on_attach = function(_, bufnr)
 		local opts = { noremap = true, silent = true, buffer = bufnr }
 
@@ -295,7 +294,7 @@ if lsp_status and blink_status then
 
 	-- Server setup
 	for _, lsp in ipairs(servers) do
-		lspconfig[lsp].setup({
+		vim.lsp.config(lsp, {
 			on_attach = on_attach,
 			capabilities = capabilities,
 		})
