@@ -4,6 +4,7 @@ local map = vim.keymap.set
 map({ "n", "i", "v" }, "<C-s>", "<CMD>w<CR>")
 map("n", "<ESC>", "<CMD>nohlsearch<CR>")
 map("n", "<C-v>", "<CMD>leftabove vsplit<CR>")
+map("n", "<leader>qq", "<CMD>q<CR>")
 
 -- autopairs
 vim.keymap.set("i", "(", "()<Left>")
@@ -11,6 +12,7 @@ vim.keymap.set("i", "[", "[]<Left>")
 vim.keymap.set("i", "{", "{}<Left>")
 vim.keymap.set("i", '"', '""<Left>')
 vim.keymap.set("i", "'", "''<Left>")
+vim.keymap.set("i", "`", "``<Left>")
 
 -- QuickFix
 map("n", "<M-o>", "<CMD>copen<CR>", { desc = "Open quickfix" })
@@ -28,7 +30,7 @@ map("n", "<C-Left>", ":bprevious<CR>", { desc = "Previous buffer" })
 map("n", "<C-x>", ":bd<CR>", { desc = "delete buffer" })
 
 -- move lines
-map("n", "<M-Up>", ":m .-2<CR>==", { desc = "Move line up" })
-map("v", "<M-Up>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
-map("n", "<M-Down>", ":m .+1<CR>==", { desc = "Move line down" })
-map("v", "<M-Down>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
+map("n", "<M-u>", ":m .-2<CR>==", { desc = "Move line up" })
+map("n", "<M-d>", ":m .+1<CR>==", { desc = "Move line down" })
+map("v", "<M-u>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
+map("v", "<M-d>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
