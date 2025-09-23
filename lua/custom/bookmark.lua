@@ -63,8 +63,48 @@ function M.add_bookmark(path)
 		current_bookmarks[rel_path] = name
 		set_current_bookmarks(current_bookmarks)
 		vim.notify("Bookmarked: " .. name, vim.log.levels.INFO)
+		return true
 	else
 		vim.notify("Already bookmarked: " .. name, vim.log.levels.WARN)
+		return false
+	end
+end
+
+-- Remove a bookmark
+function M.remove_bookmark(rel_path)
+	local current_bookmarks = get_current_bookmarks()
+	if current_bookmarks[rel_path] then
+		local name = current_bookmarks[rel_path]
+		current_bookmarks[rel_path] = nil
+		set_current_bookmarks(current_bookmarks)
+		vim.notify("Removed bookmark: " .. name, vim.log.levels.INFO)
+		return true
+	end
+	return false
+end
+
+-- Toggle bookmark for current file
+function M.toggle_bookmark(path)
+	path = path or vim.fn.expand("%:p")
+	if path == "" then
+		vim.notify("No file to toggle bookmark", vim.log.levels.WARN)
+		return
+	end
+
+	local current_bookmarks = get_current_bookmarks()
+	local rel_path = get_relative_path(path)
+	local name = vim.fn.fnamemodify(path, ":t")
+
+	if current_bookmarks[rel_path] then
+		-- Remove bookmark
+		current_bookmarks[rel_path] = nil
+		set_current_bookmarks(current_bookmarks)
+		vim.notify("Bookmark removed: " .. name, vim.log.levels.INFO)
+	else
+		-- Add bookmark
+		current_bookmarks[rel_path] = name
+		set_current_bookmarks(current_bookmarks)
+		vim.notify("Bookmarked: " .. name, vim.log.levels.INFO)
 	end
 end
 
@@ -90,19 +130,6 @@ function M.add_multiple_bookmarks(paths)
 
 	set_current_bookmarks(current_bookmarks)
 	vim.notify("Bookmarked " .. count .. " file(s)", vim.log.levels.INFO)
-end
-
--- Remove a bookmark
-function M.remove_bookmark(rel_path)
-	local current_bookmarks = get_current_bookmarks()
-	if current_bookmarks[rel_path] then
-		local name = current_bookmarks[rel_path]
-		current_bookmarks[rel_path] = nil
-		set_current_bookmarks(current_bookmarks)
-		vim.notify("Removed bookmark: " .. name, vim.log.levels.INFO)
-		return true
-	end
-	return false
 end
 
 -- Open bookmarked files
@@ -322,7 +349,16 @@ function M.setup()
 	map("n", "<C-l>", "<CMD>ProjectBookmarkOpen<CR>", {
 		noremap = true,
 		silent = true,
-		desc = "Search and bookmark files",
+		desc = "Open bookmarks",
+	})
+
+	-- Toggle bookmark for current file
+	map("n", "<leader>nn", function()
+		M.toggle_bookmark()
+	end, {
+		noremap = true,
+		silent = true,
+		desc = "Toggle bookmark for current file",
 	})
 end
 
