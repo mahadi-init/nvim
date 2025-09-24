@@ -353,7 +353,7 @@ function M.setup()
 	})
 
 	-- Toggle bookmark for current file
-	map("n", "<leader>nn", function()
+	map("n", "<C-n>", function()
 		M.toggle_bookmark()
 	end, {
 		noremap = true,
