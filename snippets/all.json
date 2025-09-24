@@ -18,5 +18,10 @@
     "prefix": "log",
     "body": ["console.log('$1:', $1);"],
     "description": "Console log current variable"
+  },
+  "mark": {
+    "prefix": "mark",
+    "body": ["- **$0**"],
+    "description": "bold text"
   }
 }
